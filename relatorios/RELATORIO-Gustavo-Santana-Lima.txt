@@ -1,0 +1,7 @@
+Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
+
+23/06/2023  | 1 hora e 35 minutos | Estudar o Framework e códigos em HTML |
+24/06/2023  | 1 hora |  Testes e implementação de códigos básicos de HTML |
+24/06/2023  | 1 hora e 30 minutos | Implementar o HTML da página de adicionar ADM |
+            | implementar o código criar_admin.py que conecta o front-end no back-end |
+25/06/2023  | 1 hora |  adicionar o template de css da página criar_admin |
