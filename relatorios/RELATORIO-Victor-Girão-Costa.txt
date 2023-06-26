@@ -1,0 +1,6 @@
+Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
+
+23/06/2023  | 1 hora e 8 minutos | Estudar aulas e laboratórios relacionados | Estudo do Framework e da linguagem escolhidos.
+24/06/2023  |     40 minutos     |      Instalação e Configuração            | Instalação e configuração do Framework e do ambiente de desenvolvimento. 
+25/06/2023  | 1hora e 30 minutos |           Ánalise de código               | Análise de código criado por outros membros do grupo.
+26/06/2023  | 1hora e 30 minutos | Estudar aulas e laboratórios relacionados | Estudo de Livro sobre a linguagem Python. 
