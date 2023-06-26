@@ -1,14 +1,11 @@
-# back-end
-this is a repository of our web application main functionalities
+# Back-End
+This is a repository of our web application main functionalities
 
-to install all dependencies run the following command on the root
+To install all dependencies run the following command on the root
 directory of this project:
-
-$ pip install -r requirements.txt
-
-to run the app locally:
-
-$ flask --app project run
+$ make install
+To run the app locally:
+$ make
 
 # Database
 
