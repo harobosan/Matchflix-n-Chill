@@ -1,0 +1,7 @@
+JOÃO VICTOR CAVALLIN PEREIRA
+Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
+
+
+23/06/23| 1 hora e 30 minutos | Estudar aulas e laboratórios relacionados | Estudo do Framework e da linguagem.
+24/06/23| 2 horas| Projetar | Esboço da função a ser implementada
+23/06/23| 1 hora e 30 minutos| revisar projetos | Continuação da implementação da função e conversa com membros do grupo para tirar duvidas a cerca da implementação do projeto
