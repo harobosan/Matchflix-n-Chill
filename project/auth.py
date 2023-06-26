@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import current_user, login_user, logout_user
 from .db import db, User
-from .user import userAuthenticates
+from .user import user_authenticates
 
 auth = Blueprint('auth', __name__)
 
@@ -16,7 +16,7 @@ def login():
         password = request.form.get('password')
         remember = True if request.form.get('remember') else False
         
-        if userAuthenticates(email, password):
+        if user_authenticates(email, password):
             flash('Please check your login details and try again.')
             return redirect(url_for('auth.login'))
 
