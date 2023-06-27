@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <h1>Catálogo de Filmes</h1>
+        {% for filme in filmes %}
+            <div class="filme">
+                <img src="{{filme['imagem']}}" alt="{{ filme['titulo'] }}">
+                <div class="titulo">{{ filme['titulo'] }}</div>
+            </div>
+        {% endfor %}
+{% endblock %}
