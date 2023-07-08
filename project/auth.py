@@ -1,11 +1,17 @@
+"""auth"""
+
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import current_user, login_user, logout_user
 from .user import create_user, authenticate_user, disconnect_user
 
+
 auth = Blueprint('auth', __name__)
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+    """login"""
+
     if current_user.is_authenticated:
         flash('You are already authenticated, logout first to access this page.')
         return redirect(url_for('main.profile'))
@@ -27,6 +33,8 @@ def login():
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
+    """signup"""
+
     if current_user.is_authenticated:
         flash('You are already authenticated, logout first to access this page.')
         return redirect(url_for('main.profile'))
@@ -47,6 +55,8 @@ def signup():
 
 @auth.route('/logout')
 def logout():
+    """logout"""
+
     if not current_user.is_authenticated:
         flash('Please, authenticate to access this page.')
         return redirect(url_for('auth.login'))

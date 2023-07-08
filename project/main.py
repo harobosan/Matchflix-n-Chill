@@ -1,16 +1,24 @@
+"""main"""
+
 from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import current_user
-from .user import get_all_users#, Movies
+from .user import get_all_users
 from .movie import get_all_movies
+
 
 main = Blueprint('main', __name__)
 
+
 @main.route('/')
 def index():
+    """index"""
+
     return render_template('index.html')
 
 @main.route('/profile')
 def profile():
+    """profile"""
+
     if not current_user.is_authenticated:
         flash('Please, authenticate to access this page.')
         return redirect(url_for('auth.login'))
@@ -19,4 +27,6 @@ def profile():
 
 @main.route('/movies')
 def movies():
+    """movies"""
+
     return render_template('movies.html', filmes = get_all_movies())

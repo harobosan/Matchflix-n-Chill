@@ -1,10 +1,15 @@
+"""__init__"""
+
 from flask import Flask
 from flask_login import LoginManager
 from .db import db, User
 from .auth import auth as auth_blueprint
 from .main import main as main_blueprint
 
+
 def create_app():
+    """create_app"""
+
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = 'secret-key-goes-here'
