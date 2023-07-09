@@ -1,0 +1,785 @@
+[
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "send_from_directory",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "current_user",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "login_user",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "logout_user",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "UserMixin",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "current_user",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemy",
+        "importPath": "flask_sqlalchemy",
+        "description": "flask_sqlalchemy",
+        "isExtraImport": true,
+        "detail": "flask_sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "randint",
+        "importPath": "random",
+        "description": "random",
+        "isExtraImport": true,
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "create_app",
+        "importPath": "project",
+        "description": "project",
+        "isExtraImport": true,
+        "detail": "project",
+        "documentation": {}
+    },
+    {
+        "label": "Movie",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "create_movie",
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "isExtraImport": true,
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "project.auth",
+        "description": "project.auth",
+        "peekOfCode": "def login():\n    \"\"\"login\"\"\"\n    if current_user.is_authenticated:\n        flash('You are already authenticated, logout first to access this page.')\n        return redirect(url_for('main.profile'))\n    if request.method == 'POST':\n        email = request.form.get('email')\n        password = request.form.get('password')\n        remember = bool(request.form.get('remember'))\n        user = authenticate_user(email, password)",
+        "detail": "project.auth",
+        "documentation": {}
+    },
+    {
+        "label": "signup",
+        "kind": 2,
+        "importPath": "project.auth",
+        "description": "project.auth",
+        "peekOfCode": "def signup():\n    \"\"\"signup\"\"\"\n    if current_user.is_authenticated:\n        flash('You are already authenticated, logout first to access this page.')\n        return redirect(url_for('main.profile'))\n    if request.method == 'POST':\n        email = request.form.get('email')\n        username = request.form.get('username')\n        password = request.form.get('password')\n        user = create_user(email, username, password)",
+        "detail": "project.auth",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "kind": 2,
+        "importPath": "project.auth",
+        "description": "project.auth",
+        "peekOfCode": "def logout():\n    \"\"\"logout\"\"\"\n    if not current_user.is_authenticated:\n        flash('Please, authenticate to access this page.')\n        return redirect(url_for('auth.login'))\n    disconnect_user(current_user)\n    logout_user()\n    return redirect(url_for('main.index'))",
+        "detail": "project.auth",
+        "documentation": {}
+    },
+    {
+        "label": "auth",
+        "kind": 5,
+        "importPath": "project.auth",
+        "description": "project.auth",
+        "peekOfCode": "auth = Blueprint('auth', __name__)\n@auth.route('/login', methods=['GET', 'POST'])\ndef login():\n    \"\"\"login\"\"\"\n    if current_user.is_authenticated:\n        flash('You are already authenticated, logout first to access this page.')\n        return redirect(url_for('main.profile'))\n    if request.method == 'POST':\n        email = request.form.get('email')\n        password = request.form.get('password')",
+        "detail": "project.auth",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "project.db",
+        "description": "project.db",
+        "peekOfCode": "class User(db.Model, UserMixin):\n    \"\"\"User\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    email = db.Column(db.String(100), unique=True)\n    username = db.Column(db.String(1000))\n    password = db.Column(db.String(100))\n    authenticated = db.Column(db.Boolean, default=False)\n    uid_1 = db.relationship(\n        'Relationship',\n        foreign_keys='Relationship.uid_1',",
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Admin",
+        "kind": 6,
+        "importPath": "project.db",
+        "description": "project.db",
+        "peekOfCode": "class Admin(db.Model):\n    \"\"\"Admin\"\"\"\n    uid = db.Column(db.Integer, ForeignKey('user.id'), primary_key=True)\n    user = db.relationship(\n        'User',\n        backref=db.backref(\n            'Admin',\n            cascade='all,delete'\n        )\n    )",
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Movie",
+        "kind": 6,
+        "importPath": "project.db",
+        "description": "project.db",
+        "peekOfCode": "class Movie(db.Model):\n    \"\"\"Movie\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(100))\n    image_url = db.Column(db.String(200))\nclass Preference(db.Model):\n    \"\"\"Preference\"\"\"\n    uid = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    mid = db.Column(db.Integer, db.ForeignKey('movie.id'), primary_key=True)\n    user = db.relationship(",
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Preference",
+        "kind": 6,
+        "importPath": "project.db",
+        "description": "project.db",
+        "peekOfCode": "class Preference(db.Model):\n    \"\"\"Preference\"\"\"\n    uid = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    mid = db.Column(db.Integer, db.ForeignKey('movie.id'), primary_key=True)\n    user = db.relationship(\n        'User',\n        backref=db.backref(\n            'Preference',\n            cascade='all,delete'\n        )",
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Relationship",
+        "kind": 6,
+        "importPath": "project.db",
+        "description": "project.db",
+        "peekOfCode": "class Relationship(db.Model):\n    \"\"\"Relationship\"\"\"\n    uid_1 = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    uid_2 = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    status = db.Column(db.Boolean)\nclass Messages(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    date = db.Column(db.Date)\n    text = db.Column(db.String(250))\nclass UserMessages(db.Model):",
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Messages",
+        "kind": 6,
+        "importPath": "project.db",
+        "description": "project.db",
+        "peekOfCode": "class Messages(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    date = db.Column(db.Date)\n    text = db.Column(db.String(250))\nclass UserMessages(db.Model):\n    sender = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    receiver = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    mid = db.Column(db.Integer, db.ForeignKey('messages.id'), primary_key=True)\ndef db_commit():\n    \"\"\"db_commit\"\"\"",
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "UserMessages",
+        "kind": 6,
+        "importPath": "project.db",
+        "description": "project.db",
+        "peekOfCode": "class UserMessages(db.Model):\n    sender = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    receiver = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    mid = db.Column(db.Integer, db.ForeignKey('messages.id'), primary_key=True)\ndef db_commit():\n    \"\"\"db_commit\"\"\"\n    db.session.commit()\ndef db_add(item):\n    \"\"\"db_add\"\"\"\n    db.session.add(item)",
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "db_commit",
+        "kind": 2,
+        "importPath": "project.db",
+        "description": "project.db",
+        "peekOfCode": "def db_commit():\n    \"\"\"db_commit\"\"\"\n    db.session.commit()\ndef db_add(item):\n    \"\"\"db_add\"\"\"\n    db.session.add(item)\ndef db_del(item):\n    \"\"\"db_del\"\"\"\n    db.session.delete(item)\ndef clean_db():",
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "db_add",
+        "kind": 2,
+        "importPath": "project.db",
+        "description": "project.db",
+        "peekOfCode": "def db_add(item):\n    \"\"\"db_add\"\"\"\n    db.session.add(item)\ndef db_del(item):\n    \"\"\"db_del\"\"\"\n    db.session.delete(item)\ndef clean_db():\n    \"\"\"clean_db\"\"\"\n    # Exclui todos os registros da tabela User\n    User.query.delete()",
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "db_del",
+        "kind": 2,
+        "importPath": "project.db",
+        "description": "project.db",
+        "peekOfCode": "def db_del(item):\n    \"\"\"db_del\"\"\"\n    db.session.delete(item)\ndef clean_db():\n    \"\"\"clean_db\"\"\"\n    # Exclui todos os registros da tabela User\n    User.query.delete()\n    # Exclui todos os registros da tabela Messages\n    Messages.query.delete()\n    # Exclui todos os registros da tabela Preference",
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "clean_db",
+        "kind": 2,
+        "importPath": "project.db",
+        "description": "project.db",
+        "peekOfCode": "def clean_db():\n    \"\"\"clean_db\"\"\"\n    # Exclui todos os registros da tabela User\n    User.query.delete()\n    # Exclui todos os registros da tabela Messages\n    Messages.query.delete()\n    # Exclui todos os registros da tabela Preference\n    Preference.query.delete()\n    # Exclui todos os registros da tabela Movie\n    Movie.query.delete()",
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "project.db",
+        "description": "project.db",
+        "peekOfCode": "db = SQLAlchemy()\nclass User(db.Model, UserMixin):\n    \"\"\"User\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    email = db.Column(db.String(100), unique=True)\n    username = db.Column(db.String(1000))\n    password = db.Column(db.String(100))\n    authenticated = db.Column(db.Boolean, default=False)\n    uid_1 = db.relationship(\n        'Relationship',",
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "favicon",
+        "kind": 2,
+        "importPath": "project.main",
+        "description": "project.main",
+        "peekOfCode": "def favicon():\n    \"\"\"favicon\"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/')\ndef index():\n    \"\"\"index\"\"\"\n    return render_template('index.html')\n@main.route('/profile')\ndef profile():\n    \"\"\"profile\"\"\"",
+        "detail": "project.main",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "project.main",
+        "description": "project.main",
+        "peekOfCode": "def index():\n    \"\"\"index\"\"\"\n    return render_template('index.html')\n@main.route('/profile')\ndef profile():\n    \"\"\"profile\"\"\"\n    if not current_user.is_authenticated:\n        flash('Please, authenticate to access this page.')\n        return redirect(url_for('auth.login'))\n    return render_template('profile.html', user=current_user, user_list=get_all_users())",
+        "detail": "project.main",
+        "documentation": {}
+    },
+    {
+        "label": "profile",
+        "kind": 2,
+        "importPath": "project.main",
+        "description": "project.main",
+        "peekOfCode": "def profile():\n    \"\"\"profile\"\"\"\n    if not current_user.is_authenticated:\n        flash('Please, authenticate to access this page.')\n        return redirect(url_for('auth.login'))\n    return render_template('profile.html', user=current_user, user_list=get_all_users())\n@main.route('/movies', methods=['GET', 'POST'])\ndef movies():\n    \"\"\"movies\"\"\"\n    privileged = False",
+        "detail": "project.main",
+        "documentation": {}
+    },
+    {
+        "label": "movies",
+        "kind": 2,
+        "importPath": "project.main",
+        "description": "project.main",
+        "peekOfCode": "def movies():\n    \"\"\"movies\"\"\"\n    privileged = False\n    preferences = None\n    if current_user.is_authenticated:\n        privileged = is_admin(current_user.id)\n        preferences = get_user_preferences(current_user.id)\n    if request.method == 'POST':\n        if current_user.is_authenticated:\n            if request.form.get(\"like\"):",
+        "detail": "project.main",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 5,
+        "importPath": "project.main",
+        "description": "project.main",
+        "peekOfCode": "main = Blueprint('main', __name__)\n@main.route('/favicon.ico')\ndef favicon():\n    \"\"\"favicon\"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/')\ndef index():\n    \"\"\"index\"\"\"\n    return render_template('index.html')\n@main.route('/profile')",
+        "detail": "project.main",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_movies",
+        "kind": 2,
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "peekOfCode": "def get_all_movies():\n    \"\"\"get_all_movies\"\"\"\n    movies = Movie.query.all()\n    return movies\ndef get_movie(name):\n    \"\"\"get_movie\"\"\"\n    movie = Movie.query.filter_by(name=name).first()\n    return movie\ndef get_movie_list(movie_list):\n    \"\"\"get_movie_list\"\"\"",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "get_movie",
+        "kind": 2,
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "peekOfCode": "def get_movie(name):\n    \"\"\"get_movie\"\"\"\n    movie = Movie.query.filter_by(name=name).first()\n    return movie\ndef get_movie_list(movie_list):\n    \"\"\"get_movie_list\"\"\"\n    movies = []\n    for mid in movie_list:\n        movie = Movie.query.filter_by(id=mid).first()\n        if movie:",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "get_movie_list",
+        "kind": 2,
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "peekOfCode": "def get_movie_list(movie_list):\n    \"\"\"get_movie_list\"\"\"\n    movies = []\n    for mid in movie_list:\n        movie = Movie.query.filter_by(id=mid).first()\n        if movie:\n            movies.append(movie)\n    return movies\ndef movie_exists(name):\n    \"\"\"movie_exists\"\"\"",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "movie_exists",
+        "kind": 2,
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "peekOfCode": "def movie_exists(name):\n    \"\"\"movie_exists\"\"\"\n    return bool(get_movie(name))\ndef create_movie(name, image_url):\n    \"\"\"create_movie\"\"\"\n    if movie_exists(name):\n        return None\n    movie = Movie(name=name, image_url=image_url)\n    db_add(movie)\n    db_commit()",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "create_movie",
+        "kind": 2,
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "peekOfCode": "def create_movie(name, image_url):\n    \"\"\"create_movie\"\"\"\n    if movie_exists(name):\n        return None\n    movie = Movie(name=name, image_url=image_url)\n    db_add(movie)\n    db_commit()\n    return movie\ndef delete_movie(name):\n    \"\"\"delete_movie\"\"\"",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "delete_movie",
+        "kind": 2,
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "peekOfCode": "def delete_movie(name):\n    \"\"\"delete_movie\"\"\"\n    movie = get_movie(name)\n    if movie:\n        db_del(movie)\n        db_commit()\ndef generate_random_movie_name():\n    \"\"\"generate_random_movie_name\"\"\"\n    i = randint(1, 300)\n    return f\"Filme {i}\"",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "generate_random_movie_name",
+        "kind": 2,
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "peekOfCode": "def generate_random_movie_name():\n    \"\"\"generate_random_movie_name\"\"\"\n    i = randint(1, 300)\n    return f\"Filme {i}\"\ndef seed_movies():\n    \"\"\"seed_movies\"\"\"\n    for i in range(10):\n        movie_name = f\"Filme {i}\"\n        if movie_exists(movie_name):\n            random_name = generate_random_movie_name()",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "seed_movies",
+        "kind": 2,
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "peekOfCode": "def seed_movies():\n    \"\"\"seed_movies\"\"\"\n    for i in range(10):\n        movie_name = f\"Filme {i}\"\n        if movie_exists(movie_name):\n            random_name = generate_random_movie_name()\n            while movie_exists(random_name):\n                random_name = generate_random_movie_name()\n            movie = Movie(name=random_name, image_url=\"https://imagem\")\n        else:",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_preferences",
+        "kind": 2,
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "peekOfCode": "def get_all_preferences():\n    \"\"\"get_all_preferences\"\"\"\n    preferences = Preference.query.all()\n    return preferences\ndef get_preference(uid, mid):\n    \"\"\"get_preference\"\"\"\n    preference = Preference.query.filter_by(uid=uid, mid=mid).first()\n    return preference\ndef get_user_preferences(uid):\n    \"\"\"get_user_preferences\"\"\"",
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "get_preference",
+        "kind": 2,
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "peekOfCode": "def get_preference(uid, mid):\n    \"\"\"get_preference\"\"\"\n    preference = Preference.query.filter_by(uid=uid, mid=mid).first()\n    return preference\ndef get_user_preferences(uid):\n    \"\"\"get_user_preferences\"\"\"\n    preferences = Preference.query.filter_by(uid=uid)\n    user_preferences = []\n    for pref in preferences:\n        user_preferences.append(pref.mid)",
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_preferences",
+        "kind": 2,
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "peekOfCode": "def get_user_preferences(uid):\n    \"\"\"get_user_preferences\"\"\"\n    preferences = Preference.query.filter_by(uid=uid)\n    user_preferences = []\n    for pref in preferences:\n        user_preferences.append(pref.mid)\n    return user_preferences\ndef get_movie_preferences(mid):\n    \"\"\"get_movie_preferences\"\"\"\n    preferences = Preference.query.filter_by(mid=mid)",
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "get_movie_preferences",
+        "kind": 2,
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "peekOfCode": "def get_movie_preferences(mid):\n    \"\"\"get_movie_preferences\"\"\"\n    preferences = Preference.query.filter_by(mid=mid)\n    movie_preferences = []\n    for pref in preferences:\n        movie_preferences.append(pref.uid)\n    return movie_preferences\ndef preference_exists(uid, mid):\n    \"\"\"preference_exists\"\"\"\n    return bool(get_preference(uid, mid))",
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "preference_exists",
+        "kind": 2,
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "peekOfCode": "def preference_exists(uid, mid):\n    \"\"\"preference_exists\"\"\"\n    return bool(get_preference(uid, mid))\ndef create_preference(uid, mid):\n    \"\"\"create_preference\"\"\"\n    if preference_exists(uid, mid):\n        return None\n    preference = Preference(uid=uid, mid=mid)\n    db_add(preference)\n    db_commit()",
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "create_preference",
+        "kind": 2,
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "peekOfCode": "def create_preference(uid, mid):\n    \"\"\"create_preference\"\"\"\n    if preference_exists(uid, mid):\n        return None\n    preference = Preference(uid=uid, mid=mid)\n    db_add(preference)\n    db_commit()\n    return preference\ndef delete_preference(uid, mid):\n    \"\"\"delete_preference\"\"\"",
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "delete_preference",
+        "kind": 2,
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "peekOfCode": "def delete_preference(uid, mid):\n    \"\"\"delete_preference\"\"\"\n    preference = get_preference(uid, mid)\n    if preference:\n        db_del(preference)\n        db_commit()\ndef delete_user_preferences(uid):\n    \"\"\"delete_user_preferences\"\"\"\n    preferences = get_user_preferences(uid)\n    if preferences:",
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "delete_user_preferences",
+        "kind": 2,
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "peekOfCode": "def delete_user_preferences(uid):\n    \"\"\"delete_user_preferences\"\"\"\n    preferences = get_user_preferences(uid)\n    if preferences:\n        for preference in preferences:\n            db_del(preference)\n        db_commit()\ndef delete_movie_preferences(mid):\n    \"\"\"delete_movie_preferences\"\"\"\n    preferences = get_movie_preferences(mid)",
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "delete_movie_preferences",
+        "kind": 2,
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "peekOfCode": "def delete_movie_preferences(mid):\n    \"\"\"delete_movie_preferences\"\"\"\n    preferences = get_movie_preferences(mid)\n    if preferences:\n        for preference in preferences:\n            db_del(preference)\n        db_commit()",
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_relationships",
+        "kind": 2,
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "peekOfCode": "def get_all_relationships():\n    \"\"\"get_all_relationships\"\"\"\n    relationships = Relationship.query.all()\n    return relationships\ndef get_relationship(uid_1, uid_2):\n    \"\"\"get_relationship\"\"\"\n    relationship = Relationship.query.filter_by(uid_1=uid_1, uid_2=uid_2).first()\n    if not relationship:\n        relationship = Relationship.query.filter_by(uid_1=uid_2, uid_2=uid_1).first()\n    return relationship",
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "get_relationship",
+        "kind": 2,
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "peekOfCode": "def get_relationship(uid_1, uid_2):\n    \"\"\"get_relationship\"\"\"\n    relationship = Relationship.query.filter_by(uid_1=uid_1, uid_2=uid_2).first()\n    if not relationship:\n        relationship = Relationship.query.filter_by(uid_1=uid_2, uid_2=uid_1).first()\n    return relationship\ndef get_user_relationships(uid):\n    \"\"\"get_user_relationships\"\"\"\n    rel_1 = Relationship.query.filter_by(uid_1=uid)\n    rel_2 = Relationship.query.filter_by(uid_2=uid)",
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_relationships",
+        "kind": 2,
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "peekOfCode": "def get_user_relationships(uid):\n    \"\"\"get_user_relationships\"\"\"\n    rel_1 = Relationship.query.filter_by(uid_1=uid)\n    rel_2 = Relationship.query.filter_by(uid_2=uid)\n    relationships = []\n    for rel in rel_1:\n        relationships.append(rel.uid_2)\n    for rel in rel_2:\n        relationships.append(rel.uid_1)\n    return relationships",
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "relationship_exists",
+        "kind": 2,
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "peekOfCode": "def relationship_exists(uid_1, uid_2):\n    \"\"\"relationship_exists\"\"\"\n    return bool(get_relationship(uid_1, uid_2))\ndef create_relationship(uid_1, uid_2):\n    \"\"\"create_relationship\"\"\"\n    if relationship_exists(uid_1, uid_2):\n        return None\n    relationship = Relationship(uid_1=uid_1, uid_2=uid_2)\n    db_add(relationship)\n    db_commit()",
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "create_relationship",
+        "kind": 2,
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "peekOfCode": "def create_relationship(uid_1, uid_2):\n    \"\"\"create_relationship\"\"\"\n    if relationship_exists(uid_1, uid_2):\n        return None\n    relationship = Relationship(uid_1=uid_1, uid_2=uid_2)\n    db_add(relationship)\n    db_commit()\n    return relationship\ndef delete_relationship(uid_1, uid_2):\n    \"\"\"delete_relationship\"\"\"",
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "delete_relationship",
+        "kind": 2,
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "peekOfCode": "def delete_relationship(uid_1, uid_2):\n    \"\"\"delete_relationship\"\"\"\n    relationship = get_relationship(uid_1, uid_2)\n    if relationship:\n        db_del(relationship)\n        db_commit()\ndef delete_user_relationships(uid):\n    \"\"\"delete_user_relationships\"\"\"\n    relationships = get_user_relationships(uid)\n    if relationships:",
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "delete_user_relationships",
+        "kind": 2,
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "peekOfCode": "def delete_user_relationships(uid):\n    \"\"\"delete_user_relationships\"\"\"\n    relationships = get_user_relationships(uid)\n    if relationships:\n        for relationship in relationships:\n            db_del(relationship)\n        db_commit()",
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_users",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def get_all_users():\n    \"\"\"get_all_users\"\"\"\n    users = User.query.all()\n    return users\ndef get_user(email):\n    \"\"\"get_user\"\"\"\n    user = User.query.filter_by(email=email).first()\n    return user\ndef get_user_list(user_list):\n    \"\"\"get_user_list\"\"\"",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "get_user",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def get_user(email):\n    \"\"\"get_user\"\"\"\n    user = User.query.filter_by(email=email).first()\n    return user\ndef get_user_list(user_list):\n    \"\"\"get_user_list\"\"\"\n    users = []\n    for uid in user_list:\n        user = User.query.filter_by(id=uid).first()\n        if user:",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_list",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def get_user_list(user_list):\n    \"\"\"get_user_list\"\"\"\n    users = []\n    for uid in user_list:\n        user = User.query.filter_by(id=uid).first()\n        if user:\n            users.append(user)\n    return users\ndef user_exists(email):\n    \"\"\"user_exists\"\"\"",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "user_exists",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def user_exists(email):\n    \"\"\"user_exists\"\"\"\n    return bool(get_user(email))\ndef create_user(email, username, password):\n    \"\"\"create_user\"\"\"\n    if user_exists(email):\n        return None\n    hashed = generate_password_hash(password, method='sha256')\n    user = User(email=email, username=username, password=hashed, authenticated=False)\n    db_add(user)",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def create_user(email, username, password):\n    \"\"\"create_user\"\"\"\n    if user_exists(email):\n        return None\n    hashed = generate_password_hash(password, method='sha256')\n    user = User(email=email, username=username, password=hashed, authenticated=False)\n    db_add(user)\n    db_commit()\n    return user\ndef delete_user(email):",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "delete_user",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def delete_user(email):\n    \"\"\"delete_user\"\"\"\n    user = get_user(email)\n    if user:\n        db_del(user)\n        db_commit()\ndef authenticate_user(email, password):\n    \"\"\"authenticate_user\"\"\"\n    user = get_user(email)\n    if user and check_password_hash(user.password, password):",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate_user",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def authenticate_user(email, password):\n    \"\"\"authenticate_user\"\"\"\n    user = get_user(email)\n    if user and check_password_hash(user.password, password):\n        user.authenticated = True\n        db_commit()\n        return user\n    return None\ndef disconnect_user(user):\n    \"\"\"disconnect_user\"\"\"",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "disconnect_user",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def disconnect_user(user):\n    \"\"\"disconnect_user\"\"\"\n    if user and user_exists(user.email):\n        user.authenticated = False\n        db_commit()\ndef get_admin(uid):\n    \"\"\"get_admin\"\"\"\n    admin = Admin.query.filter_by(uid=uid).first()\n    return admin\ndef is_admin(uid):",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "get_admin",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def get_admin(uid):\n    \"\"\"get_admin\"\"\"\n    admin = Admin.query.filter_by(uid=uid).first()\n    return admin\ndef is_admin(uid):\n    \"\"\"is_admin\"\"\"\n    return bool(get_admin(uid))\ndef set_admin(uid):\n    \"\"\"set_admin\"\"\"\n    if is_admin(uid):",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "is_admin",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def is_admin(uid):\n    \"\"\"is_admin\"\"\"\n    return bool(get_admin(uid))\ndef set_admin(uid):\n    \"\"\"set_admin\"\"\"\n    if is_admin(uid):\n        return None\n    admin = Admin(uid=uid)\n    db_add(admin)\n    db_commit()",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "set_admin",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def set_admin(uid):\n    \"\"\"set_admin\"\"\"\n    if is_admin(uid):\n        return None\n    admin = Admin(uid=uid)\n    db_add(admin)\n    db_commit()\n    return admin\ndef remove_admin(uid):\n    \"\"\"remove_admin\"\"\"",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "remove_admin",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def remove_admin(uid):\n    \"\"\"remove_admin\"\"\"\n    admin = get_admin(uid)\n    if admin:\n        db_del(admin)\n        db_commit()",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def app():\n    \"\"\"Instance of main flask app\"\"\"\n    return create_app()",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "test_app_is_created",
+        "kind": 2,
+        "importPath": "tests.test_app",
+        "description": "tests.test_app",
+        "peekOfCode": "def test_app_is_created(app):\n    assert app.name == 'project'\ndef test_config_is_loaded(config):\n    assert config[\"DEBUG\"] is False\ndef test_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
+        "detail": "tests.test_app",
+        "documentation": {}
+    },
+    {
+        "label": "test_config_is_loaded",
+        "kind": 2,
+        "importPath": "tests.test_app",
+        "description": "tests.test_app",
+        "peekOfCode": "def test_config_is_loaded(config):\n    assert config[\"DEBUG\"] is False\ndef test_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
+        "detail": "tests.test_app",
+        "documentation": {}
+    },
+    {
+        "label": "test_request_returns_404",
+        "kind": 2,
+        "importPath": "tests.test_app",
+        "description": "tests.test_app",
+        "peekOfCode": "def test_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
+        "detail": "tests.test_app",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_movie",
+        "kind": 2,
+        "importPath": "tests.test_movie",
+        "description": "tests.test_movie",
+        "peekOfCode": "def test_create_movie(client):\n    create_movie('name','url')\n    movie = Movie.query.filter_by(name='name').first()\n    assert movie.image_url == 'url' and movie.name == 'name'",
+        "detail": "tests.test_movie",
+        "documentation": {}
+    }
+]
