@@ -1,0 +1,4 @@
+[run]
+omit =
+    project/auth.py
+    project/main.py
