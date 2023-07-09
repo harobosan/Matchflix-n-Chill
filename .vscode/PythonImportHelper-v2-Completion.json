@@ -208,6 +208,22 @@
         "documentation": {}
     },
     {
+        "label": "db_commit",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Relationship",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
         "label": "Admin",
         "importPath": "project.db",
         "description": "project.db",
@@ -321,6 +337,22 @@
         "documentation": {}
     },
     {
+        "label": "create_relationship",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
         "label": "authenticate_user",
         "importPath": "project.user",
         "description": "project.user",
@@ -390,6 +422,22 @@
         "description": "project.user",
         "isExtraImport": true,
         "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "clean_relationships",
+        "importPath": "tests.factories.relationships.clean_relationships",
+        "description": "tests.factories.relationships.clean_relationships",
+        "isExtraImport": true,
+        "detail": "tests.factories.relationships.clean_relationships",
+        "documentation": {}
+    },
+    {
+        "label": "clean_users",
+        "importPath": "tests.factories.users.clean_users",
+        "description": "tests.factories.users.clean_users",
+        "isExtraImport": true,
+        "detail": "tests.factories.users.clean_users",
         "documentation": {}
     },
     {
@@ -931,6 +979,15 @@
         "documentation": {}
     },
     {
+        "label": "clean_relationships",
+        "kind": 2,
+        "importPath": "tests.factories.relationships.clean_relationships",
+        "description": "tests.factories.relationships.clean_relationships",
+        "peekOfCode": "def clean_relationships():\n    Relationship.query.delete()\n    db_commit()",
+        "detail": "tests.factories.relationships.clean_relationships",
+        "documentation": {}
+    },
+    {
         "label": "clean_users",
         "kind": 2,
         "importPath": "tests.factories.users.clean_users",
@@ -1045,6 +1102,24 @@
         "description": "tests.test_movie",
         "peekOfCode": "def test_seed_random_movies(app):\n    seed_movies()\n    movies = get_all_movies()\n    assert len(movies) == 20",
         "detail": "tests.test_movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_relationship",
+        "kind": 2,
+        "importPath": "tests.test_relationships",
+        "description": "tests.test_relationships",
+        "peekOfCode": "def test_create_relationship(app):\n    clean_relationships()\n    user1 = create_user('teste1@gmail.com', 'teste1','senha1')\n    user2 = create_user('teste2@gmail.com', 'teste2','senha2')\n    relationship = create_relationship(user1.id, user2.id)\n    assert relationship.uid_1 == user1.id and relationship.uid_2 == user2.id\ndef test_create_repeated_relationship(app):\n    clean_users()\n    user1 = create_user('teste1@gmail.com', 'teste1','senha1')\n    user2 = create_user('teste2@gmail.com', 'teste2','senha2')",
+        "detail": "tests.test_relationships",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_repeated_relationship",
+        "kind": 2,
+        "importPath": "tests.test_relationships",
+        "description": "tests.test_relationships",
+        "peekOfCode": "def test_create_repeated_relationship(app):\n    clean_users()\n    user1 = create_user('teste1@gmail.com', 'teste1','senha1')\n    user2 = create_user('teste2@gmail.com', 'teste2','senha2')\n    relationship1 = create_relationship(user1.id, user2.id)\n    relationship2 = create_relationship(user1.id, user2.id)\n    assert relationship2 == None",
+        "detail": "tests.test_relationships",
         "documentation": {}
     },
     {
