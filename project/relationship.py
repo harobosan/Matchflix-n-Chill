@@ -64,6 +64,6 @@ def delete_user_relationships(uid):
     relationships = get_user_relationships(uid)
 
     if relationships:
-        for relationship in relationships:
-            db_del(relationship)
+        for uid_2 in relationships:
+            db_del(get_relationship(uid, uid_2))
         db_commit()

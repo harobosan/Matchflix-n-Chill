@@ -39,7 +39,7 @@ def create_movie(name, image_url):
     if movie_exists(name):
         return None
 
-    movie = Movie(name=name, image_url=image_url)
+    movie = Movie(name=name, image_url=image_url, weight=0, score=0)
     db_add(movie)
     db_commit()
     return movie
@@ -76,3 +76,31 @@ def seed_movies():
         db_add(movie)
 
     db_commit()
+
+def get_movie_weight(mid):
+    """get_movie_weight"""
+
+    movie = Movie.query.filter_by(id=mid).first()
+
+    if movie:
+        return movie.weight
+
+    return 0
+
+def update_movie_weight(mid, weight):
+    """update_movie_weight"""
+
+    movie = Movie.query.filter_by(id=mid).first()
+
+    if movie:
+        movie.weight = weight
+        db_commit()
+
+def update_movie_score(mid, score):
+    """update_movie_score"""
+
+    movie = Movie.query.filter_by(id=mid).first()
+
+    if movie:
+        movie.score += score
+        db_commit()

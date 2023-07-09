@@ -10,8 +10,13 @@
 
         {% for movie in movies %}
             <div class="moviecard">
+                
                 <img class="moviecard-image" src="{{ url_for('static', filename=movie.image_url) }}" alt="{{ movie.name }}">
                 <div class="moviecard-title">{{ movie.name }}</div>
+                {% if privileged %}
+                    <p class="moviecard-weight">{{movie.weight}}</p>
+                {% endif %}
+                <p class="moviecard-score">{{movie.score}}</p>
                 {% if current_user.is_authenticated %}
                     {% if movie.id not in preferences %}
                         <button class="like-bttn" type="submit" name="like" value="{{ movie.name }}"><i class="fa fa-heart"></i></button>

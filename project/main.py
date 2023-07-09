@@ -3,10 +3,10 @@
 from flask import Blueprint
 from flask import render_template, send_from_directory, url_for, redirect, request, flash
 from flask_login import current_user
-from .user import get_all_users, create_user, is_admin, set_admin
+from .user import get_all_users, is_admin, calc_matches
 from .movie import get_all_movies, get_movie, create_movie, delete_movie
-from .preference import get_user_preferences, create_preference, delete_preference
-
+from .preference import get_user_preferences, create_preference, delete_preference, update_movie
+from .relationship import get_user_relationships, create_relationship, delete_relationship
 
 main = Blueprint('main', __name__)
 
@@ -21,15 +21,7 @@ def favicon():
 def index():
     """index"""
 
-    create_user('a@a','a','a')
-    set_admin(1)
-    create_user('b@b','b','b')
-    create_user('c@c','c','c')
-    create_user('d@d','d','d')
-    create_movie('movie1','imageExample.jpeg')
-    create_movie('movie2','logo.png')
-    create_movie('movie3','logomatchflix_cinza.png')
-    create_movie('movie4','background.png')
+    print(calc_matches(1))
 
     return render_template('index.html')
 
@@ -67,6 +59,9 @@ def movies():
 
             elif request.form.get("remove"):
                 delete_movie(request.form.get("remove"))
+
+                for movie in get_all_movies():
+                    update_movie(movie.id, 0)
 
             elif request.form.get('add'):
                 if privileged:

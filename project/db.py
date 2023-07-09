@@ -59,6 +59,8 @@ class Movie(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     image_url = db.Column(db.String(200))
+    weight = db.Column(db.Integer)
+    score = db.Column(db.Integer)
 
 class Preference(db.Model):
     """Preference"""

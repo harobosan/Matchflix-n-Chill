@@ -1,6 +1,7 @@
 """preference"""
 
 from .db import Preference, db_commit, db_add, db_del
+from .movie import update_movie_weight, update_movie_score
 
 
 def get_all_preferences():
@@ -51,6 +52,7 @@ def create_preference(uid, mid):
     preference = Preference(uid=uid, mid=mid)
     db_add(preference)
     db_commit()
+    update_movie(mid, 1)
     return preference
 
 def delete_preference(uid, mid):
@@ -61,6 +63,7 @@ def delete_preference(uid, mid):
     if preference:
         db_del(preference)
         db_commit()
+        update_movie(mid, -1)
 
 def delete_user_preferences(uid):
     """delete_user_preferences"""
@@ -68,9 +71,8 @@ def delete_user_preferences(uid):
     preferences = get_user_preferences(uid)
 
     if preferences:
-        for preference in preferences:
-            db_del(preference)
-        db_commit()
+        for mid in preferences:
+            delete_preference(uid, mid)
 
 def delete_movie_preferences(mid):
     """delete_movie_preferences"""
@@ -78,6 +80,27 @@ def delete_movie_preferences(mid):
     preferences = get_movie_preferences(mid)
 
     if preferences:
-        for preference in preferences:
-            db_del(preference)
-        db_commit()
+        for uid in preferences:
+            delete_preference(uid, mid)
+
+def calc_movie_weight(mid):
+    """calc_movie_weight"""
+
+    preferences = len(get_all_preferences())
+    movie_preferences = len(get_movie_preferences(mid))
+
+    if preferences and movie_preferences:
+        return round(1/(movie_preferences/preferences),1)
+
+    return 0
+
+def update_movie(mid, score):
+    """update_movie"""
+
+    preferences = get_all_preferences()
+
+    for preference in preferences:
+        update_movie_weight(preference.mid, calc_movie_weight(preference.mid))
+
+    update_movie_weight(mid, calc_movie_weight(mid))
+    update_movie_score(mid, score)
