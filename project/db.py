@@ -28,6 +28,18 @@ class User(db.Model, UserMixin):
         cascade='all,delete'
     )
 
+    sender = db.relationship(
+        'UserMessages',
+        foreign_keys='UserMessages.sender',
+        cascade='all_delete'
+    )
+
+    receiver = db.relationship(
+        'UserMessages',
+        foreign_keys='UserMessages.receiver',
+        cascade='all_delete'
+    )
+
 class Admin(db.Model):
     """Admin"""
 
@@ -75,6 +87,16 @@ class Relationship(db.Model):
     uid_1 = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     uid_2 = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     status = db.Column(db.Boolean)
+
+class Messages(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.Date)
+    text = db.Column(db.String(250))
+
+class UserMessages(db.Model):
+    sender = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    receiver = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    mid = db.Column(db.Integer, db.ForeignKey('messages.id'), primary_key=True)
 
 def db_commit():
     """db_commit"""
