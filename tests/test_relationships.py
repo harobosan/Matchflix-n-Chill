@@ -1,4 +1,5 @@
-from project.relationship import create_relationship, get_relationship, get_user_relationships
+from project.relationship import (create_relationship, delete_relationship,
+    delete_user_relationships, get_all_relationships, get_relationship, get_user_relationships)
 from project.user import create_user
 from tests.factories.relationships.clean_relationships import clean_relationships
 from tests.factories.users.clean_users import clean_users
@@ -28,3 +29,22 @@ def test_get_user_relationships(app):
     relationships = get_user_relationships(1)
     print(relationships)
     assert len(relationships) == 2 and relationships[0] == 2
+
+def test_get_all_relationships(app):
+    relationships = get_all_relationships()
+    assert len(relationships) == 3
+
+def test_delete_relationship(app):
+    length1 = len(get_user_relationships(1))
+    delete_relationship(1,3)
+    length2 = len(get_user_relationships(1))
+    assert length1 == 2 and length2 == 1
+
+'''
+def test_delete_user_relationships(app):
+    create_relationship(1, 3)
+    length1 = len(get_user_relationships(1))
+    delete_user_relationships(1)
+    length2 = len(get_user_relationships(1))
+    assert length1 == 2 and length2 == 0
+'''
