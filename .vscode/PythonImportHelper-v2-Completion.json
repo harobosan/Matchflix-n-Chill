@@ -192,6 +192,150 @@
         "documentation": {}
     },
     {
+        "label": "db_commit",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Movie",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "db_commit",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Preference",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "db_commit",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Relationship",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Admin",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "db_commit",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Movie",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Admin",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "clean_movies",
+        "importPath": "tests.factories.movies.clean_movies",
+        "description": "tests.factories.movies.clean_movies",
+        "isExtraImport": true,
+        "detail": "tests.factories.movies.clean_movies",
+        "documentation": {}
+    },
+    {
+        "label": "clean_movies",
+        "importPath": "tests.factories.movies.clean_movies",
+        "description": "tests.factories.movies.clean_movies",
+        "isExtraImport": true,
+        "detail": "tests.factories.movies.clean_movies",
+        "documentation": {}
+    },
+    {
+        "label": "clean_users",
+        "importPath": "tests.factories.users.clean_users",
+        "description": "tests.factories.users.clean_users",
+        "isExtraImport": true,
+        "detail": "tests.factories.users.clean_users",
+        "documentation": {}
+    },
+    {
+        "label": "clean_users",
+        "importPath": "tests.factories.users.clean_users",
+        "description": "tests.factories.users.clean_users",
+        "isExtraImport": true,
+        "detail": "tests.factories.users.clean_users",
+        "documentation": {}
+    },
+    {
+        "label": "clean_admins",
+        "importPath": "tests.factories.users.clean_users",
+        "description": "tests.factories.users.clean_users",
+        "isExtraImport": true,
+        "detail": "tests.factories.users.clean_users",
+        "documentation": {}
+    },
+    {
+        "label": "clean_users",
+        "importPath": "tests.factories.users.clean_users",
+        "description": "tests.factories.users.clean_users",
+        "isExtraImport": true,
+        "detail": "tests.factories.users.clean_users",
+        "documentation": {}
+    },
+    {
         "label": "pytest",
         "kind": 6,
         "isExtraImport": true,
@@ -209,11 +353,43 @@
         "documentation": {}
     },
     {
-        "label": "Movie",
-        "importPath": "project.db",
-        "description": "project.db",
+        "label": "create_movie",
+        "importPath": "project.movie",
+        "description": "project.movie",
         "isExtraImport": true,
-        "detail": "project.db",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "delete_movie",
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "isExtraImport": true,
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_movies",
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "isExtraImport": true,
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "get_movie_list",
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "isExtraImport": true,
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "seed_movies",
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "isExtraImport": true,
+        "detail": "project.movie",
         "documentation": {}
     },
     {
@@ -222,6 +398,190 @@
         "description": "project.movie",
         "isExtraImport": true,
         "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "create_relationship",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "delete_relationship",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "delete_user_relationships",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_relationships",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "get_relationship",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_relationships",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate_user",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "disconnect_user",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "get_admin",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_users",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "get_user",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_list",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "remove_admin",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "set_admin",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "clean_relationships",
+        "importPath": "tests.factories.relationships.clean_relationships",
+        "description": "tests.factories.relationships.clean_relationships",
+        "isExtraImport": true,
+        "detail": "tests.factories.relationships.clean_relationships",
+        "documentation": {}
+    },
+    {
+        "label": "create_preference",
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "isExtraImport": true,
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_preferences",
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "isExtraImport": true,
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "get_movie_preferences",
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "isExtraImport": true,
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_preferences",
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "isExtraImport": true,
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "clean_users_movies_preferences",
+        "importPath": "tests.factories.preferences.clean_preferences",
+        "description": "tests.factories.preferences.clean_preferences",
+        "isExtraImport": true,
+        "detail": "tests.factories.preferences.clean_preferences",
         "documentation": {}
     },
     {
@@ -283,7 +643,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class Movie(db.Model):\n    \"\"\"Movie\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(100))\n    image_url = db.Column(db.String(200))\nclass Preference(db.Model):\n    \"\"\"Preference\"\"\"\n    uid = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    mid = db.Column(db.Integer, db.ForeignKey('movie.id'), primary_key=True)\n    user = db.relationship(",
+        "peekOfCode": "class Movie(db.Model):\n    \"\"\"Movie\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(100))\n    image_url = db.Column(db.String(200))\nclass Preference(db.Model):\n    \"\"\"Preference\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    uid = db.Column(db.Integer, db.ForeignKey('user.id'))\n    mid = db.Column(db.Integer, db.ForeignKey('movie.id'))",
         "detail": "project.db",
         "documentation": {}
     },
@@ -292,7 +652,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class Preference(db.Model):\n    \"\"\"Preference\"\"\"\n    uid = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    mid = db.Column(db.Integer, db.ForeignKey('movie.id'), primary_key=True)\n    user = db.relationship(\n        'User',\n        backref=db.backref(\n            'Preference',\n            cascade='all,delete'\n        )",
+        "peekOfCode": "class Preference(db.Model):\n    \"\"\"Preference\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    uid = db.Column(db.Integer, db.ForeignKey('user.id'))\n    mid = db.Column(db.Integer, db.ForeignKey('movie.id'))\n    user = db.relationship(\n        'User',\n        backref=db.backref(\n            'Preference',\n            cascade='all,delete'",
         "detail": "project.db",
         "documentation": {}
     },
@@ -301,7 +661,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class Relationship(db.Model):\n    \"\"\"Relationship\"\"\"\n    uid_1 = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    uid_2 = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    status = db.Column(db.Boolean)\nclass Messages(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    date = db.Column(db.Date)\n    text = db.Column(db.String(250))\nclass UserMessages(db.Model):",
+        "peekOfCode": "class Relationship(db.Model):\n    \"\"\"Relationship\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    uid_1 = db.Column(db.Integer, db.ForeignKey('user.id'))\n    uid_2 = db.Column(db.Integer, db.ForeignKey('user.id'))\n    status = db.Column(db.Boolean)\nclass Messages(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    date = db.Column(db.Date)\n    text = db.Column(db.String(250))",
         "detail": "project.db",
         "documentation": {}
     },
@@ -310,7 +670,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class Messages(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    date = db.Column(db.Date)\n    text = db.Column(db.String(250))\nclass UserMessages(db.Model):\n    sender = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    receiver = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    mid = db.Column(db.Integer, db.ForeignKey('messages.id'), primary_key=True)\ndef db_commit():\n    \"\"\"db_commit\"\"\"",
+        "peekOfCode": "class Messages(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    date = db.Column(db.Date)\n    text = db.Column(db.String(250))\nclass UserMessages(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    sender = db.Column(db.Integer, db.ForeignKey('user.id'))\n    receiver = db.Column(db.Integer, db.ForeignKey('user.id'))\n    mid = db.Column(db.Integer, db.ForeignKey('messages.id'))\ndef db_commit():",
         "detail": "project.db",
         "documentation": {}
     },
@@ -319,7 +679,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class UserMessages(db.Model):\n    sender = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    receiver = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    mid = db.Column(db.Integer, db.ForeignKey('messages.id'), primary_key=True)\ndef db_commit():\n    \"\"\"db_commit\"\"\"\n    db.session.commit()\ndef db_add(item):\n    \"\"\"db_add\"\"\"\n    db.session.add(item)",
+        "peekOfCode": "class UserMessages(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    sender = db.Column(db.Integer, db.ForeignKey('user.id'))\n    receiver = db.Column(db.Integer, db.ForeignKey('user.id'))\n    mid = db.Column(db.Integer, db.ForeignKey('messages.id'))\ndef db_commit():\n    \"\"\"db_commit\"\"\"\n    db.session.commit()\ndef db_add(item):\n    \"\"\"db_add\"\"\"",
         "detail": "project.db",
         "documentation": {}
     },
@@ -418,7 +778,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def get_all_movies():\n    \"\"\"get_all_movies\"\"\"\n    movies = Movie.query.all()\n    return movies\ndef get_movie(name):\n    \"\"\"get_movie\"\"\"\n    movie = Movie.query.filter_by(name=name).first()\n    return movie\ndef get_movie_list(movie_list):\n    \"\"\"get_movie_list\"\"\"",
+        "peekOfCode": "def get_all_movies():\n    \"\"\"get_all_movies\"\"\"\n    movies = Movie.query.all()\n    return movies\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: get_movie(name)\nAssertivas de Entrada: O parâmetro 'name' é uma string\nAssertivas de Saída: Retorna o objeto 'movie' homônimo ao parâmetro, caso este exista, e None, caso contrário.\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\ndef get_movie(name):",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -427,7 +787,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def get_movie(name):\n    \"\"\"get_movie\"\"\"\n    movie = Movie.query.filter_by(name=name).first()\n    return movie\ndef get_movie_list(movie_list):\n    \"\"\"get_movie_list\"\"\"\n    movies = []\n    for mid in movie_list:\n        movie = Movie.query.filter_by(id=mid).first()\n        if movie:",
+        "peekOfCode": "def get_movie(name):\n    \"\"\"get_movie\"\"\"\n    movie = Movie.query.filter_by(name=name).first()\n    return movie\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: get_movie_list(movie_list)\nAssertivas de Entrada: O parâmetro 'movie_list' é um array de inteiros \ncontendo IDs dos filmes no banco de dados.\nAssertivas de Saída: Retorna um array de objetos 'Movie' correspondentes aos IDs fornecidos.\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -436,7 +796,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def get_movie_list(movie_list):\n    \"\"\"get_movie_list\"\"\"\n    movies = []\n    for mid in movie_list:\n        movie = Movie.query.filter_by(id=mid).first()\n        if movie:\n            movies.append(movie)\n    return movies\ndef movie_exists(name):\n    \"\"\"movie_exists\"\"\"",
+        "peekOfCode": "def get_movie_list(movie_list):\n    \"\"\"get_movie_list\"\"\"\n    movies = []\n    for mid in movie_list:\n        movie = Movie.query.filter_by(id=mid).first()\n        if movie:\n            movies.append(movie)\n    return movies\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: movie_exists(name)",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -445,7 +805,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def movie_exists(name):\n    \"\"\"movie_exists\"\"\"\n    return bool(get_movie(name))\ndef create_movie(name, image_url):\n    \"\"\"create_movie\"\"\"\n    if movie_exists(name):\n        return None\n    movie = Movie(name=name, image_url=image_url)\n    db_add(movie)\n    db_commit()",
+        "peekOfCode": "def movie_exists(name):\n    \"\"\"movie_exists\"\"\"\n    return bool(get_movie(name))\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: create_movie(name, image_url)\nAssertivas de Entrada: Os parâmetro 'name' e 'image_url' devem ser strings\nAssertivas de Saída: Se existe um filme de nome == name\n                        Retorna None\n                     Senão\n                        Será adicionada ao banco de dados um objeto 'Movie', ",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -454,7 +814,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def create_movie(name, image_url):\n    \"\"\"create_movie\"\"\"\n    if movie_exists(name):\n        return None\n    movie = Movie(name=name, image_url=image_url)\n    db_add(movie)\n    db_commit()\n    return movie\ndef delete_movie(name):\n    \"\"\"delete_movie\"\"\"",
+        "peekOfCode": "def create_movie(name, image_url):\n    \"\"\"create_movie\"\"\"\n    if movie_exists(name):\n        return None\n    movie = Movie(name=name, image_url=image_url)\n    db_add(movie)\n    db_commit()\n    return movie\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: delete_movie(name)",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -738,6 +1098,60 @@
         "documentation": {}
     },
     {
+        "label": "clean_movies",
+        "kind": 2,
+        "importPath": "tests.factories.movies.clean_movies",
+        "description": "tests.factories.movies.clean_movies",
+        "peekOfCode": "def clean_movies():\n    Movie.query.delete()\n    db_commit()",
+        "detail": "tests.factories.movies.clean_movies",
+        "documentation": {}
+    },
+    {
+        "label": "clean_preferences",
+        "kind": 2,
+        "importPath": "tests.factories.preferences.clean_preferences",
+        "description": "tests.factories.preferences.clean_preferences",
+        "peekOfCode": "def clean_preferences():\n    Preference.query.delete()\n    db_commit()\ndef clean_users_movies_preferences():\n    clean_preferences()\n    clean_movies()\n    clean_users()",
+        "detail": "tests.factories.preferences.clean_preferences",
+        "documentation": {}
+    },
+    {
+        "label": "clean_users_movies_preferences",
+        "kind": 2,
+        "importPath": "tests.factories.preferences.clean_preferences",
+        "description": "tests.factories.preferences.clean_preferences",
+        "peekOfCode": "def clean_users_movies_preferences():\n    clean_preferences()\n    clean_movies()\n    clean_users()",
+        "detail": "tests.factories.preferences.clean_preferences",
+        "documentation": {}
+    },
+    {
+        "label": "clean_relationships",
+        "kind": 2,
+        "importPath": "tests.factories.relationships.clean_relationships",
+        "description": "tests.factories.relationships.clean_relationships",
+        "peekOfCode": "def clean_relationships():\n    Relationship.query.delete()\n    db_commit()",
+        "detail": "tests.factories.relationships.clean_relationships",
+        "documentation": {}
+    },
+    {
+        "label": "clean_users",
+        "kind": 2,
+        "importPath": "tests.factories.users.clean_users",
+        "description": "tests.factories.users.clean_users",
+        "peekOfCode": "def clean_users():\n    User.query.delete()\n    db_commit()\ndef clean_admins():\n    Admin.query.delete()\n    db_commit()",
+        "detail": "tests.factories.users.clean_users",
+        "documentation": {}
+    },
+    {
+        "label": "clean_admins",
+        "kind": 2,
+        "importPath": "tests.factories.users.clean_users",
+        "description": "tests.factories.users.clean_users",
+        "peekOfCode": "def clean_admins():\n    Admin.query.delete()\n    db_commit()",
+        "detail": "tests.factories.users.clean_users",
+        "documentation": {}
+    },
+    {
         "label": "app",
         "kind": 2,
         "importPath": "tests.conftest",
@@ -749,37 +1163,280 @@
     {
         "label": "test_app_is_created",
         "kind": 2,
-        "importPath": "tests.test_app",
-        "description": "tests.test_app",
-        "peekOfCode": "def test_app_is_created(app):\n    assert app.name == 'project'\ndef test_config_is_loaded(config):\n    assert config[\"DEBUG\"] is False\ndef test_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
-        "detail": "tests.test_app",
+        "importPath": "tests.test_1app",
+        "description": "tests.test_1app",
+        "peekOfCode": "def test_app_is_created(app):\n    assert app.name == 'project'\ndef test_config_is_loaded(config):\n    assert config[\"DEBUG\"] is False\ndef test_fake_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
+        "detail": "tests.test_1app",
         "documentation": {}
     },
     {
         "label": "test_config_is_loaded",
         "kind": 2,
-        "importPath": "tests.test_app",
-        "description": "tests.test_app",
-        "peekOfCode": "def test_config_is_loaded(config):\n    assert config[\"DEBUG\"] is False\ndef test_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
-        "detail": "tests.test_app",
+        "importPath": "tests.test_1app",
+        "description": "tests.test_1app",
+        "peekOfCode": "def test_config_is_loaded(config):\n    assert config[\"DEBUG\"] is False\ndef test_fake_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
+        "detail": "tests.test_1app",
         "documentation": {}
     },
     {
-        "label": "test_request_returns_404",
+        "label": "test_fake_request_returns_404",
         "kind": 2,
-        "importPath": "tests.test_app",
-        "description": "tests.test_app",
-        "peekOfCode": "def test_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
-        "detail": "tests.test_app",
+        "importPath": "tests.test_1app",
+        "description": "tests.test_1app",
+        "peekOfCode": "def test_fake_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
+        "detail": "tests.test_1app",
         "documentation": {}
     },
     {
         "label": "test_create_movie",
         "kind": 2,
-        "importPath": "tests.test_movie",
-        "description": "tests.test_movie",
-        "peekOfCode": "def test_create_movie(client):\n    create_movie('name','url')\n    movie = Movie.query.filter_by(name='name').first()\n    assert movie.image_url == 'url' and movie.name == 'name'",
-        "detail": "tests.test_movie",
+        "importPath": "tests.test_2movie",
+        "description": "tests.test_2movie",
+        "peekOfCode": "def test_create_movie(app):\n    clean_movies()\n    create_movie('name','url')\n    movie = Movie.query.filter_by(name='name').first()\n    assert movie.id == 1 and movie.image_url == 'url' and movie.name == 'name'\ndef test_create_existing_movie(app):\n    result = create_movie('name','url')\n    assert result == None\ndef test_get_all_movies(app):\n    clean_movies()",
+        "detail": "tests.test_2movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_existing_movie",
+        "kind": 2,
+        "importPath": "tests.test_2movie",
+        "description": "tests.test_2movie",
+        "peekOfCode": "def test_create_existing_movie(app):\n    result = create_movie('name','url')\n    assert result == None\ndef test_get_all_movies(app):\n    clean_movies()\n    create_movie('name1','url1')\n    create_movie('name2','url2')\n    create_movie('name3','url3')\n    movies = get_all_movies()\n    assert movies[0].id == 1 and movies[1].id == 2 and movies[2].id == 3",
+        "detail": "tests.test_2movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_all_movies",
+        "kind": 2,
+        "importPath": "tests.test_2movie",
+        "description": "tests.test_2movie",
+        "peekOfCode": "def test_get_all_movies(app):\n    clean_movies()\n    create_movie('name1','url1')\n    create_movie('name2','url2')\n    create_movie('name3','url3')\n    movies = get_all_movies()\n    assert movies[0].id == 1 and movies[1].id == 2 and movies[2].id == 3\ndef test_get_movie_list(app):\n    movies = get_movie_list([2,3])\n    assert movies[0].id == 2 and movies[1].id == 3",
+        "detail": "tests.test_2movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_movie_list",
+        "kind": 2,
+        "importPath": "tests.test_2movie",
+        "description": "tests.test_2movie",
+        "peekOfCode": "def test_get_movie_list(app):\n    movies = get_movie_list([2,3])\n    assert movies[0].id == 2 and movies[1].id == 3\ndef test_delete_movie(app):\n    delete_movie('name2')\n    movies = get_all_movies()\n    moviesNames = []\n    for i in movies:\n        moviesNames.append(i.name)\n    assert 'name2' not in moviesNames",
+        "detail": "tests.test_2movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_delete_movie",
+        "kind": 2,
+        "importPath": "tests.test_2movie",
+        "description": "tests.test_2movie",
+        "peekOfCode": "def test_delete_movie(app):\n    delete_movie('name2')\n    movies = get_all_movies()\n    moviesNames = []\n    for i in movies:\n        moviesNames.append(i.name)\n    assert 'name2' not in moviesNames\ndef test_seed_movies(app):\n    clean_movies()\n    movies = get_all_movies()",
+        "detail": "tests.test_2movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_seed_movies",
+        "kind": 2,
+        "importPath": "tests.test_2movie",
+        "description": "tests.test_2movie",
+        "peekOfCode": "def test_seed_movies(app):\n    clean_movies()\n    movies = get_all_movies()\n    length1 = len(movies)\n    seed_movies()\n    movies2 = get_all_movies()\n    length2 = len(movies2)\n    assert length2 == length1+10\ndef test_seed_random_movies(app):\n    seed_movies()",
+        "detail": "tests.test_2movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_seed_random_movies",
+        "kind": 2,
+        "importPath": "tests.test_2movie",
+        "description": "tests.test_2movie",
+        "peekOfCode": "def test_seed_random_movies(app):\n    seed_movies()\n    movies = get_all_movies()\n    assert len(movies) == 20",
+        "detail": "tests.test_2movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_relationship",
+        "kind": 2,
+        "importPath": "tests.test_3relationships",
+        "description": "tests.test_3relationships",
+        "peekOfCode": "def test_create_relationship(app):\n    clean_relationships()\n    user1 = create_user('teste1@gmail.com', 'teste1','senha1')\n    user2 = create_user('teste2@gmail.com', 'teste2','senha2')\n    relationship = create_relationship(user1.id, user2.id)\n    assert relationship.uid_1 == user1.id and relationship.uid_2 == user2.id\ndef test_create_repeated_relationship(app):\n    clean_users()\n    user1 = create_user('teste1@gmail.com', 'teste1','senha1')\n    user2 = create_user('teste2@gmail.com', 'teste2','senha2')",
+        "detail": "tests.test_3relationships",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_repeated_relationship",
+        "kind": 2,
+        "importPath": "tests.test_3relationships",
+        "description": "tests.test_3relationships",
+        "peekOfCode": "def test_create_repeated_relationship(app):\n    clean_users()\n    user1 = create_user('teste1@gmail.com', 'teste1','senha1')\n    user2 = create_user('teste2@gmail.com', 'teste2','senha2')\n    relationship1 = create_relationship(user1.id, user2.id)\n    relationship2 = create_relationship(user1.id, user2.id)\n    assert relationship2 == None\ndef test_get_relationship(app):\n    relationship = get_relationship(1, 2)\n    assert relationship.uid_1 == 1 and relationship.uid_2 == 2",
+        "detail": "tests.test_3relationships",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_relationship",
+        "kind": 2,
+        "importPath": "tests.test_3relationships",
+        "description": "tests.test_3relationships",
+        "peekOfCode": "def test_get_relationship(app):\n    relationship = get_relationship(1, 2)\n    assert relationship.uid_1 == 1 and relationship.uid_2 == 2\ndef test_get_user_relationships(app):\n    user3 = create_user('teste3@gmail.com', 'teste3','senha3')\n    relationship1 = create_relationship(1, user3.id)\n    relationships = get_user_relationships(1)\n    print(relationships)\n    assert len(relationships) == 2 and relationships[0] == 2\ndef test_get_all_relationships(app):",
+        "detail": "tests.test_3relationships",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_user_relationships",
+        "kind": 2,
+        "importPath": "tests.test_3relationships",
+        "description": "tests.test_3relationships",
+        "peekOfCode": "def test_get_user_relationships(app):\n    user3 = create_user('teste3@gmail.com', 'teste3','senha3')\n    relationship1 = create_relationship(1, user3.id)\n    relationships = get_user_relationships(1)\n    print(relationships)\n    assert len(relationships) == 2 and relationships[0] == 2\ndef test_get_all_relationships(app):\n    clean_relationships()\n    create_relationship(1, 2)\n    create_relationship(1, 3)",
+        "detail": "tests.test_3relationships",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_all_relationships",
+        "kind": 2,
+        "importPath": "tests.test_3relationships",
+        "description": "tests.test_3relationships",
+        "peekOfCode": "def test_get_all_relationships(app):\n    clean_relationships()\n    create_relationship(1, 2)\n    create_relationship(1, 3)\n    relationships = get_all_relationships()\n    assert len(relationships) == 2\ndef test_delete_relationship(app):\n    length1 = len(get_user_relationships(1))\n    delete_relationship(1,3)\n    length2 = len(get_user_relationships(1))",
+        "detail": "tests.test_3relationships",
+        "documentation": {}
+    },
+    {
+        "label": "test_delete_relationship",
+        "kind": 2,
+        "importPath": "tests.test_3relationships",
+        "description": "tests.test_3relationships",
+        "peekOfCode": "def test_delete_relationship(app):\n    length1 = len(get_user_relationships(1))\n    delete_relationship(1,3)\n    length2 = len(get_user_relationships(1))\n    assert length1 == 2 and length2 == 1\n'''\ndef test_delete_user_relationships(app):\n    create_relationship(1, 3)\n    length1 = len(get_user_relationships(1))\n    delete_user_relationships(1)",
+        "detail": "tests.test_3relationships",
+        "documentation": {}
+    },
+    {
+        "label": "test_delete_user_relationships",
+        "kind": 2,
+        "importPath": "tests.test_3relationships",
+        "description": "tests.test_3relationships",
+        "peekOfCode": "def test_delete_user_relationships(app):\n    create_relationship(1, 3)\n    length1 = len(get_user_relationships(1))\n    delete_user_relationships(1)\n    length2 = len(get_user_relationships(1))\n    assert length1 == 2 and length2 == 0\n'''",
+        "detail": "tests.test_3relationships",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_user",
+        "kind": 2,
+        "importPath": "tests.test_4user",
+        "description": "tests.test_4user",
+        "peekOfCode": "def test_create_user(app):\n    clean_users()\n    create_user('teste@gmail.com', 'teste','senha')\n    user = User.query.filter_by(email='teste@gmail.com').first()\n    assert user.id == 1\ndef test_create_repeated_user(app):\n    user = create_user('teste@gmail.com', 'teste','senha')\n    assert user == None\ndef test_get_all_users(app):\n    clean_users()",
+        "detail": "tests.test_4user",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_repeated_user",
+        "kind": 2,
+        "importPath": "tests.test_4user",
+        "description": "tests.test_4user",
+        "peekOfCode": "def test_create_repeated_user(app):\n    user = create_user('teste@gmail.com', 'teste','senha')\n    assert user == None\ndef test_get_all_users(app):\n    clean_users()\n    create_user('teste1@gmail.com', 'teste1','senha1')\n    create_user('teste2@gmail.com', 'teste2','senha2')\n    create_user('teste3@gmail.com', 'teste3','senha3')\n    users = get_all_users()\n    assert len(users) == 3 and users[0].id == 1 and users[2].id == 3",
+        "detail": "tests.test_4user",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_all_users",
+        "kind": 2,
+        "importPath": "tests.test_4user",
+        "description": "tests.test_4user",
+        "peekOfCode": "def test_get_all_users(app):\n    clean_users()\n    create_user('teste1@gmail.com', 'teste1','senha1')\n    create_user('teste2@gmail.com', 'teste2','senha2')\n    create_user('teste3@gmail.com', 'teste3','senha3')\n    users = get_all_users()\n    assert len(users) == 3 and users[0].id == 1 and users[2].id == 3\ndef test_get_user(app):\n    user = get_user('teste1@gmail.com')\n    assert user.username == 'teste1' ",
+        "detail": "tests.test_4user",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_user",
+        "kind": 2,
+        "importPath": "tests.test_4user",
+        "description": "tests.test_4user",
+        "peekOfCode": "def test_get_user(app):\n    user = get_user('teste1@gmail.com')\n    assert user.username == 'teste1' \ndef test_get_user_list(app):\n    users = get_user_list([3,2])\n    assert users[0].username == 'teste3' and users[1].username == 'teste2'\ndef test_authenticate_user(app):\n    user = authenticate_user('teste1@gmail.com', 'senha1')\n    assert user.authenticated\ndef test_disconnect_user(app):",
+        "detail": "tests.test_4user",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_user_list",
+        "kind": 2,
+        "importPath": "tests.test_4user",
+        "description": "tests.test_4user",
+        "peekOfCode": "def test_get_user_list(app):\n    users = get_user_list([3,2])\n    assert users[0].username == 'teste3' and users[1].username == 'teste2'\ndef test_authenticate_user(app):\n    user = authenticate_user('teste1@gmail.com', 'senha1')\n    assert user.authenticated\ndef test_disconnect_user(app):\n    user = create_user('teste4@gmail.com', 'teste4','senha4')\n    authenticate_user(user.email, user.password)\n    userDisconnected = disconnect_user(user)",
+        "detail": "tests.test_4user",
+        "documentation": {}
+    },
+    {
+        "label": "test_authenticate_user",
+        "kind": 2,
+        "importPath": "tests.test_4user",
+        "description": "tests.test_4user",
+        "peekOfCode": "def test_authenticate_user(app):\n    user = authenticate_user('teste1@gmail.com', 'senha1')\n    assert user.authenticated\ndef test_disconnect_user(app):\n    user = create_user('teste4@gmail.com', 'teste4','senha4')\n    authenticate_user(user.email, user.password)\n    userDisconnected = disconnect_user(user)\n    assert user.authenticated == False\ndef test_set_admin(app):\n    clean_users()",
+        "detail": "tests.test_4user",
+        "documentation": {}
+    },
+    {
+        "label": "test_disconnect_user",
+        "kind": 2,
+        "importPath": "tests.test_4user",
+        "description": "tests.test_4user",
+        "peekOfCode": "def test_disconnect_user(app):\n    user = create_user('teste4@gmail.com', 'teste4','senha4')\n    authenticate_user(user.email, user.password)\n    userDisconnected = disconnect_user(user)\n    assert user.authenticated == False\ndef test_set_admin(app):\n    clean_users()\n    clean_admins()\n    user = create_user('adminteste@gmail.com', 'adminteste','adminteste')\n    adminAttempt1 = Admin.query.filter_by(uid=user.id).first()",
+        "detail": "tests.test_4user",
+        "documentation": {}
+    },
+    {
+        "label": "test_set_admin",
+        "kind": 2,
+        "importPath": "tests.test_4user",
+        "description": "tests.test_4user",
+        "peekOfCode": "def test_set_admin(app):\n    clean_users()\n    clean_admins()\n    user = create_user('adminteste@gmail.com', 'adminteste','adminteste')\n    adminAttempt1 = Admin.query.filter_by(uid=user.id).first()\n    set_admin(user.id)\n    adminAttempt2 = Admin.query.filter_by(uid=user.id).first()\n    assert adminAttempt1 == None and adminAttempt2.uid == user.id\ndef test_remove_admin(app):\n    clean_users()",
+        "detail": "tests.test_4user",
+        "documentation": {}
+    },
+    {
+        "label": "test_remove_admin",
+        "kind": 2,
+        "importPath": "tests.test_4user",
+        "description": "tests.test_4user",
+        "peekOfCode": "def test_remove_admin(app):\n    clean_users()\n    clean_admins()\n    user = create_user('adminteste2@gmail.com', 'adminteste2','adminteste2')\n    set_admin(user.id)\n    adminAttempt1 = Admin.query.filter_by(uid=user.id).first()\n    remove_admin(1)\n    adminAttempt2 = Admin.query.filter_by(uid=user.id).first()\n    assert adminAttempt1.uid == user.id and adminAttempt2 == None",
+        "detail": "tests.test_4user",
+        "documentation": {}
+    },
+    {
+        "label": "generate_preferences",
+        "kind": 2,
+        "importPath": "tests.test_5preferences",
+        "description": "tests.test_5preferences",
+        "peekOfCode": "def generate_preferences():\n    user = create_user('teste6@gmail.com', 'teste6', 'senha6')\n    movie = create_movie('nametest1', 'url')\n    create_movie('nametest2', 'url')\n    create_preference(1, 1)\n    create_preference(1, 2)\n    return [user.id, movie.id]\ndef test_create_preference(app):\n    clean_users_movies_preferences()\n    movie = create_movie('nametest','url')",
+        "detail": "tests.test_5preferences",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_preference",
+        "kind": 2,
+        "importPath": "tests.test_5preferences",
+        "description": "tests.test_5preferences",
+        "peekOfCode": "def test_create_preference(app):\n    clean_users_movies_preferences()\n    movie = create_movie('nametest','url')\n    user = create_user('teste5@gmail.com', 'teste5','senha5')\n    preference = create_preference(user.id,movie.id)\n    assert preference.mid == movie.id and preference.uid == user.id\ndef test_get_all_preferences(app):\n    clean_users_movies_preferences()\n    generate_preferences()\n    preferences = get_all_preferences()",
+        "detail": "tests.test_5preferences",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_all_preferences",
+        "kind": 2,
+        "importPath": "tests.test_5preferences",
+        "description": "tests.test_5preferences",
+        "peekOfCode": "def test_get_all_preferences(app):\n    clean_users_movies_preferences()\n    generate_preferences()\n    preferences = get_all_preferences()\n    assert len(preferences) == 2\ndef test_get_user_preferences(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    preferences = get_user_preferences(returnal[0])\n    assert len(preferences) == 2",
+        "detail": "tests.test_5preferences",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_user_preferences",
+        "kind": 2,
+        "importPath": "tests.test_5preferences",
+        "description": "tests.test_5preferences",
+        "peekOfCode": "def test_get_user_preferences(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    preferences = get_user_preferences(returnal[0])\n    assert len(preferences) == 2\ndef test_get_movie_preferences(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    preferences = get_movie_preferences(returnal[1])\n    assert len(preferences) == 1",
+        "detail": "tests.test_5preferences",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_movie_preferences",
+        "kind": 2,
+        "importPath": "tests.test_5preferences",
+        "description": "tests.test_5preferences",
+        "peekOfCode": "def test_get_movie_preferences(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    preferences = get_movie_preferences(returnal[1])\n    assert len(preferences) == 1",
+        "detail": "tests.test_5preferences",
         "documentation": {}
     }
 ]

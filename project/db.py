@@ -64,9 +64,9 @@ class Movie(db.Model):
 
 class Preference(db.Model):
     """Preference"""
-
-    uid = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-    mid = db.Column(db.Integer, db.ForeignKey('movie.id'), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    uid = db.Column(db.Integer, db.ForeignKey('user.id'))
+    mid = db.Column(db.Integer, db.ForeignKey('movie.id'))
 
     user = db.relationship(
         'User',
@@ -85,9 +85,9 @@ class Preference(db.Model):
 
 class Relationship(db.Model):
     """Relationship"""
-
-    uid_1 = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-    uid_2 = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    uid_1 = db.Column(db.Integer, db.ForeignKey('user.id'))
+    uid_2 = db.Column(db.Integer, db.ForeignKey('user.id'))
     status = db.Column(db.Boolean)
 
 class Messages(db.Model):
@@ -96,9 +96,10 @@ class Messages(db.Model):
     text = db.Column(db.String(250))
 
 class UserMessages(db.Model):
-    sender = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-    receiver = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-    mid = db.Column(db.Integer, db.ForeignKey('messages.id'), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    sender = db.Column(db.Integer, db.ForeignKey('user.id'))
+    receiver = db.Column(db.Integer, db.ForeignKey('user.id'))
+    mid = db.Column(db.Integer, db.ForeignKey('messages.id'))
 
 def db_commit():
     """db_commit"""
