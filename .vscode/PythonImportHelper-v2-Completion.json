@@ -274,6 +274,14 @@
         "documentation": {}
     },
     {
+        "label": "seed_movies",
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "isExtraImport": true,
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
         "label": "clean_movies",
         "importPath": "tests.factories.movies.clean_movies",
         "description": "tests.factories.movies.clean_movies",
@@ -844,7 +852,16 @@
         "kind": 2,
         "importPath": "tests.test_movie",
         "description": "tests.test_movie",
-        "peekOfCode": "def test_create_movie(app):\n    clean_movies()\n    create_movie('name','url')\n    movie = Movie.query.filter_by(name='name').first()\n    assert movie.id == 1 and movie.image_url == 'url' and movie.name == 'name'\ndef test_get_all_movies(app):\n    clean_movies()\n    create_movie('name1','url1')\n    create_movie('name2','url2')\n    create_movie('name3','url3')",
+        "peekOfCode": "def test_create_movie(app):\n    clean_movies()\n    create_movie('name','url')\n    movie = Movie.query.filter_by(name='name').first()\n    assert movie.id == 1 and movie.image_url == 'url' and movie.name == 'name'\ndef test_create_existing_movie(app):\n    result = create_movie('name','url')\n    assert result == None\ndef test_get_all_movies(app):\n    clean_movies()",
+        "detail": "tests.test_movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_existing_movie",
+        "kind": 2,
+        "importPath": "tests.test_movie",
+        "description": "tests.test_movie",
+        "peekOfCode": "def test_create_existing_movie(app):\n    result = create_movie('name','url')\n    assert result == None\ndef test_get_all_movies(app):\n    clean_movies()\n    create_movie('name1','url1')\n    create_movie('name2','url2')\n    create_movie('name3','url3')\n    movies = get_all_movies()\n    assert movies[0].id == 1 and movies[1].id == 2 and movies[2].id == 3",
         "detail": "tests.test_movie",
         "documentation": {}
     },
@@ -871,7 +888,25 @@
         "kind": 2,
         "importPath": "tests.test_movie",
         "description": "tests.test_movie",
-        "peekOfCode": "def test_delete_movie(app):\n    delete_movie('name2')\n    movies = get_all_movies()\n    moviesNames = []\n    for i in movies:\n        moviesNames.append(i.name)\n    assert 'name2' not in moviesNames",
+        "peekOfCode": "def test_delete_movie(app):\n    delete_movie('name2')\n    movies = get_all_movies()\n    moviesNames = []\n    for i in movies:\n        moviesNames.append(i.name)\n    assert 'name2' not in moviesNames\ndef test_seed_movies(app):\n    clean_movies()\n    movies = get_all_movies()",
+        "detail": "tests.test_movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_seed_movies",
+        "kind": 2,
+        "importPath": "tests.test_movie",
+        "description": "tests.test_movie",
+        "peekOfCode": "def test_seed_movies(app):\n    clean_movies()\n    movies = get_all_movies()\n    length1 = len(movies)\n    seed_movies()\n    movies2 = get_all_movies()\n    length2 = len(movies2)\n    assert length2 == length1+10\ndef test_seed_random_movies(app):\n    seed_movies()",
+        "detail": "tests.test_movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_seed_random_movies",
+        "kind": 2,
+        "importPath": "tests.test_movie",
+        "description": "tests.test_movie",
+        "peekOfCode": "def test_seed_random_movies(app):\n    seed_movies()\n    movies = get_all_movies()\n    assert len(movies) == 20",
         "detail": "tests.test_movie",
         "documentation": {}
     }
