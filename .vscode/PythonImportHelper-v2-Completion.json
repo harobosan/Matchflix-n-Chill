@@ -373,7 +373,7 @@
         "kind": 2,
         "importPath": "project.main",
         "description": "project.main",
-        "peekOfCode": "def favicon():\n    \"\"\"favicon\"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/')\ndef index():\n    \"\"\"index\"\"\"\n    return render_template('index.html')\n@main.route('/profile')\ndef profile():\n    \"\"\"profile\"\"\"",
+        "peekOfCode": "def favicon():\n    \"\"\"favicon\"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/')\ndef index():\n    \"\"\"index\"\"\"\n    create_user('a@a','a','a')\n    set_admin(1)\n    create_user('b@b','b','b')\n    create_user('c@c','c','c')",
         "detail": "project.main",
         "documentation": {}
     },
@@ -382,7 +382,7 @@
         "kind": 2,
         "importPath": "project.main",
         "description": "project.main",
-        "peekOfCode": "def index():\n    \"\"\"index\"\"\"\n    return render_template('index.html')\n@main.route('/profile')\ndef profile():\n    \"\"\"profile\"\"\"\n    if not current_user.is_authenticated:\n        flash('Please, authenticate to access this page.')\n        return redirect(url_for('auth.login'))\n    return render_template('profile.html', user=current_user, user_list=get_all_users())",
+        "peekOfCode": "def index():\n    \"\"\"index\"\"\"\n    create_user('a@a','a','a')\n    set_admin(1)\n    create_user('b@b','b','b')\n    create_user('c@c','c','c')\n    create_user('d@d','d','d')\n    create_movie('movie1','imageExample.jpeg')\n    create_movie('movie2','logo.png')\n    create_movie('movie3','logomatchflix_cinza.png')",
         "detail": "project.main",
         "documentation": {}
     },
@@ -409,7 +409,7 @@
         "kind": 5,
         "importPath": "project.main",
         "description": "project.main",
-        "peekOfCode": "main = Blueprint('main', __name__)\n@main.route('/favicon.ico')\ndef favicon():\n    \"\"\"favicon\"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/')\ndef index():\n    \"\"\"index\"\"\"\n    return render_template('index.html')\n@main.route('/profile')",
+        "peekOfCode": "main = Blueprint('main', __name__)\n@main.route('/favicon.ico')\ndef favicon():\n    \"\"\"favicon\"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/')\ndef index():\n    \"\"\"index\"\"\"\n    create_user('a@a','a','a')\n    set_admin(1)",
         "detail": "project.main",
         "documentation": {}
     },
