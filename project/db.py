@@ -31,13 +31,13 @@ class User(db.Model, UserMixin):
     sender = db.relationship(
         'UserMessages',
         foreign_keys='UserMessages.sender',
-        cascade='all_delete'
+        cascade='all,delete'
     )
 
     receiver = db.relationship(
         'UserMessages',
         foreign_keys='UserMessages.receiver',
-        cascade='all_delete'
+        cascade='all,delete'
     )
 
 class Admin(db.Model):
@@ -112,3 +112,20 @@ def db_del(item):
     """db_del"""
 
     db.session.delete(item)
+
+def clean_db():
+    """clean_db"""
+    # Exclui todos os registros da tabela User
+    User.query.delete()
+
+    # Exclui todos os registros da tabela Messages
+    Messages.query.delete()
+
+    # Exclui todos os registros da tabela Preference
+    Preference.query.delete()
+
+    # Exclui todos os registros da tabela Movie
+    Movie.query.delete()
+
+    # Comita as alterações no banco de dados
+    db_commit()
