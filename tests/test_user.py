@@ -1,7 +1,7 @@
 from project.user import (authenticate_user, create_user, disconnect_user, get_all_users, get_user,
-    get_user_list)
-from project.db import User
-from tests.factories.users.clean_users import clean_users
+    get_user_list, set_admin)
+from project.db import Admin, User
+from tests.factories.users.clean_users import clean_admins, clean_users
 
 def test_create_user(app):
     clean_users()
@@ -35,3 +35,12 @@ def test_disconnect_user(app):
     userDisconnected = disconnect_user(user)
 
     assert user.authenticated == False
+
+def test_set_admin(app):
+    clean_users()
+    clean_admins()
+    user = create_user('adminteste@gmail.com', 'adminteste','adminteste')
+    adminAttempt1 = Admin.query.filter_by(uid=user.id).first()
+    set_admin(user.id)
+    adminAttempt2 = Admin.query.filter_by(uid=user.id).first()
+    assert adminAttempt1 == None and adminAttempt2.uid == 1

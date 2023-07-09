@@ -208,6 +208,14 @@
         "documentation": {}
     },
     {
+        "label": "Admin",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
         "label": "db_commit",
         "importPath": "project.db",
         "description": "project.db",
@@ -225,6 +233,14 @@
     },
     {
         "label": "Movie",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Admin",
         "importPath": "project.db",
         "description": "project.db",
         "isExtraImport": true,
@@ -350,6 +366,22 @@
         "description": "project.user",
         "isExtraImport": true,
         "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "set_admin",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "clean_admins",
+        "importPath": "tests.factories.users.clean_users",
+        "description": "tests.factories.users.clean_users",
+        "isExtraImport": true,
+        "detail": "tests.factories.users.clean_users",
         "documentation": {}
     },
     {
@@ -887,7 +919,16 @@
         "kind": 2,
         "importPath": "tests.factories.users.clean_users",
         "description": "tests.factories.users.clean_users",
-        "peekOfCode": "def clean_users():\n    User.query.delete()\n    db_commit()",
+        "peekOfCode": "def clean_users():\n    User.query.delete()\n    db_commit()\ndef clean_admins():\n    Admin.query.delete()\n    db_commit()",
+        "detail": "tests.factories.users.clean_users",
+        "documentation": {}
+    },
+    {
+        "label": "clean_admins",
+        "kind": 2,
+        "importPath": "tests.factories.users.clean_users",
+        "description": "tests.factories.users.clean_users",
+        "peekOfCode": "def clean_admins():\n    Admin.query.delete()\n    db_commit()",
         "detail": "tests.factories.users.clean_users",
         "documentation": {}
     },
@@ -1031,7 +1072,7 @@
         "kind": 2,
         "importPath": "tests.test_user",
         "description": "tests.test_user",
-        "peekOfCode": "def test_authenticate_user(app):\n    user = authenticate_user('teste1@gmail.com', 'senha1')\n    assert user.authenticated\ndef test_disconnect_user(app):\n    user = create_user('teste4@gmail.com', 'teste4','senha4')\n    authenticate_user(user.email, user.password)\n    userDisconnected = disconnect_user(user)\n    assert user.authenticated == False",
+        "peekOfCode": "def test_authenticate_user(app):\n    user = authenticate_user('teste1@gmail.com', 'senha1')\n    assert user.authenticated\ndef test_disconnect_user(app):\n    user = create_user('teste4@gmail.com', 'teste4','senha4')\n    authenticate_user(user.email, user.password)\n    userDisconnected = disconnect_user(user)\n    assert user.authenticated == False\ndef test_set_admin(app):\n    clean_users()",
         "detail": "tests.test_user",
         "documentation": {}
     },
@@ -1040,7 +1081,16 @@
         "kind": 2,
         "importPath": "tests.test_user",
         "description": "tests.test_user",
-        "peekOfCode": "def test_disconnect_user(app):\n    user = create_user('teste4@gmail.com', 'teste4','senha4')\n    authenticate_user(user.email, user.password)\n    userDisconnected = disconnect_user(user)\n    assert user.authenticated == False",
+        "peekOfCode": "def test_disconnect_user(app):\n    user = create_user('teste4@gmail.com', 'teste4','senha4')\n    authenticate_user(user.email, user.password)\n    userDisconnected = disconnect_user(user)\n    assert user.authenticated == False\ndef test_set_admin(app):\n    clean_users()\n    clean_admins()\n    user = create_user('adminteste@gmail.com', 'adminteste','adminteste')\n    adminAttempt1 = Admin.query.filter_by(uid=user.id).first()",
+        "detail": "tests.test_user",
+        "documentation": {}
+    },
+    {
+        "label": "test_set_admin",
+        "kind": 2,
+        "importPath": "tests.test_user",
+        "description": "tests.test_user",
+        "peekOfCode": "def test_set_admin(app):\n    clean_users()\n    clean_admins()\n    user = create_user('adminteste@gmail.com', 'adminteste','adminteste')\n    adminAttempt1 = Admin.query.filter_by(uid=user.id).first()\n    set_admin(user.id)\n    adminAttempt2 = Admin.query.filter_by(uid=user.id).first()\n    assert adminAttempt1 == None and adminAttempt2.uid == 1",
         "detail": "tests.test_user",
         "documentation": {}
     }
