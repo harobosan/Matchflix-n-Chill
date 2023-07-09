@@ -369,6 +369,14 @@
         "documentation": {}
     },
     {
+        "label": "remove_admin",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
         "label": "set_admin",
         "importPath": "project.user",
         "description": "project.user",
@@ -1090,7 +1098,16 @@
         "kind": 2,
         "importPath": "tests.test_user",
         "description": "tests.test_user",
-        "peekOfCode": "def test_set_admin(app):\n    clean_users()\n    clean_admins()\n    user = create_user('adminteste@gmail.com', 'adminteste','adminteste')\n    adminAttempt1 = Admin.query.filter_by(uid=user.id).first()\n    set_admin(user.id)\n    adminAttempt2 = Admin.query.filter_by(uid=user.id).first()\n    assert adminAttempt1 == None and adminAttempt2.uid == 1",
+        "peekOfCode": "def test_set_admin(app):\n    clean_users()\n    clean_admins()\n    user = create_user('adminteste@gmail.com', 'adminteste','adminteste')\n    adminAttempt1 = Admin.query.filter_by(uid=user.id).first()\n    set_admin(user.id)\n    adminAttempt2 = Admin.query.filter_by(uid=user.id).first()\n    assert adminAttempt1 == None and adminAttempt2.uid == user.id\ndef test_remove_admin(app):\n    clean_users()",
+        "detail": "tests.test_user",
+        "documentation": {}
+    },
+    {
+        "label": "test_remove_admin",
+        "kind": 2,
+        "importPath": "tests.test_user",
+        "description": "tests.test_user",
+        "peekOfCode": "def test_remove_admin(app):\n    clean_users()\n    clean_admins()\n    user = create_user('adminteste2@gmail.com', 'adminteste2','adminteste2')\n    set_admin(user.id)\n    adminAttempt1 = Admin.query.filter_by(uid=user.id).first()\n    remove_admin(1)\n    adminAttempt2 = Admin.query.filter_by(uid=user.id).first()\n    assert adminAttempt1.uid == user.id and adminAttempt2 == None",
         "detail": "tests.test_user",
         "documentation": {}
     }

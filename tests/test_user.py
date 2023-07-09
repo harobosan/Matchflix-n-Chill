@@ -1,5 +1,5 @@
 from project.user import (authenticate_user, create_user, disconnect_user, get_all_users, get_user,
-    get_user_list, set_admin)
+    get_user_list, remove_admin, set_admin)
 from project.db import Admin, User
 from tests.factories.users.clean_users import clean_admins, clean_users
 
@@ -43,4 +43,14 @@ def test_set_admin(app):
     adminAttempt1 = Admin.query.filter_by(uid=user.id).first()
     set_admin(user.id)
     adminAttempt2 = Admin.query.filter_by(uid=user.id).first()
-    assert adminAttempt1 == None and adminAttempt2.uid == 1
+    assert adminAttempt1 == None and adminAttempt2.uid == user.id
+
+def test_remove_admin(app):
+    clean_users()
+    clean_admins()
+    user = create_user('adminteste2@gmail.com', 'adminteste2','adminteste2')
+    set_admin(user.id)
+    adminAttempt1 = Admin.query.filter_by(uid=user.id).first()
+    remove_admin(1)
+    adminAttempt2 = Admin.query.filter_by(uid=user.id).first()
+    assert adminAttempt1.uid == user.id and adminAttempt2 == None
