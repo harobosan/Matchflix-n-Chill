@@ -1,4 +1,3 @@
-import project
 from project.db import db_commit, Movie
 
 def clean_movies():

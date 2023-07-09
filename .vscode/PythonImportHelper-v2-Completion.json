@@ -192,23 +192,6 @@
         "documentation": {}
     },
     {
-        "label": "project",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "project",
-        "description": "project",
-        "detail": "project",
-        "documentation": {}
-    },
-    {
-        "label": "create_app",
-        "importPath": "project",
-        "description": "project",
-        "isExtraImport": true,
-        "detail": "project",
-        "documentation": {}
-    },
-    {
         "label": "db_commit",
         "importPath": "project.db",
         "description": "project.db",
@@ -225,7 +208,31 @@
         "documentation": {}
     },
     {
+        "label": "db_commit",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
         "label": "Movie",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "User",
         "importPath": "project.db",
         "description": "project.db",
         "isExtraImport": true,
@@ -239,6 +246,14 @@
         "importPath": "pytest",
         "description": "pytest",
         "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "create_app",
+        "importPath": "project",
+        "description": "project",
+        "isExtraImport": true,
+        "detail": "project",
         "documentation": {}
     },
     {
@@ -287,6 +302,30 @@
         "description": "tests.factories.movies.clean_movies",
         "isExtraImport": true,
         "detail": "tests.factories.movies.clean_movies",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_users",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "clean_users",
+        "importPath": "tests.factories.users.clean_users",
+        "description": "tests.factories.users.clean_users",
+        "isExtraImport": true,
+        "detail": "tests.factories.users.clean_users",
         "documentation": {}
     },
     {
@@ -812,6 +851,15 @@
         "documentation": {}
     },
     {
+        "label": "clean_users",
+        "kind": 2,
+        "importPath": "tests.factories.users.clean_users",
+        "description": "tests.factories.users.clean_users",
+        "peekOfCode": "def clean_users():\n    User.query.delete()\n    db_commit()",
+        "detail": "tests.factories.users.clean_users",
+        "documentation": {}
+    },
+    {
         "label": "app",
         "kind": 2,
         "importPath": "tests.conftest",
@@ -908,6 +956,24 @@
         "description": "tests.test_movie",
         "peekOfCode": "def test_seed_random_movies(app):\n    seed_movies()\n    movies = get_all_movies()\n    assert len(movies) == 20",
         "detail": "tests.test_movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_user",
+        "kind": 2,
+        "importPath": "tests.test_user",
+        "description": "tests.test_user",
+        "peekOfCode": "def test_create_user(app):\n    clean_users()\n    create_user('teste@gmail.com', 'teste','senha')\n    user = User.query.filter_by(email='teste@gmail.com').first()\n    assert user.id == 1\ndef test_get_all_users(app):\n    clean_users()\n    create_user('teste1@gmail.com', 'teste1','senha1')\n    create_user('teste2@gmail.com', 'teste2','senha2')\n    create_user('teste3@gmail.com', 'teste3','senha3')",
+        "detail": "tests.test_user",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_all_users",
+        "kind": 2,
+        "importPath": "tests.test_user",
+        "description": "tests.test_user",
+        "peekOfCode": "def test_get_all_users(app):\n    clean_users()\n    create_user('teste1@gmail.com', 'teste1','senha1')\n    create_user('teste2@gmail.com', 'teste2','senha2')\n    create_user('teste3@gmail.com', 'teste3','senha3')\n    users = get_all_users()\n    assert len(users) == 3 and users[0].id == 1 and users[2].id == 3",
+        "detail": "tests.test_user",
         "documentation": {}
     }
 ]
