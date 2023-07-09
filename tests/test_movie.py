@@ -1,5 +1,5 @@
 from project.db import Movie
-from project.movie import create_movie, get_all_movies, get_movie_list
+from project.movie import create_movie, delete_movie, get_all_movies, get_movie_list
 from tests.factories.movies.clean_movies import clean_movies
 
 
@@ -20,3 +20,11 @@ def test_get_all_movies(app):
 def test_get_movie_list(app):
     movies = get_movie_list([2,3])
     assert movies[0].id == 2 and movies[1].id == 3
+
+def test_delete_movie(app):
+    delete_movie('name2')
+    movies = get_all_movies()
+    moviesNames = []
+    for i in movies:
+        moviesNames.append(i.name)
+    assert 'name2' not in moviesNames

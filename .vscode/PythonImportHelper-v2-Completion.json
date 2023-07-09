@@ -192,7 +192,24 @@
         "documentation": {}
     },
     {
-        "label": "Movie",
+        "label": "project",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "project",
+        "description": "project",
+        "detail": "project",
+        "documentation": {}
+    },
+    {
+        "label": "create_app",
+        "importPath": "project",
+        "description": "project",
+        "isExtraImport": true,
+        "detail": "project",
+        "documentation": {}
+    },
+    {
+        "label": "db_commit",
         "importPath": "project.db",
         "description": "project.db",
         "isExtraImport": true,
@@ -200,7 +217,7 @@
         "documentation": {}
     },
     {
-        "label": "db_commit",
+        "label": "Movie",
         "importPath": "project.db",
         "description": "project.db",
         "isExtraImport": true,
@@ -225,15 +242,15 @@
         "documentation": {}
     },
     {
-        "label": "create_app",
-        "importPath": "project",
-        "description": "project",
+        "label": "create_movie",
+        "importPath": "project.movie",
+        "description": "project.movie",
         "isExtraImport": true,
-        "detail": "project",
+        "detail": "project.movie",
         "documentation": {}
     },
     {
-        "label": "create_movie",
+        "label": "delete_movie",
         "importPath": "project.movie",
         "description": "project.movie",
         "isExtraImport": true,
@@ -845,7 +862,16 @@
         "kind": 2,
         "importPath": "tests.test_movie",
         "description": "tests.test_movie",
-        "peekOfCode": "def test_get_movie_list(app):\n    movies = get_movie_list([2,3])\n    assert movies[0].id == 2 and movies[1].id == 3",
+        "peekOfCode": "def test_get_movie_list(app):\n    movies = get_movie_list([2,3])\n    assert movies[0].id == 2 and movies[1].id == 3\ndef test_delete_movie(app):\n    delete_movie('name2')\n    movies = get_all_movies()\n    moviesNames = []\n    for i in movies:\n        moviesNames.append(i.name)\n    assert 'name2' not in moviesNames",
+        "detail": "tests.test_movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_delete_movie",
+        "kind": 2,
+        "importPath": "tests.test_movie",
+        "description": "tests.test_movie",
+        "peekOfCode": "def test_delete_movie(app):\n    delete_movie('name2')\n    movies = get_all_movies()\n    moviesNames = []\n    for i in movies:\n        moviesNames.append(i.name)\n    assert 'name2' not in moviesNames",
         "detail": "tests.test_movie",
         "documentation": {}
     }
