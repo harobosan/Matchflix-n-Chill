@@ -1,4 +1,4 @@
-from project.relationship import create_relationship
+from project.relationship import create_relationship, get_relationship, get_user_relationships
 from project.user import create_user
 from tests.factories.relationships.clean_relationships import clean_relationships
 from tests.factories.users.clean_users import clean_users
@@ -17,3 +17,14 @@ def test_create_repeated_relationship(app):
     relationship1 = create_relationship(user1.id, user2.id)
     relationship2 = create_relationship(user1.id, user2.id)
     assert relationship2 == None
+
+def test_get_relationship(app):
+    relationship = get_relationship(1, 2)
+    assert relationship.uid_1 == 1 and relationship.uid_2 == 2
+
+def test_get_user_relationships(app):
+    user3 = create_user('teste3@gmail.com', 'teste3','senha3')
+    relationship1 = create_relationship(1, user3.id)
+    relationships = get_user_relationships(1)
+    print(relationships)
+    assert len(relationships) == 2 and relationships[0] == 2

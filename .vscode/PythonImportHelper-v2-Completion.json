@@ -345,6 +345,22 @@
         "documentation": {}
     },
     {
+        "label": "get_relationship",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_relationships",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
         "label": "create_user",
         "importPath": "project.user",
         "description": "project.user",
@@ -1118,7 +1134,25 @@
         "kind": 2,
         "importPath": "tests.test_relationships",
         "description": "tests.test_relationships",
-        "peekOfCode": "def test_create_repeated_relationship(app):\n    clean_users()\n    user1 = create_user('teste1@gmail.com', 'teste1','senha1')\n    user2 = create_user('teste2@gmail.com', 'teste2','senha2')\n    relationship1 = create_relationship(user1.id, user2.id)\n    relationship2 = create_relationship(user1.id, user2.id)\n    assert relationship2 == None",
+        "peekOfCode": "def test_create_repeated_relationship(app):\n    clean_users()\n    user1 = create_user('teste1@gmail.com', 'teste1','senha1')\n    user2 = create_user('teste2@gmail.com', 'teste2','senha2')\n    relationship1 = create_relationship(user1.id, user2.id)\n    relationship2 = create_relationship(user1.id, user2.id)\n    assert relationship2 == None\ndef test_get_relationship(app):\n    relationship = get_relationship(1, 2)\n    assert relationship.uid_1 == 1 and relationship.uid_2 == 2",
+        "detail": "tests.test_relationships",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_relationship",
+        "kind": 2,
+        "importPath": "tests.test_relationships",
+        "description": "tests.test_relationships",
+        "peekOfCode": "def test_get_relationship(app):\n    relationship = get_relationship(1, 2)\n    assert relationship.uid_1 == 1 and relationship.uid_2 == 2\ndef test_get_user_relationships(app):\n    user3 = create_user('teste3@gmail.com', 'teste3','senha3')\n    relationship1 = create_relationship(1, user3.id)\n    relationships = get_user_relationships(1)\n    print(relationships)\n    assert len(relationships) == 2 and relationships[0] == 2",
+        "detail": "tests.test_relationships",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_user_relationships",
+        "kind": 2,
+        "importPath": "tests.test_relationships",
+        "description": "tests.test_relationships",
+        "peekOfCode": "def test_get_user_relationships(app):\n    user3 = create_user('teste3@gmail.com', 'teste3','senha3')\n    relationship1 = create_relationship(1, user3.id)\n    relationships = get_user_relationships(1)\n    print(relationships)\n    assert len(relationships) == 2 and relationships[0] == 2",
         "detail": "tests.test_relationships",
         "documentation": {}
     },
