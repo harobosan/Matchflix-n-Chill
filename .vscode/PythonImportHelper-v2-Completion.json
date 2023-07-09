@@ -329,6 +329,22 @@
         "documentation": {}
     },
     {
+        "label": "create_movie",
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "isExtraImport": true,
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "delete_movie",
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "isExtraImport": true,
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
         "label": "clean_movies",
         "importPath": "tests.factories.movies.clean_movies",
         "description": "tests.factories.movies.clean_movies",
@@ -337,51 +353,35 @@
         "documentation": {}
     },
     {
-        "label": "create_relationship",
-        "importPath": "project.relationship",
-        "description": "project.relationship",
+        "label": "clean_movies",
+        "importPath": "tests.factories.movies.clean_movies",
+        "description": "tests.factories.movies.clean_movies",
         "isExtraImport": true,
-        "detail": "project.relationship",
+        "detail": "tests.factories.movies.clean_movies",
         "documentation": {}
     },
     {
-        "label": "delete_relationship",
-        "importPath": "project.relationship",
-        "description": "project.relationship",
+        "label": "create_preference",
+        "importPath": "project.preference",
+        "description": "project.preference",
         "isExtraImport": true,
-        "detail": "project.relationship",
+        "detail": "project.preference",
         "documentation": {}
     },
     {
-        "label": "delete_user_relationships",
-        "importPath": "project.relationship",
-        "description": "project.relationship",
+        "label": "create_user",
+        "importPath": "project.user",
+        "description": "project.user",
         "isExtraImport": true,
-        "detail": "project.relationship",
+        "detail": "project.user",
         "documentation": {}
     },
     {
-        "label": "get_all_relationships",
-        "importPath": "project.relationship",
-        "description": "project.relationship",
+        "label": "delete_user",
+        "importPath": "project.user",
+        "description": "project.user",
         "isExtraImport": true,
-        "detail": "project.relationship",
-        "documentation": {}
-    },
-    {
-        "label": "get_relationship",
-        "importPath": "project.relationship",
-        "description": "project.relationship",
-        "isExtraImport": true,
-        "detail": "project.relationship",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_relationships",
-        "importPath": "project.relationship",
-        "description": "project.relationship",
-        "isExtraImport": true,
-        "detail": "project.relationship",
+        "detail": "project.user",
         "documentation": {}
     },
     {
@@ -465,11 +465,11 @@
         "documentation": {}
     },
     {
-        "label": "clean_relationships",
-        "importPath": "tests.factories.relationships.clean_relationships",
-        "description": "tests.factories.relationships.clean_relationships",
+        "label": "clean_users",
+        "importPath": "tests.factories.users.clean_users",
+        "description": "tests.factories.users.clean_users",
         "isExtraImport": true,
-        "detail": "tests.factories.relationships.clean_relationships",
+        "detail": "tests.factories.users.clean_users",
         "documentation": {}
     },
     {
@@ -494,6 +494,62 @@
         "description": "tests.factories.users.clean_users",
         "isExtraImport": true,
         "detail": "tests.factories.users.clean_users",
+        "documentation": {}
+    },
+    {
+        "label": "create_relationship",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "delete_relationship",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "delete_user_relationships",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_relationships",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "get_relationship",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_relationships",
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "isExtraImport": true,
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "clean_relationships",
+        "importPath": "tests.factories.relationships.clean_relationships",
+        "description": "tests.factories.relationships.clean_relationships",
+        "isExtraImport": true,
+        "detail": "tests.factories.relationships.clean_relationships",
         "documentation": {}
     },
     {
@@ -1142,6 +1198,15 @@
         "description": "tests.test_movie",
         "peekOfCode": "def test_seed_random_movies(app):\n    seed_movies()\n    movies = get_all_movies()\n    assert len(movies) == 20",
         "detail": "tests.test_movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_preference",
+        "kind": 2,
+        "importPath": "tests.test_preferences",
+        "description": "tests.test_preferences",
+        "peekOfCode": "def test_create_preference(app):\n    movie = create_movie('nametest','url')\n    user = create_user('teste5@gmail.com', 'teste5','senha5')\n    preference = create_preference(user.id,movie.id)\n    assert preference.mid == movie.id and preference.uid == user.id\n    delete_movie('nametest')\n    delete_user('teste5@gmail.com')",
+        "detail": "tests.test_preferences",
         "documentation": {}
     },
     {
