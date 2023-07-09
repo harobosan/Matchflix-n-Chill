@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post" action="/movies">
+    <div class="movies">
+            <div class="newmoviecard">
+                <input class="title-field" type="text" name="title" placeholder="Movie Title" autofocus="">
+                <button class="add-bttn" type="submit" name="add", value="add"><i class="fa fa-plus"></i></button>
+            </div>
+
+        {% for movie in movies %}
+            <div class="moviecard">
+                
+                <img class="moviecard-image" src="{{ url_for('static', filename=movie.image_url) }}" alt="{{ movie.name }}">
+                <div class="moviecard-title">{{ movie.name }}</div>
+                {% if privileged %}
+                    <p class="moviecard-weight">{{movie.weight}}</p>
+                {% endif %}
+                <p class="moviecard-score">{{movie.score}}</p>
+                {% if current_user.is_authenticated %}
+                    {% if movie.id not in preferences %}
+                        <button class="like-bttn" type="submit" name="like" value="{{ movie.name }}"><i class="fa fa-heart"></i></button>
+                    {% else %}
+                        <button class="dislike-bttn" type="submit" name="dislike" value="{{ movie.name }}"><i class="fa fa-heart"></i></button>
+                    {% endif %}
+                {% endif %}
+                {% if privileged %}
+                    <button class="remove-bttn" type="submit" name="remove" value="{{ movie.name }}"><i class="fa fa-trash"></i></button>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <div style="height: 40px;"></div>
+    </div>
+</form>
+{% endblock %}

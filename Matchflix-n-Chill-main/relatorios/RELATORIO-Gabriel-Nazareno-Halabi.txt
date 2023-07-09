@@ -1,0 +1,12 @@
+ALEXANDRE DE FREITAS SOUZA
+Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
+
+17/06 |  1h | estudar aulas e laboratórios relacionados | coleta de links e referencias para desenvolvimento em python flask
+20/06 |  1h | especificar os módulos | definição do módulo de rotas app.py
+20/06 |  2h | especificar as funções | definição das funções auxiliares para comunicação com o banco de dados
+24/06 |  2h | codificar módulo | codificação módulo principal __init__.py que instancia a aplicação
+24/06 | 30m | revisar especificações | separação do módulo app.py em módulo de instânciamento da aplicação e módulos de rotas main.py e auth.py
+24/06 |  3h | codificar módulo | codificação do módulo main.py de rotas para servir html para usuários não autenticados
+25/06 |  3h | codificar módulo | codificação do módulo auth.py de rotas para servir html para autenticação e registro de usuários, com lógica de sessões
+25/06 | 40m | rodar verificador estático e retirar warnings | refatoração do código do projeto corrigindo warnings apontadas pela ferramenta pylint (exceto warnings de documentação)
+25/06 | 20m | revisar projetos | atualização dos requerimentos e criação de .gitignore e Makefile a fim de deixar o projeto mais fácil de replicar, testar e inicializar

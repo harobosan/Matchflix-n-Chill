@@ -1,0 +1,214 @@
+.topnav {
+  background-color: #303030;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.topnav a {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 20px 20px;
+  float: left;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.topnav a:hover {
+  background-color: #c2062b;
+}
+
+.navbar-logo {
+  width: 50px;
+  padding: 5px 5px;
+  float: left;
+  border-radius: 10px;
+}
+
+.navbar-end {
+  float: right;
+}
+
+.movies {
+  position: relative;
+  float: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 32px;
+  overflow: hidden;
+  background: rgba(48, 48, 48, 0.8);
+  border-radius: 10px;
+}
+
+.moviecard {
+  position: relative;
+  width: 320px;
+  height: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 32px;
+  overflow: hidden;
+  background: #444444;
+  border-radius: 8px;
+}
+
+.moviecard-image {
+  position: absolute;
+  width: 120px;
+  height: 90px;
+  top: 16px;
+  left: 16px;
+  background: red;
+  border-radius: 8px;
+}
+
+.moviecard-title {
+  position: absolute;
+  width: 320px;
+  height: 40px;
+  top: 120px;
+  left: 0px;
+  background: #333333;
+  border-radius: 8px 8px 8px 8px;
+  color: red;
+  font-size: 32px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.moviecard-weight {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 14px;
+  left: 280px;
+  overflow: hidden;
+  color: #777777;
+  font-size: 32px;
+  text-align: center;
+}
+
+.moviecard-score {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 54px;
+  left: 280px;
+  overflow: hidden;
+  color: #777777;
+  font-size: 32px;
+  text-align: center;
+}
+
+.like-bttn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 120px;
+  left: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  background: #CCCCCC;
+  border-radius: 8px 8px 8px 8px;
+  color: #777777;
+  font-size: 20px;
+  text-align: center;
+}
+
+.like-bttn:hover {
+  background: red;
+  color: #CCCCCC;
+}
+
+.dislike-bttn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 120px;
+  left: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  background: red;
+  border-radius: 8px 8px 8px 8px;
+  color: #CCCCCC;
+  font-size: 20px;
+  text-align: center;
+}
+
+.dislike-bttn:hover {
+  background: #CCCCCC;
+  color: #777777;
+}
+
+.remove-bttn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0px;
+  left: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  background: #CCCCCC;
+  border-radius: 8px 8px 8px 8px;
+  color: #777777;
+  font-size: 20px;
+  text-align: center;
+}
+
+.remove-bttn:hover {
+  background: red;
+  color: #CCCCCC;
+}
+
+.newmoviecard {
+    position: relative;
+    width: 320px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
+    background: white;
+    border-radius: 8px;
+    color: green;
+    font-size: 36px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.title-field {
+  position: absolute;
+  width: 312px;
+  height: 34px;
+  top: 0px;
+  left: 0px;
+  background: white;
+  border-radius: 8px 8px 8px 8px;
+  text-align: center;
+  color: red;
+  font-size: 32px;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.add-bttn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0px;
+  left: 280px;
+  background: #CCCCCC;
+  border-radius: 8px 8px 8px 8px;
+  color: #777777;
+  font-size: 20px;
+  text-align: center;
+  z-index: 10;
+}
+
+.add-bttn:hover {
+  background: green;
+  color: #CCCCCC;
+}

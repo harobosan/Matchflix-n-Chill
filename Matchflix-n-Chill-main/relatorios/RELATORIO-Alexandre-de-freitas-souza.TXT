@@ -1,0 +1,13 @@
+ALEXANDRE DE FREITAS SOUZA
+Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
+
+
+19/06| 35 min | Fazer diagramas | projetar, montar e esquematizar o banco de dados
+20/06| 2 horas| especificar as funções | especificação das stories e funções necessárias pra implementá-las
+20/06| 1 hora | especificar os módulos | especificação dos modulos e divisões de responsabilidade do código no projeto
+20/06| 10 min | revisar especificações | revisão das funções e módulos a serem implementados
+22/06| 1 hora | estudar aulas e laboratórios relacionados | assistir video-aulas de flask
+26/06| 32 min | codificar módulo | modulo de classes do banco de dados (db.py) implementado
+26/06| 10 min | revisar código do módulo | revisão do módulo de classes do banco de dados 
+26/06| 1,5 horas | codificar módulo | módulo de funções da classe Movies (movies.py) implementado
+26/06| 30 min | revisar código do módulo | revisão das funções do módulo movies.py

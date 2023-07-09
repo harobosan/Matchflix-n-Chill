@@ -1,0 +1,7 @@
+JOAO PEDRO DE SOUZA LOPES
+Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
+
+24/06|1h|estudo dos requerimentos|estudo dos requrimentos para fazer o trabalho da forma mais eficiente
+24/06|40 min |estudo das ferramentas|estudo da sintaxe e criação de banco de dados de sqlite3
+25/06|1h|escrever codigo|escrito a função da adição de dados e da criação do banco de dados
+25/06|40 min|escrever codigo|escrevendo a função que checa se o id ja pertence ao banco de dados
