@@ -401,6 +401,14 @@
         "documentation": {}
     },
     {
+        "label": "create_movie",
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "isExtraImport": true,
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
         "label": "create_relationship",
         "importPath": "project.relationship",
         "description": "project.relationship",
@@ -458,6 +466,14 @@
     },
     {
         "label": "authenticate_user",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "calc_matches",
         "importPath": "project.user",
         "description": "project.user",
         "isExtraImport": true,
@@ -545,6 +561,14 @@
         "documentation": {}
     },
     {
+        "label": "create_preference",
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "isExtraImport": true,
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
         "label": "calc_movie_weight",
         "importPath": "project.preference",
         "description": "project.preference",
@@ -606,6 +630,14 @@
         "description": "project.preference",
         "isExtraImport": true,
         "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "clean_users_movies_preferences",
+        "importPath": "tests.factories.preferences.clean_preferences",
+        "description": "tests.factories.preferences.clean_preferences",
+        "isExtraImport": true,
+        "detail": "tests.factories.preferences.clean_preferences",
         "documentation": {}
     },
     {
@@ -1409,6 +1441,15 @@
         "documentation": {}
     },
     {
+        "label": "generate_matches",
+        "kind": 2,
+        "importPath": "tests.test_4user",
+        "description": "tests.test_4user",
+        "peekOfCode": "def generate_matches():\n    user = create_user('teste6@gmail.com', 'teste6', 'senha6')\n    user2 = create_user('teste7@gmail.com', 'teste7', 'senha7')\n    user3 = create_user('teste8@gmail.com', 'teste8', 'senha8')\n    user4 = create_user('teste9@gmail.com', 'teste9', 'senha9')\n    movie = create_movie('nametest1', 'url')\n    movie2 = create_movie('nametest2', 'url')\n    movie3 = create_movie('nametest3', 'url')\n    create_preference(user.id, movie.id)\n    create_preference(user.id, movie2.id)",
+        "detail": "tests.test_4user",
+        "documentation": {}
+    },
+    {
         "label": "test_create_user",
         "kind": 2,
         "importPath": "tests.test_4user",
@@ -1485,7 +1526,16 @@
         "kind": 2,
         "importPath": "tests.test_4user",
         "description": "tests.test_4user",
-        "peekOfCode": "def test_remove_admin(app):\n    clean_users()\n    clean_admins()\n    user = create_user('adminteste2@gmail.com', 'adminteste2','adminteste2')\n    set_admin(user.id)\n    adminAttempt1 = Admin.query.filter_by(uid=user.id).first()\n    remove_admin(1)\n    adminAttempt2 = Admin.query.filter_by(uid=user.id).first()\n    assert adminAttempt1.uid == user.id and adminAttempt2 == None",
+        "peekOfCode": "def test_remove_admin(app):\n    clean_users()\n    clean_admins()\n    user = create_user('adminteste2@gmail.com', 'adminteste2','adminteste2')\n    set_admin(user.id)\n    adminAttempt1 = Admin.query.filter_by(uid=user.id).first()\n    remove_admin(1)\n    adminAttempt2 = Admin.query.filter_by(uid=user.id).first()\n    assert adminAttempt1.uid == user.id and adminAttempt2 == None\ndef test_calc_matches(app):",
+        "detail": "tests.test_4user",
+        "documentation": {}
+    },
+    {
+        "label": "test_calc_matches",
+        "kind": 2,
+        "importPath": "tests.test_4user",
+        "description": "tests.test_4user",
+        "peekOfCode": "def test_calc_matches(app):\n    clean_users_movies_preferences()\n    returnal = generate_matches()\n    recommendations = calc_matches(returnal[0])\n    print(recommendations)\n    assert recommendations[0][0] == 4 and recommendations[2][0] == 3",
         "detail": "tests.test_4user",
         "documentation": {}
     },
