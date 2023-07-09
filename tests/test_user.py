@@ -1,5 +1,5 @@
-from project.user import (authenticate_user, create_user, disconnect_user, get_all_users, get_user,
-    get_user_list, remove_admin, set_admin)
+from project.user import (authenticate_user, create_user, disconnect_user, get_admin,
+    get_all_users, get_user, get_user_list, remove_admin, set_admin)
 from project.db import Admin, User
 from tests.factories.users.clean_users import clean_admins, clean_users
 
@@ -8,6 +8,10 @@ def test_create_user(app):
     create_user('teste@gmail.com', 'teste','senha')
     user = User.query.filter_by(email='teste@gmail.com').first()
     assert user.id == 1
+
+def test_create_repeated_user(app):
+    user = create_user('teste@gmail.com', 'teste','senha')
+    assert user == None
 
 def test_get_all_users(app):
     clean_users()

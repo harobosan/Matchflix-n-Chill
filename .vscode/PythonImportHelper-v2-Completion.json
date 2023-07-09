@@ -345,6 +345,14 @@
         "documentation": {}
     },
     {
+        "label": "get_admin",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
         "label": "get_all_users",
         "importPath": "project.user",
         "description": "project.user",
@@ -594,7 +602,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def get_all_movies():\n    \"\"\"get_all_movies\"\"\"\n    movies = Movie.query.all()\n    return movies\ndef get_movie(name):\n    \"\"\"get_movie\"\"\"\n    movie = Movie.query.filter_by(name=name).first()\n    return movie\ndef get_movie_list(movie_list):\n    \"\"\"get_movie_list\"\"\"",
+        "peekOfCode": "def get_all_movies():\n    \"\"\"get_all_movies\"\"\"\n    movies = Movie.query.all()\n    return movies\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: get_movie(name)\nAssertivas de Entrada: O parâmetro 'name' é uma string\nAssertivas de Saída: Retorna o objeto 'movie' homônimo ao parâmetro, caso este exista, e None, caso contrário.\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\ndef get_movie(name):",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -603,7 +611,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def get_movie(name):\n    \"\"\"get_movie\"\"\"\n    movie = Movie.query.filter_by(name=name).first()\n    return movie\ndef get_movie_list(movie_list):\n    \"\"\"get_movie_list\"\"\"\n    movies = []\n    for mid in movie_list:\n        movie = Movie.query.filter_by(id=mid).first()\n        if movie:",
+        "peekOfCode": "def get_movie(name):\n    \"\"\"get_movie\"\"\"\n    movie = Movie.query.filter_by(name=name).first()\n    return movie\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: get_movie_list(movie_list)\nAssertivas de Entrada: O parâmetro 'movie_list' é um array de inteiros \ncontendo IDs dos filmes no banco de dados.\nAssertivas de Saída: Retorna um array de objetos 'Movie' correspondentes aos IDs fornecidos.\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -612,7 +620,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def get_movie_list(movie_list):\n    \"\"\"get_movie_list\"\"\"\n    movies = []\n    for mid in movie_list:\n        movie = Movie.query.filter_by(id=mid).first()\n        if movie:\n            movies.append(movie)\n    return movies\ndef movie_exists(name):\n    \"\"\"movie_exists\"\"\"",
+        "peekOfCode": "def get_movie_list(movie_list):\n    \"\"\"get_movie_list\"\"\"\n    movies = []\n    for mid in movie_list:\n        movie = Movie.query.filter_by(id=mid).first()\n        if movie:\n            movies.append(movie)\n    return movies\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: movie_exists(name)",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -621,7 +629,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def movie_exists(name):\n    \"\"\"movie_exists\"\"\"\n    return bool(get_movie(name))\ndef create_movie(name, image_url):\n    \"\"\"create_movie\"\"\"\n    if movie_exists(name):\n        return None\n    movie = Movie(name=name, image_url=image_url)\n    db_add(movie)\n    db_commit()",
+        "peekOfCode": "def movie_exists(name):\n    \"\"\"movie_exists\"\"\"\n    return bool(get_movie(name))\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: create_movie(name, image_url)\nAssertivas de Entrada: Os parâmetro 'name' e 'image_url' devem ser strings\nAssertivas de Saída: Se existe um filme de nome == name\n                        Retorna None\n                     Senão\n                        Será adicionada ao banco de dados um objeto 'Movie', ",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -630,7 +638,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def create_movie(name, image_url):\n    \"\"\"create_movie\"\"\"\n    if movie_exists(name):\n        return None\n    movie = Movie(name=name, image_url=image_url)\n    db_add(movie)\n    db_commit()\n    return movie\ndef delete_movie(name):\n    \"\"\"delete_movie\"\"\"",
+        "peekOfCode": "def create_movie(name, image_url):\n    \"\"\"create_movie\"\"\"\n    if movie_exists(name):\n        return None\n    movie = Movie(name=name, image_url=image_url)\n    db_add(movie)\n    db_commit()\n    return movie\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: delete_movie(name)",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -1044,7 +1052,16 @@
         "kind": 2,
         "importPath": "tests.test_user",
         "description": "tests.test_user",
-        "peekOfCode": "def test_create_user(app):\n    clean_users()\n    create_user('teste@gmail.com', 'teste','senha')\n    user = User.query.filter_by(email='teste@gmail.com').first()\n    assert user.id == 1\ndef test_get_all_users(app):\n    clean_users()\n    create_user('teste1@gmail.com', 'teste1','senha1')\n    create_user('teste2@gmail.com', 'teste2','senha2')\n    create_user('teste3@gmail.com', 'teste3','senha3')",
+        "peekOfCode": "def test_create_user(app):\n    clean_users()\n    create_user('teste@gmail.com', 'teste','senha')\n    user = User.query.filter_by(email='teste@gmail.com').first()\n    assert user.id == 1\ndef test_create_repeated_user(app):\n    user = create_user('teste@gmail.com', 'teste','senha')\n    assert user == None\ndef test_get_all_users(app):\n    clean_users()",
+        "detail": "tests.test_user",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_repeated_user",
+        "kind": 2,
+        "importPath": "tests.test_user",
+        "description": "tests.test_user",
+        "peekOfCode": "def test_create_repeated_user(app):\n    user = create_user('teste@gmail.com', 'teste','senha')\n    assert user == None\ndef test_get_all_users(app):\n    clean_users()\n    create_user('teste1@gmail.com', 'teste1','senha1')\n    create_user('teste2@gmail.com', 'teste2','senha2')\n    create_user('teste3@gmail.com', 'teste3','senha3')\n    users = get_all_users()\n    assert len(users) == 3 and users[0].id == 1 and users[2].id == 3",
         "detail": "tests.test_user",
         "documentation": {}
     },
