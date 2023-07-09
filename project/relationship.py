@@ -24,11 +24,13 @@ def get_user_relationships(uid):
 
     rel_1 = Relationship.query.filter_by(uid_1=uid)
     rel_2 = Relationship.query.filter_by(uid_2=uid)
+
     relationships = []
     for rel in rel_1:
         relationships.append(rel.uid_2)
     for rel in rel_2:
         relationships.append(rel.uid_1)
+
     return relationships
 
 def relationship_exists(uid_1, uid_2):

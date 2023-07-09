@@ -16,6 +16,18 @@ def get_movie(name):
     movie = Movie.query.filter_by(name=name).first()
     return movie
 
+def get_movie_list(movie_list):
+    """get_movie_list"""
+
+    movies = []
+    for mid in movie_list:
+        movie = Movie.query.filter_by(id=mid).first()
+
+        if movie:
+            movies.append(movie)
+
+    return movies
+
 def movie_exists(name):
     """movie_exists"""
 

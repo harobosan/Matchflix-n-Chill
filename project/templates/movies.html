@@ -1,11 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-        <h1>Catálogo de Filmes</h1>
-        {% for filme in filmes %}
-            <div class="filme">
-                <img src="{{filme['imagem']}}" alt="{{ filme['titulo'] }}">
-                <div class="titulo">{{ filme['titulo'] }}</div>
+<form method="post" action="/movies">
+    <div class="movies">
+        <div align=center style="border-radius: 10px; float: center;">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+        </div>
+        {% for movie in movies %}
+            <div class="moviecard">
+                <img class="moviecard-image" src="{{ url_for('static', filename=movie.image_url) }}" alt="{{ movie.name }}">
+                <div class="moviecard-title">{{ movie.name }}</div>
+                {% if current_user.is_authenticated %}
+                    {% if movie.id not in preferences %}
+                        <button type="submit" name="like" value="{{ movie.name }}"><i class="fa fa-thumbs-up"></i></button>
+                    {% else %}
+                        <button type="submit" name="dislike" value="{{ movie.name }}"><i class="fa fa-thumbs-down"></i></button>
+                    {% endif %}
+                {% endif %}
+                {% if privileged %}
+                    <button type="submit" name="remove" value="{{ movie.name }}"><i class="fa fa-remove"></i></button>
+                {% endif %}
             </div>
         {% endfor %}
+        <div style="height: 40px;"></div>
+    </div>
+</form>
 {% endblock %}

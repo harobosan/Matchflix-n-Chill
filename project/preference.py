@@ -19,13 +19,23 @@ def get_user_preferences(uid):
     """get_user_preferences"""
 
     preferences = Preference.query.filter_by(uid=uid)
-    return preferences
+
+    user_preferences = []
+    for pref in preferences:
+        user_preferences.append(pref.mid)
+
+    return user_preferences
 
 def get_movie_preferences(mid):
     """get_movie_preferences"""
 
     preferences = Preference.query.filter_by(mid=mid)
-    return preferences
+
+    movie_preferences = []
+    for pref in preferences:
+        movie_preferences.append(pref.uid)
+
+    return movie_preferences
 
 def preference_exists(uid, mid):
     """preference_exists"""

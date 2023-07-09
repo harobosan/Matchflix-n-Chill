@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 from sqlalchemy import ForeignKey
 
-
 db = SQLAlchemy()
 
 
@@ -32,7 +31,7 @@ class User(db.Model, UserMixin):
 class Admin(db.Model):
     """Admin"""
 
-    id = db.Column(db.Integer, ForeignKey('user.id'), primary_key=True)
+    uid = db.Column(db.Integer, ForeignKey('user.id'), primary_key=True)
 
     user = db.relationship(
         'User',

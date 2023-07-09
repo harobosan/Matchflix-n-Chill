@@ -1,0 +1,85 @@
+
+.topnav {
+  background-color: #303030;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.topnav a {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 20px 20px;
+  float: left;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.topnav a:hover {
+  background-color: #c2062b;
+}
+
+.navbar-logo {
+  width: 50px;
+  padding: 5px 5px;
+  float: left;
+  border-radius: 10px;
+}
+
+.navbar-end {
+  float: right;
+}
+
+.movies {
+  position: relative;
+  float: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 32px;
+  overflow: hidden;
+  background: rgba(48, 48, 48, 0.8);
+  border-radius: 10px;
+  
+}
+
+.moviecard {
+  position: relative;
+  width: 320px;
+  height: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 32px;
+  overflow: hidden;
+  background: black;
+  border-radius: 8px;
+}
+
+.moviecard-image {
+  position: absolute;
+  width: 120px;
+  height: 90px;
+  top: 16px;
+  left: 16px;
+  border-radius: 8px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.moviecard-image:hover {
+  transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.moviecard-title {
+  position: absolute;
+  width: 320px;
+  height: 40px;
+  top: 120px;
+  left: 0px;
+  background: white;
+  border-radius: 0px 0px 8px 8px;
+  text-align: center;
+  color: red;
+  font-size: 32px;
+  text-transform: uppercase;
+}

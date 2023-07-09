@@ -1,7 +1,7 @@
 """user"""
 
 from werkzeug.security import generate_password_hash, check_password_hash
-from .db import User, db_commit, db_add, db_del
+from .db import User, Admin, db_commit, db_add, db_del
 
 
 def get_all_users():
@@ -15,6 +15,18 @@ def get_user(email):
 
     user = User.query.filter_by(email=email).first()
     return user
+
+def get_user_list(user_list):
+    """get_user_list"""
+
+    users = []
+    for uid in user_list:
+        user = User.query.filter_by(id=uid).first()
+
+        if user:
+            users.append(user)
+
+    return users
 
 def user_exists(email):
     """user_exists"""
@@ -59,4 +71,35 @@ def disconnect_user(user):
 
     if user and user_exists(user.email):
         user.authenticated = False
+        db_commit()
+
+def get_admin(uid):
+    """get_admin"""
+
+    admin = Admin.query.filter_by(uid=uid).first()
+    return admin
+
+def is_admin(uid):
+    """is_admin"""
+
+    return bool(get_admin(uid))
+
+def set_admin(uid):
+    """set_admin"""
+
+    if is_admin(uid):
+        return None
+
+    admin = Admin(uid=uid)
+    db_add(admin)
+    db_commit()
+    return admin
+
+def remove_admin(uid):
+    """remove_admin"""
+
+    admin = get_admin(uid)
+
+    if admin:
+        db_del(admin)
         db_commit()
