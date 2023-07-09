@@ -545,7 +545,39 @@
         "documentation": {}
     },
     {
+        "label": "calc_movie_weight",
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "isExtraImport": true,
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
         "label": "create_preference",
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "isExtraImport": true,
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "delete_movie_preferences",
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "isExtraImport": true,
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "delete_preference",
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "isExtraImport": true,
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "delete_user_preferences",
         "importPath": "project.preference",
         "description": "project.preference",
         "isExtraImport": true,
@@ -643,7 +675,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class Movie(db.Model):\n    \"\"\"Movie\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(100))\n    image_url = db.Column(db.String(200))\nclass Preference(db.Model):\n    \"\"\"Preference\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    uid = db.Column(db.Integer, db.ForeignKey('user.id'))\n    mid = db.Column(db.Integer, db.ForeignKey('movie.id'))",
+        "peekOfCode": "class Movie(db.Model):\n    \"\"\"Movie\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(100))\n    image_url = db.Column(db.String(200))\n    weight = db.Column(db.Integer)\n    score = db.Column(db.Integer)\nclass Preference(db.Model):\n    \"\"\"Preference\"\"\"\n    id = db.Column(db.Integer, primary_key=True)",
         "detail": "project.db",
         "documentation": {}
     },
@@ -733,7 +765,7 @@
         "kind": 2,
         "importPath": "project.main",
         "description": "project.main",
-        "peekOfCode": "def favicon():\n    \"\"\"favicon\"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/')\ndef index():\n    \"\"\"index\"\"\"\n    create_user('a@a','a','a')\n    set_admin(1)\n    create_user('b@b','b','b')\n    create_user('c@c','c','c')",
+        "peekOfCode": "def favicon():\n    \"\"\"favicon\"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/')\ndef index():\n    \"\"\"index\"\"\"\n    #print(calc_matches(1))\n    return render_template('index.html')\n@main.route('/profile')\ndef profile():",
         "detail": "project.main",
         "documentation": {}
     },
@@ -742,7 +774,7 @@
         "kind": 2,
         "importPath": "project.main",
         "description": "project.main",
-        "peekOfCode": "def index():\n    \"\"\"index\"\"\"\n    create_user('a@a','a','a')\n    set_admin(1)\n    create_user('b@b','b','b')\n    create_user('c@c','c','c')\n    create_user('d@d','d','d')\n    create_movie('movie1','imageExample.jpeg')\n    create_movie('movie2','logo.png')\n    create_movie('movie3','logomatchflix_cinza.png')",
+        "peekOfCode": "def index():\n    \"\"\"index\"\"\"\n    #print(calc_matches(1))\n    return render_template('index.html')\n@main.route('/profile')\ndef profile():\n    \"\"\"profile\"\"\"\n    if not current_user.is_authenticated:\n        flash('Please, authenticate to access this page.')\n        return redirect(url_for('auth.login'))",
         "detail": "project.main",
         "documentation": {}
     },
@@ -769,7 +801,7 @@
         "kind": 5,
         "importPath": "project.main",
         "description": "project.main",
-        "peekOfCode": "main = Blueprint('main', __name__)\n@main.route('/favicon.ico')\ndef favicon():\n    \"\"\"favicon\"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/')\ndef index():\n    \"\"\"index\"\"\"\n    create_user('a@a','a','a')\n    set_admin(1)",
+        "peekOfCode": "main = Blueprint('main', __name__)\n@main.route('/favicon.ico')\ndef favicon():\n    \"\"\"favicon\"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/')\ndef index():\n    \"\"\"index\"\"\"\n    #print(calc_matches(1))\n    return render_template('index.html')",
         "detail": "project.main",
         "documentation": {}
     },
@@ -814,7 +846,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def create_movie(name, image_url):\n    \"\"\"create_movie\"\"\"\n    if movie_exists(name):\n        return None\n    movie = Movie(name=name, image_url=image_url)\n    db_add(movie)\n    db_commit()\n    return movie\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: delete_movie(name)",
+        "peekOfCode": "def create_movie(name, image_url):\n    \"\"\"create_movie\"\"\"\n    if movie_exists(name):\n        return None\n    movie = Movie(name=name, image_url=image_url, weight=0, score=0)\n    db_add(movie)\n    db_commit()\n    return movie\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: delete_movie(name)",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -842,6 +874,33 @@
         "importPath": "project.movie",
         "description": "project.movie",
         "peekOfCode": "def seed_movies():\n    \"\"\"seed_movies\"\"\"\n    for i in range(10):\n        movie_name = f\"Filme {i}\"\n        if movie_exists(movie_name):\n            random_name = generate_random_movie_name()\n            while movie_exists(random_name):\n                random_name = generate_random_movie_name()\n            movie = Movie(name=random_name, image_url=\"https://imagem\")\n        else:",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "get_movie_weight",
+        "kind": 2,
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "peekOfCode": "def get_movie_weight(mid):\n    \"\"\"get_movie_weight\"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:\n        return movie.weight\n    return 0\ndef update_movie_weight(mid, weight):\n    \"\"\"update_movie_weight\"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "update_movie_weight",
+        "kind": 2,
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "peekOfCode": "def update_movie_weight(mid, weight):\n    \"\"\"update_movie_weight\"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:\n        movie.weight = weight\n        db_commit()\ndef update_movie_score(mid, score):\n    \"\"\"update_movie_score\"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "update_movie_score",
+        "kind": 2,
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "peekOfCode": "def update_movie_score(mid, score):\n    \"\"\"update_movie_score\"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:\n        movie.score += score\n        db_commit()",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -895,7 +954,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def create_preference(uid, mid):\n    \"\"\"create_preference\"\"\"\n    if preference_exists(uid, mid):\n        return None\n    preference = Preference(uid=uid, mid=mid)\n    db_add(preference)\n    db_commit()\n    return preference\ndef delete_preference(uid, mid):\n    \"\"\"delete_preference\"\"\"",
+        "peekOfCode": "def create_preference(uid, mid):\n    \"\"\"create_preference\"\"\"\n    if preference_exists(uid, mid):\n        return None\n    preference = Preference(uid=uid, mid=mid)\n    db_add(preference)\n    db_commit()\n    update_movie(mid, 1)\n    return preference\ndef delete_preference(uid, mid):",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -904,7 +963,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def delete_preference(uid, mid):\n    \"\"\"delete_preference\"\"\"\n    preference = get_preference(uid, mid)\n    if preference:\n        db_del(preference)\n        db_commit()\ndef delete_user_preferences(uid):\n    \"\"\"delete_user_preferences\"\"\"\n    preferences = get_user_preferences(uid)\n    if preferences:",
+        "peekOfCode": "def delete_preference(uid, mid):\n    \"\"\"delete_preference\"\"\"\n    preference = get_preference(uid, mid)\n    if preference:\n        db_del(preference)\n        db_commit()\n        update_movie(mid, -1)\ndef delete_user_preferences(uid):\n    \"\"\"delete_user_preferences\"\"\"\n    preferences = get_user_preferences(uid)",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -913,7 +972,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def delete_user_preferences(uid):\n    \"\"\"delete_user_preferences\"\"\"\n    preferences = get_user_preferences(uid)\n    if preferences:\n        for preference in preferences:\n            db_del(preference)\n        db_commit()\ndef delete_movie_preferences(mid):\n    \"\"\"delete_movie_preferences\"\"\"\n    preferences = get_movie_preferences(mid)",
+        "peekOfCode": "def delete_user_preferences(uid):\n    \"\"\"delete_user_preferences\"\"\"\n    preferences = get_user_preferences(uid)\n    if preferences:\n        for mid in preferences:\n            delete_preference(uid, mid)\ndef delete_movie_preferences(mid):\n    \"\"\"delete_movie_preferences\"\"\"\n    preferences = get_movie_preferences(mid)\n    if preferences:",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -922,7 +981,25 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def delete_movie_preferences(mid):\n    \"\"\"delete_movie_preferences\"\"\"\n    preferences = get_movie_preferences(mid)\n    if preferences:\n        for preference in preferences:\n            db_del(preference)\n        db_commit()",
+        "peekOfCode": "def delete_movie_preferences(mid):\n    \"\"\"delete_movie_preferences\"\"\"\n    preferences = get_movie_preferences(mid)\n    if preferences:\n        for uid in preferences:\n            delete_preference(uid, mid)\ndef calc_movie_weight(mid):\n    \"\"\"calc_movie_weight\"\"\"\n    preferences = len(get_all_preferences())\n    movie_preferences = len(get_movie_preferences(mid))",
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "calc_movie_weight",
+        "kind": 2,
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "peekOfCode": "def calc_movie_weight(mid):\n    \"\"\"calc_movie_weight\"\"\"\n    preferences = len(get_all_preferences())\n    movie_preferences = len(get_movie_preferences(mid))\n    if preferences and movie_preferences:\n        return round(1/(movie_preferences/preferences),1)\n    return 0\ndef update_movie(mid, score):\n    \"\"\"update_movie\"\"\"\n    preferences = get_all_preferences()",
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "update_movie",
+        "kind": 2,
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "peekOfCode": "def update_movie(mid, score):\n    \"\"\"update_movie\"\"\"\n    preferences = get_all_preferences()\n    for preference in preferences:\n        update_movie_weight(preference.mid, calc_movie_weight(preference.mid))\n    update_movie_weight(mid, calc_movie_weight(mid))\n    update_movie_score(mid, score)",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -985,7 +1062,7 @@
         "kind": 2,
         "importPath": "project.relationship",
         "description": "project.relationship",
-        "peekOfCode": "def delete_user_relationships(uid):\n    \"\"\"delete_user_relationships\"\"\"\n    relationships = get_user_relationships(uid)\n    if relationships:\n        for relationship in relationships:\n            db_del(relationship)\n        db_commit()",
+        "peekOfCode": "def delete_user_relationships(uid):\n    \"\"\"delete_user_relationships\"\"\"\n    relationships = get_user_relationships(uid)\n    if relationships:\n        for uid_2 in relationships:\n            db_del(get_relationship(uid, uid_2))\n        db_commit()",
         "detail": "project.relationship",
         "documentation": {}
     },
@@ -1093,7 +1170,25 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def remove_admin(uid):\n    \"\"\"remove_admin\"\"\"\n    admin = get_admin(uid)\n    if admin:\n        db_del(admin)\n        db_commit()",
+        "peekOfCode": "def remove_admin(uid):\n    \"\"\"remove_admin\"\"\"\n    admin = get_admin(uid)\n    if admin:\n        db_del(admin)\n        db_commit()\ndef sort_matches(user):\n    \"\"\"sort_matches\"\"\"\n    return user[1]\ndef calc_matches(uid):",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "sort_matches",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def sort_matches(user):\n    \"\"\"sort_matches\"\"\"\n    return user[1]\ndef calc_matches(uid):\n    \"\"\"calc_matches\"\"\"\n    user_preferences = get_user_preferences(uid)\n    movies_list = []\n    for mid in user_preferences:\n        movies_list.append([get_movie_weight(mid), get_movie_preferences(mid)])\n    user_matches = []",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "calc_matches",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def calc_matches(uid):\n    \"\"\"calc_matches\"\"\"\n    user_preferences = get_user_preferences(uid)\n    movies_list = []\n    for mid in user_preferences:\n        movies_list.append([get_movie_weight(mid), get_movie_preferences(mid)])\n    user_matches = []\n    user_scores = []\n    for movie_pair in movies_list:\n        for user in movie_pair[1]:",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1300,7 +1395,7 @@
         "kind": 2,
         "importPath": "tests.test_3relationships",
         "description": "tests.test_3relationships",
-        "peekOfCode": "def test_delete_relationship(app):\n    length1 = len(get_user_relationships(1))\n    delete_relationship(1,3)\n    length2 = len(get_user_relationships(1))\n    assert length1 == 2 and length2 == 1\n'''\ndef test_delete_user_relationships(app):\n    create_relationship(1, 3)\n    length1 = len(get_user_relationships(1))\n    delete_user_relationships(1)",
+        "peekOfCode": "def test_delete_relationship(app):\n    length1 = len(get_user_relationships(1))\n    delete_relationship(1,3)\n    length2 = len(get_user_relationships(1))\n    assert length1 == 2 and length2 == 1\ndef test_delete_user_relationships(app):\n    create_relationship(1, 3)\n    length1 = len(get_user_relationships(1))\n    delete_user_relationships(1)\n    length2 = len(get_user_relationships(1))",
         "detail": "tests.test_3relationships",
         "documentation": {}
     },
@@ -1309,7 +1404,7 @@
         "kind": 2,
         "importPath": "tests.test_3relationships",
         "description": "tests.test_3relationships",
-        "peekOfCode": "def test_delete_user_relationships(app):\n    create_relationship(1, 3)\n    length1 = len(get_user_relationships(1))\n    delete_user_relationships(1)\n    length2 = len(get_user_relationships(1))\n    assert length1 == 2 and length2 == 0\n'''",
+        "peekOfCode": "def test_delete_user_relationships(app):\n    create_relationship(1, 3)\n    length1 = len(get_user_relationships(1))\n    delete_user_relationships(1)\n    length2 = len(get_user_relationships(1))\n    assert length1 == 2 and length2 == 0",
         "detail": "tests.test_3relationships",
         "documentation": {}
     },
@@ -1435,7 +1530,43 @@
         "kind": 2,
         "importPath": "tests.test_5preferences",
         "description": "tests.test_5preferences",
-        "peekOfCode": "def test_get_movie_preferences(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    preferences = get_movie_preferences(returnal[1])\n    assert len(preferences) == 1",
+        "peekOfCode": "def test_get_movie_preferences(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    preferences = get_movie_preferences(returnal[1])\n    assert len(preferences) == 1\ndef test_delete_preference(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    length1 = len(get_all_preferences())\n    delete_preference(returnal[0],returnal[1])",
+        "detail": "tests.test_5preferences",
+        "documentation": {}
+    },
+    {
+        "label": "test_delete_preference",
+        "kind": 2,
+        "importPath": "tests.test_5preferences",
+        "description": "tests.test_5preferences",
+        "peekOfCode": "def test_delete_preference(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    length1 = len(get_all_preferences())\n    delete_preference(returnal[0],returnal[1])\n    length2 = len(get_all_preferences())\n    assert length1 == length2+1\ndef test_delete_user_preferences(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()",
+        "detail": "tests.test_5preferences",
+        "documentation": {}
+    },
+    {
+        "label": "test_delete_user_preferences",
+        "kind": 2,
+        "importPath": "tests.test_5preferences",
+        "description": "tests.test_5preferences",
+        "peekOfCode": "def test_delete_user_preferences(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    delete_user_preferences(returnal[0])\n    length = len(get_user_preferences(returnal[0]))\n    assert length == 0\ndef test_delete_movie_preferences(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    delete_movie_preferences(returnal[1])",
+        "detail": "tests.test_5preferences",
+        "documentation": {}
+    },
+    {
+        "label": "test_delete_movie_preferences",
+        "kind": 2,
+        "importPath": "tests.test_5preferences",
+        "description": "tests.test_5preferences",
+        "peekOfCode": "def test_delete_movie_preferences(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    delete_movie_preferences(returnal[1])\n    length = len(get_movie_preferences(returnal[1]))\n    assert length == 0\ndef test_calc_movie_weight(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    weight = calc_movie_weight(returnal[1])",
+        "detail": "tests.test_5preferences",
+        "documentation": {}
+    },
+    {
+        "label": "test_calc_movie_weight",
+        "kind": 2,
+        "importPath": "tests.test_5preferences",
+        "description": "tests.test_5preferences",
+        "peekOfCode": "def test_calc_movie_weight(app):\n    clean_users_movies_preferences()\n    returnal = generate_preferences()\n    weight = calc_movie_weight(returnal[1])\n    assert weight == 2",
         "detail": "tests.test_5preferences",
         "documentation": {}
     }

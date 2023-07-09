@@ -43,11 +43,9 @@ def test_delete_relationship(app):
     length2 = len(get_user_relationships(1))
     assert length1 == 2 and length2 == 1
 
-'''
 def test_delete_user_relationships(app):
     create_relationship(1, 3)
     length1 = len(get_user_relationships(1))
     delete_user_relationships(1)
     length2 = len(get_user_relationships(1))
     assert length1 == 2 and length2 == 0
-'''
