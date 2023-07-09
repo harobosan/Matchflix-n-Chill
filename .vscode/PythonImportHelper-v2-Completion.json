@@ -321,6 +321,22 @@
         "documentation": {}
     },
     {
+        "label": "get_user",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_list",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
         "label": "clean_users",
         "importPath": "tests.factories.users.clean_users",
         "description": "tests.factories.users.clean_users",
@@ -972,7 +988,25 @@
         "kind": 2,
         "importPath": "tests.test_user",
         "description": "tests.test_user",
-        "peekOfCode": "def test_get_all_users(app):\n    clean_users()\n    create_user('teste1@gmail.com', 'teste1','senha1')\n    create_user('teste2@gmail.com', 'teste2','senha2')\n    create_user('teste3@gmail.com', 'teste3','senha3')\n    users = get_all_users()\n    assert len(users) == 3 and users[0].id == 1 and users[2].id == 3",
+        "peekOfCode": "def test_get_all_users(app):\n    clean_users()\n    create_user('teste1@gmail.com', 'teste1','senha1')\n    create_user('teste2@gmail.com', 'teste2','senha2')\n    create_user('teste3@gmail.com', 'teste3','senha3')\n    users = get_all_users()\n    assert len(users) == 3 and users[0].id == 1 and users[2].id == 3\ndef test_get_user(app):\n    user = get_user('teste1@gmail.com')\n    assert user.username == 'teste1' ",
+        "detail": "tests.test_user",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_user",
+        "kind": 2,
+        "importPath": "tests.test_user",
+        "description": "tests.test_user",
+        "peekOfCode": "def test_get_user(app):\n    user = get_user('teste1@gmail.com')\n    assert user.username == 'teste1' \ndef test_get_user_list(app):\n    users = get_user_list([3,2])\n    assert users[0].username == 'teste3' and users[1].username == 'teste2'",
+        "detail": "tests.test_user",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_user_list",
+        "kind": 2,
+        "importPath": "tests.test_user",
+        "description": "tests.test_user",
+        "peekOfCode": "def test_get_user_list(app):\n    users = get_user_list([3,2])\n    assert users[0].username == 'teste3' and users[1].username == 'teste2'",
         "detail": "tests.test_user",
         "documentation": {}
     }
