@@ -3,22 +3,24 @@
 {% block content %}
 <form method="post" action="/movies">
     <div class="movies">
-        <div align=center style="border-radius: 10px; float: center;">
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-        </div>
+            <div class="newmoviecard">
+                <input class="title-field" type="text" name="title" placeholder="Movie Title" autofocus="">
+                <button class="add-bttn" type="submit" name="add", value="add"><i class="fa fa-plus"></i></button>
+            </div>
+
         {% for movie in movies %}
             <div class="moviecard">
                 <img class="moviecard-image" src="{{ url_for('static', filename=movie.image_url) }}" alt="{{ movie.name }}">
                 <div class="moviecard-title">{{ movie.name }}</div>
                 {% if current_user.is_authenticated %}
                     {% if movie.id not in preferences %}
-                        <button type="submit" name="like" value="{{ movie.name }}"><i class="fa fa-thumbs-up"></i></button>
+                        <button class="like-bttn" type="submit" name="like" value="{{ movie.name }}"><i class="fa fa-heart"></i></button>
                     {% else %}
-                        <button type="submit" name="dislike" value="{{ movie.name }}"><i class="fa fa-thumbs-down"></i></button>
+                        <button class="dislike-bttn" type="submit" name="dislike" value="{{ movie.name }}"><i class="fa fa-heart"></i></button>
                     {% endif %}
                 {% endif %}
                 {% if privileged %}
-                    <button type="submit" name="remove" value="{{ movie.name }}"><i class="fa fa-remove"></i></button>
+                    <button class="remove-bttn" type="submit" name="remove" value="{{ movie.name }}"><i class="fa fa-trash"></i></button>
                 {% endif %}
             </div>
         {% endfor %}
