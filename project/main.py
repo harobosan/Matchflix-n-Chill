@@ -21,7 +21,7 @@ def favicon():
 def index():
     """index"""
 
-    print(calc_matches(1))
+    #print(calc_matches(1))
 
     return render_template('index.html')
 
