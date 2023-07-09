@@ -1,4 +1,5 @@
-from project.user import create_user, get_all_users, get_user, get_user_list
+from project.user import (authenticate_user, create_user, disconnect_user, get_all_users, get_user,
+    get_user_list)
 from project.db import User
 from tests.factories.users.clean_users import clean_users
 
@@ -23,3 +24,14 @@ def test_get_user(app):
 def test_get_user_list(app):
     users = get_user_list([3,2])
     assert users[0].username == 'teste3' and users[1].username == 'teste2'
+
+def test_authenticate_user(app):
+    user = authenticate_user('teste1@gmail.com', 'senha1')
+    assert user.authenticated
+
+def test_disconnect_user(app):
+    user = create_user('teste4@gmail.com', 'teste4','senha4')
+    authenticate_user(user.email, user.password)
+    userDisconnected = disconnect_user(user)
+
+    assert user.authenticated == False

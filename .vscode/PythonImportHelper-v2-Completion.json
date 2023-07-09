@@ -305,7 +305,23 @@
         "documentation": {}
     },
     {
+        "label": "authenticate_user",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
         "label": "create_user",
+        "importPath": "project.user",
+        "description": "project.user",
+        "isExtraImport": true,
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "disconnect_user",
         "importPath": "project.user",
         "description": "project.user",
         "isExtraImport": true,
@@ -997,7 +1013,7 @@
         "kind": 2,
         "importPath": "tests.test_user",
         "description": "tests.test_user",
-        "peekOfCode": "def test_get_user(app):\n    user = get_user('teste1@gmail.com')\n    assert user.username == 'teste1' \ndef test_get_user_list(app):\n    users = get_user_list([3,2])\n    assert users[0].username == 'teste3' and users[1].username == 'teste2'",
+        "peekOfCode": "def test_get_user(app):\n    user = get_user('teste1@gmail.com')\n    assert user.username == 'teste1' \ndef test_get_user_list(app):\n    users = get_user_list([3,2])\n    assert users[0].username == 'teste3' and users[1].username == 'teste2'\ndef test_authenticate_user(app):\n    user = authenticate_user('teste1@gmail.com', 'senha1')\n    assert user.authenticated\ndef test_disconnect_user(app):",
         "detail": "tests.test_user",
         "documentation": {}
     },
@@ -1006,7 +1022,25 @@
         "kind": 2,
         "importPath": "tests.test_user",
         "description": "tests.test_user",
-        "peekOfCode": "def test_get_user_list(app):\n    users = get_user_list([3,2])\n    assert users[0].username == 'teste3' and users[1].username == 'teste2'",
+        "peekOfCode": "def test_get_user_list(app):\n    users = get_user_list([3,2])\n    assert users[0].username == 'teste3' and users[1].username == 'teste2'\ndef test_authenticate_user(app):\n    user = authenticate_user('teste1@gmail.com', 'senha1')\n    assert user.authenticated\ndef test_disconnect_user(app):\n    user = create_user('teste4@gmail.com', 'teste4','senha4')\n    authenticate_user(user.email, user.password)\n    userDisconnected = disconnect_user(user)",
+        "detail": "tests.test_user",
+        "documentation": {}
+    },
+    {
+        "label": "test_authenticate_user",
+        "kind": 2,
+        "importPath": "tests.test_user",
+        "description": "tests.test_user",
+        "peekOfCode": "def test_authenticate_user(app):\n    user = authenticate_user('teste1@gmail.com', 'senha1')\n    assert user.authenticated\ndef test_disconnect_user(app):\n    user = create_user('teste4@gmail.com', 'teste4','senha4')\n    authenticate_user(user.email, user.password)\n    userDisconnected = disconnect_user(user)\n    assert user.authenticated == False",
+        "detail": "tests.test_user",
+        "documentation": {}
+    },
+    {
+        "label": "test_disconnect_user",
+        "kind": 2,
+        "importPath": "tests.test_user",
+        "description": "tests.test_user",
+        "peekOfCode": "def test_disconnect_user(app):\n    user = create_user('teste4@gmail.com', 'teste4','senha4')\n    authenticate_user(user.email, user.password)\n    userDisconnected = disconnect_user(user)\n    assert user.authenticated == False",
         "detail": "tests.test_user",
         "documentation": {}
     }
