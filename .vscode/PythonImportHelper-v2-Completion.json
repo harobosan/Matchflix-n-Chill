@@ -192,6 +192,30 @@
         "documentation": {}
     },
     {
+        "label": "Movie",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "db_commit",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
+        "label": "Movie",
+        "importPath": "project.db",
+        "description": "project.db",
+        "isExtraImport": true,
+        "detail": "project.db",
+        "documentation": {}
+    },
+    {
         "label": "pytest",
         "kind": 6,
         "isExtraImport": true,
@@ -209,19 +233,27 @@
         "documentation": {}
     },
     {
-        "label": "Movie",
-        "importPath": "project.db",
-        "description": "project.db",
-        "isExtraImport": true,
-        "detail": "project.db",
-        "documentation": {}
-    },
-    {
         "label": "create_movie",
         "importPath": "project.movie",
         "description": "project.movie",
         "isExtraImport": true,
         "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_movies",
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "isExtraImport": true,
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "clean_movies",
+        "importPath": "tests.factories.movies.clean_movies",
+        "description": "tests.factories.movies.clean_movies",
+        "isExtraImport": true,
+        "detail": "tests.factories.movies.clean_movies",
         "documentation": {}
     },
     {
@@ -738,6 +770,15 @@
         "documentation": {}
     },
     {
+        "label": "clean_movies",
+        "kind": 2,
+        "importPath": "tests.factories.movies.clean_movies",
+        "description": "tests.factories.movies.clean_movies",
+        "peekOfCode": "def clean_movies():\n    Movie.query.delete()\n    db_commit()",
+        "detail": "tests.factories.movies.clean_movies",
+        "documentation": {}
+    },
+    {
         "label": "app",
         "kind": 2,
         "importPath": "tests.conftest",
@@ -751,7 +792,7 @@
         "kind": 2,
         "importPath": "tests.test_app",
         "description": "tests.test_app",
-        "peekOfCode": "def test_app_is_created(app):\n    assert app.name == 'project'\ndef test_config_is_loaded(config):\n    assert config[\"DEBUG\"] is False\ndef test_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
+        "peekOfCode": "def test_app_is_created(app):\n    assert app.name == 'project'\ndef test_config_is_loaded(config):\n    assert config[\"DEBUG\"] is False\ndef test_fake_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
         "detail": "tests.test_app",
         "documentation": {}
     },
@@ -760,16 +801,16 @@
         "kind": 2,
         "importPath": "tests.test_app",
         "description": "tests.test_app",
-        "peekOfCode": "def test_config_is_loaded(config):\n    assert config[\"DEBUG\"] is False\ndef test_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
+        "peekOfCode": "def test_config_is_loaded(config):\n    assert config[\"DEBUG\"] is False\ndef test_fake_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
         "detail": "tests.test_app",
         "documentation": {}
     },
     {
-        "label": "test_request_returns_404",
+        "label": "test_fake_request_returns_404",
         "kind": 2,
         "importPath": "tests.test_app",
         "description": "tests.test_app",
-        "peekOfCode": "def test_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
+        "peekOfCode": "def test_fake_request_returns_404(client):\n    assert client.get(\"/fakeUrljustFoRtests\").status_code == 404",
         "detail": "tests.test_app",
         "documentation": {}
     },
@@ -778,7 +819,16 @@
         "kind": 2,
         "importPath": "tests.test_movie",
         "description": "tests.test_movie",
-        "peekOfCode": "def test_create_movie(client):\n    create_movie('name','url')\n    movie = Movie.query.filter_by(name='name').first()\n    assert movie.image_url == 'url' and movie.name == 'name'",
+        "peekOfCode": "def test_create_movie(app):\n    create_movie('name','url')\n    movie = Movie.query.filter_by(name='name').first()\n    assert movie.image_url == 'url' and movie.name == 'name'\ndef test_get_all_movies(app):\n    clean_movies()\n    create_movie('name1','url1')\n    create_movie('name2','url2')\n    create_movie('name3','url3')\n    movies = get_all_movies()",
+        "detail": "tests.test_movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_all_movies",
+        "kind": 2,
+        "importPath": "tests.test_movie",
+        "description": "tests.test_movie",
+        "peekOfCode": "def test_get_all_movies(app):\n    clean_movies()\n    create_movie('name1','url1')\n    create_movie('name2','url2')\n    create_movie('name3','url3')\n    movies = get_all_movies()\n    print(movies)\n    firstCondition = (movies[0].image_url == 'url1' and movies[0].name == 'name1')\n    secondCondition = (movies[1].image_url == 'url2' and movies[1].name == 'name2')\n    thirdCondition = (movies[2].image_url == 'url3' and movies[2].name == 'name3') ",
         "detail": "tests.test_movie",
         "documentation": {}
     }
