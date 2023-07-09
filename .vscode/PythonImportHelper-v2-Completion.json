@@ -249,6 +249,14 @@
         "documentation": {}
     },
     {
+        "label": "get_movie_list",
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "isExtraImport": true,
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
         "label": "clean_movies",
         "importPath": "tests.factories.movies.clean_movies",
         "description": "tests.factories.movies.clean_movies",
@@ -819,7 +827,7 @@
         "kind": 2,
         "importPath": "tests.test_movie",
         "description": "tests.test_movie",
-        "peekOfCode": "def test_create_movie(app):\n    create_movie('name','url')\n    movie = Movie.query.filter_by(name='name').first()\n    assert movie.image_url == 'url' and movie.name == 'name'\ndef test_get_all_movies(app):\n    clean_movies()\n    create_movie('name1','url1')\n    create_movie('name2','url2')\n    create_movie('name3','url3')\n    movies = get_all_movies()",
+        "peekOfCode": "def test_create_movie(app):\n    clean_movies()\n    create_movie('name','url')\n    movie = Movie.query.filter_by(name='name').first()\n    assert movie.id == 1 and movie.image_url == 'url' and movie.name == 'name'\ndef test_get_all_movies(app):\n    clean_movies()\n    create_movie('name1','url1')\n    create_movie('name2','url2')\n    create_movie('name3','url3')",
         "detail": "tests.test_movie",
         "documentation": {}
     },
@@ -828,7 +836,16 @@
         "kind": 2,
         "importPath": "tests.test_movie",
         "description": "tests.test_movie",
-        "peekOfCode": "def test_get_all_movies(app):\n    clean_movies()\n    create_movie('name1','url1')\n    create_movie('name2','url2')\n    create_movie('name3','url3')\n    movies = get_all_movies()\n    print(movies)\n    firstCondition = (movies[0].image_url == 'url1' and movies[0].name == 'name1')\n    secondCondition = (movies[1].image_url == 'url2' and movies[1].name == 'name2')\n    thirdCondition = (movies[2].image_url == 'url3' and movies[2].name == 'name3') ",
+        "peekOfCode": "def test_get_all_movies(app):\n    clean_movies()\n    create_movie('name1','url1')\n    create_movie('name2','url2')\n    create_movie('name3','url3')\n    movies = get_all_movies()\n    assert movies[0].id == 1 and movies[1].id == 2 and movies[2].id == 3\ndef test_get_movie_list(app):\n    movies = get_movie_list([2,3])\n    assert movies[0].id == 2 and movies[1].id == 3",
+        "detail": "tests.test_movie",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_movie_list",
+        "kind": 2,
+        "importPath": "tests.test_movie",
+        "description": "tests.test_movie",
+        "peekOfCode": "def test_get_movie_list(app):\n    movies = get_movie_list([2,3])\n    assert movies[0].id == 2 and movies[1].id == 3",
         "detail": "tests.test_movie",
         "documentation": {}
     }
