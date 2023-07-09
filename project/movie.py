@@ -3,18 +3,34 @@
 from random import randint
 from .db import Movie, db_commit, db_add, db_del
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: get_all_movies()
+Assertivas de Entrada: Nenhuma pré-condição específica.
+Assertiva de Saída: Retorna uma lista de todos os filmes existentes no banco de dados.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def get_all_movies():
     """get_all_movies"""
 
     movies = Movie.query.all()
     return movies
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: get_movie(name)
+Assertivas de Entrada: O parâmetro 'name' é uma string
+Assertivas de Saída: Retorna o objeto 'movie' homônimo ao parâmetro, caso este exista, e None, caso contrário.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def get_movie(name):
     """get_movie"""
 
     movie = Movie.query.filter_by(name=name).first()
     return movie
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: get_movie_list(movie_list)
+Assertivas de Entrada: O parâmetro 'movie_list' é um array de inteiros 
+contendo IDs dos filmes no banco de dados.
+Assertivas de Saída: Retorna um array de objetos 'Movie' correspondentes aos IDs fornecidos.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def get_movie_list(movie_list):
     """get_movie_list"""
@@ -28,10 +44,29 @@ def get_movie_list(movie_list):
 
     return movies
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: movie_exists(name)
+Assertivas de Entrada: O parâmetro 'name' é uma string
+Assertivas de Saída: Se existe um filme com nome == name no banco
+                        Retorna True
+                     Senão
+                        Retorna False
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 def movie_exists(name):
     """movie_exists"""
 
     return bool(get_movie(name))
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: create_movie(name, image_url)
+Assertivas de Entrada: Os parâmetro 'name' e 'image_url' devem ser strings
+Assertivas de Saída: Se existe um filme de nome == name
+                        Retorna None
+                     Senão
+                        Será adicionada ao banco de dados um objeto 'Movie', 
+                        tendo 'name' e 'image_url' como atributos.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def create_movie(name, image_url):
     """create_movie"""
@@ -43,6 +78,13 @@ def create_movie(name, image_url):
     db_add(movie)
     db_commit()
     return movie
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: delete_movie(name)
+Assertivas de Entrada: O parâmetro 'name' é uma string
+Assertivas de Saída: Se o filme existe no banco de dados, ele será excluído.
+Caso contrário, o estado anterior será igual ao atual.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def delete_movie(name):
     """delete_movie"""
