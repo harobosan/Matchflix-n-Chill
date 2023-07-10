@@ -1,4 +1,4 @@
-"""user"""
+"""Módulo responsável pelo gerenciamento das informações de usuário"""
 
 from werkzeug.security import generate_password_hash, check_password_hash
 from .db import User, Admin, db_commit, db_add, db_del
@@ -7,21 +7,39 @@ from .preference import get_user_preferences, get_movie_preferences
 
 
 def get_all_users():
-    """get_all_users"""
+    """Retorna uma lista com todos os usuários."""
 
     users = User.query.all()
     return users
 
 def get_user(email):
-    """get_user"""
+    """
+    Retorna o usuário correspondente ao email fornecido.
+
+    Parâmetros:
+        email: E-mail do usuário a ser buscado.
+
+    Returns:
+        user: Objeto do usuário encontrado ou None.
+    """
 
     user = User.query.filter_by(email=email).first()
     return user
 
 def get_user_list(user_list):
-    """get_user_list"""
+    """
+    Retorna uma lista de usuários com base em uma lista de IDs.
+    """
 
     users = []
+    """
+
+    Parâmetros:
+        user_list: Lista de IDs dos usuários.
+
+    Return:
+        users: Lista de usuários encontrados.
+    """
     for uid in user_list:
         user = User.query.filter_by(id=uid).first()
 
@@ -31,12 +49,30 @@ def get_user_list(user_list):
     return users
 
 def user_exists(email):
-    """user_exists"""
+    """
+    Verifica se um usuário com o e-mail fornecido existe.
+
+    Parâmetros:
+        email: E-mail do usuário a ser verificado.
+
+    Return:
+        bool: True se o usuário existe, False caso contrário.
+    """
 
     return bool(get_user(email))
 
 def create_user(email, username, password):
-    """create_user"""
+    """
+    Cria um novo usuário no banco de dados.
+
+    Parameters:
+        email: E-mail do novo usuário.
+        username: Nome de usuário do novo usuário.
+        password: Senha do novo usuário.
+
+    Returns:
+        user: Objeto do usuário criado ou None.
+    """
 
     if user_exists(email):
         return None
@@ -48,7 +84,12 @@ def create_user(email, username, password):
     return user
 
 def delete_user(email):
-    """delete_user"""
+    """
+    Deleta um usuário do banco de dados.
+
+    Parâmetros:
+        email: E-mail do usuário a ser deletado.
+    """
 
     user = get_user(email)
 
@@ -57,7 +98,16 @@ def delete_user(email):
         db_commit()
 
 def authenticate_user(email, password):
-    """authenticate_user"""
+    """
+    Realiza a autenticação um usuário com base no e-mail e senha fornecidos.
+
+    Parâmetros:
+        email: E-mail do usuário a ser autenticado.
+        password: Senha do usuário a ser autenticado.
+
+    Return:
+        user: Objeto do usuário autenticado ou None.
+    """
 
     user = get_user(email)
 
@@ -69,25 +119,54 @@ def authenticate_user(email, password):
     return None
 
 def disconnect_user(user):
-    """disconnect_user"""
+    """
+    Desconecta um usuário do sistema.
+
+    Parâmetros:
+        user: Objeto do usuário a ser desconectado.
+    """
 
     if user and user_exists(user.email):
         user.authenticated = False
         db_commit()
 
 def get_admin(uid):
-    """get_admin"""
+    """
+    Retorna o objeto de administração associado ao ID do usuário fornecido.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+    Return:
+        admin: Objeto de administração ou None.
+    """
 
     admin = Admin.query.filter_by(uid=uid).first()
     return admin
 
 def is_admin(uid):
-    """is_admin"""
+    """
+    Verifica se o usuário com o ID fornecido é um administrador.
+
+    Parâmetros:
+        uid: ID do usuário a ser verificado.
+
+    Return:
+        bool: True se o usuário é um administrador, False caso contrário.
+    """
 
     return bool(get_admin(uid))
 
 def set_admin(uid):
-    """set_admin"""
+    """
+    Define o usuário com o ID fornecido como administrador.
+
+    Parâmetros:
+        uid: ID do usuário a ser definido como administrador.
+
+    Return:
+        admin: Objeto de administração criado ou None.
+    """
 
     if is_admin(uid):
         return None
@@ -98,7 +177,12 @@ def set_admin(uid):
     return admin
 
 def remove_admin(uid):
-    """remove_admin"""
+    """
+    Remove a atribuição de administrador do usuário com o ID fornecido.
+
+    Parâmetros:
+        uid: ID do usuário a ter a atribuição de administrador removida.
+    """
 
     admin = get_admin(uid)
 
@@ -107,12 +191,28 @@ def remove_admin(uid):
         db_commit()
 
 def sort_matches(user):
-    """sort_matches"""
+    """
+    Função auxiliar para classificar os resultados de acordo com as correspondências do usuário.
+
+    Parâmetros:
+        user: Objeto de usuário.
+
+    Return:
+        user[1]: Valor usado para classificar as correspondências.
+    """
 
     return user[1]
 
 def calc_matches(uid):
-    """calc_matches"""
+    """
+    Calcula as correspondências entre um usuário e outros usuários com base em suas preferências.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+    Return:
+        recommendations: Lista de correspondências ordenadas por pontuação.
+    """
 
     user_preferences = get_user_preferences(uid)
 

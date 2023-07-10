@@ -1,4 +1,4 @@
-"""auth"""
+"""Módulo de autenticação"""
 
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import current_user, login_user, logout_user
@@ -10,7 +10,12 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-    """login"""
+    """
+    Rota para a página de login.
+
+    Return:
+        render_template: Página login.html.
+    """
 
     if current_user.is_authenticated:
         flash('You are already authenticated, logout first to access this page.')
@@ -33,7 +38,12 @@ def login():
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
-    """signup"""
+    """
+    Rota para a página de cadastro.
+
+    Return:
+        render_template: Página signup.html.
+    """
 
     if current_user.is_authenticated:
         flash('You are already authenticated, logout first to access this page.')
@@ -55,7 +65,12 @@ def signup():
 
 @auth.route('/logout')
 def logout():
-    """logout"""
+    """
+    Rota para realizar o logout.
+
+    Return:
+        redirect: Redireciona para a página inicial.
+    """
 
     if not current_user.is_authenticated:
         flash('Please, authenticate to access this page.')
