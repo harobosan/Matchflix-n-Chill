@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from .db import User, Admin, db_commit, db_add, db_del
 from .movie import get_movie_weight
 from .preference import get_user_preferences, get_movie_preferences
+from .relationship import get_relationship, get_user_relationships
 
 
 def get_all_users():
@@ -75,6 +76,31 @@ def disconnect_user(user):
         user.authenticated = False
         db_commit()
 
+def update_email(user, email):
+    """update_email"""
+
+    if get_user(email):
+        return None
+
+    user.email = email
+    db_commit()
+    return user
+
+def update_username(user, username):
+    """update_username"""
+
+    user.username = username
+    db_commit()
+    return user
+
+def update_password(user, password):
+    """update_password"""
+
+    hashed = generate_password_hash(password, method='sha256')
+    user.password = hashed
+    db_commit()
+    return user
+
 def get_admin(uid):
     """get_admin"""
 
@@ -115,6 +141,7 @@ def calc_matches(uid):
     """calc_matches"""
 
     user_preferences = get_user_preferences(uid)
+    user_relationships = get_user_relationships(uid)
 
     movies_list = []
     for mid in user_preferences:
@@ -124,7 +151,7 @@ def calc_matches(uid):
     user_scores = []
     for movie_pair in movies_list:
         for user in movie_pair[1]:
-            if user != uid:
+            if user != uid and not user_relationships.count(user):
                 if user_matches.count(user):
                     user_scores[user_matches.index(user)] += movie_pair[0]
                 else:
@@ -137,3 +164,29 @@ def calc_matches(uid):
 
     recommendations.sort(reverse=True, key=sort_matches)
     return recommendations
+
+def get_relationship_lists(uid):
+    """get_relationship_lists"""
+
+    relationships = get_user_relationships(uid)
+
+    friends = []
+    pending = []
+    requests = []
+    for user in relationships:
+        relationship = get_relationship(uid, user)
+
+        if relationship.status:
+            friends.append(User.query.filter_by(id=user).first())
+        else:
+            if relationship.uid_1 == uid:
+                pending.append(User.query.filter_by(id=user).first())
+            else:
+                requests.append(User.query.filter_by(id=user).first())
+
+    matches = calc_matches(uid)
+    recommendations = []
+    for match in matches:
+        recommendations.append([User.query.filter_by(id=match[0]).first(), match[1]])
+
+    return [friends, pending, requests, recommendations]

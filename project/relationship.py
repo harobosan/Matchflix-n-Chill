@@ -44,7 +44,7 @@ def create_relationship(uid_1, uid_2):
     if relationship_exists(uid_1, uid_2):
         return None
 
-    relationship = Relationship(uid_1=uid_1, uid_2=uid_2)
+    relationship = Relationship(uid_1=uid_1, uid_2=uid_2, status=False)
     db_add(relationship)
     db_commit()
     return relationship
@@ -66,4 +66,13 @@ def delete_user_relationships(uid):
     if relationships:
         for uid_2 in relationships:
             db_del(get_relationship(uid, uid_2))
+        db_commit()
+
+def update_status(uid_1, uid_2):
+    """update_status"""
+
+    relationship = get_relationship(uid_1, uid_2)
+
+    if relationship:
+        relationship.status = True
         db_commit()

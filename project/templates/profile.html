@@ -2,25 +2,124 @@
 
 {% block content %}
 {% with messages = get_flashed_messages() %}
-{% if messages %}
-<div class="notification is-danger">
-    {{ messages[0] }}
-</div>
-{% endif %}
+    {% if messages %}
+        <div class="notification is-danger">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
 {% endwith %}
-<h1 class="title">
-    Welcome, {{ user.username }}!
-</h1>
-<h1 class="title">
-    Other Users:
-</h1>
-{% for u in user_list %}
-{% if u.email != user.email %}
-<div>
-    <body class="list">| Username: {{ u.username }} |</body>
-    <body class="list">| Email: {{ u.email }} |</body>
-    <body class="list">| Is Online?: {{ u.authenticated }} |</body>
-</div>
-{% endif %}
-{% endfor %}
+<form method="POST" action="/profile">
+    <div class="profile">
+        <div class="userdata">
+
+            <div>
+                <input class="mail-form" type="email" name="email" placeholder="{{ current_user.email }}">
+            </div>
+
+            <div>
+                <input class="username-form" type="text" name="username" placeholder="{{ current_user.username }}">
+            </div>
+
+            <div>
+                <input class="password-form" type="password" name="password" placeholder="Enter New Password">
+            </div>
+
+            <button class="submit-bttn" type="submit" name="edit" value="submit"><i class="fa fa-pencil-square"></i></button>
+        </div>
+    </div>
+
+    <div class="userlists">
+
+        <div style="margin-left: auto; margin-right: auto;">
+            <div class="userlist-title">
+                Friends
+                {% if friends|length > 1 %}
+                    <div class="userlist-items">
+                        {{ friends|length }}
+                    </div>
+                {% endif %}
+            </div>
+            {% for user in friends %}
+                <div class="usercard">
+                    <button class="user-bttn" type="submit" name="user" value="" disabled><i class="fa fa-user"></i></button>
+                    <div class="user-display-name">{{ user.username }}</div>
+                    <div class="user-email">{{ user.email }}</div>
+                    {% if user.authenticated %}
+                        <div class="user-online"><i class="fa fa-circle"></i></div>
+                    {% else %}
+                        <div class="user-offline"><i class="fa fa-circle"></i></div>
+                    {% endif %}
+                    <button class="chat-bttn" type="submit" name="chat" value=""><i class="fa fa-whatsapp"></i></button>
+                    <button class="unfriend-bttn" type="submit" name="unfriend" value="{{ user.id }}"><i class="fa fa-handshake-o"></i></button>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div style="margin-left: auto; margin-right: auto;">
+            <div class="userlist-title">
+                Pending Requests
+                {% if pending|length > 1 %}
+                    <div class="userlist-items">
+                        {{ pending|length }}
+                    </div>
+                {% endif %}
+            </div>
+            {% for user in pending %}
+                <div class="usercard">
+                    <button class="user-bttn" type="submit" name="user" value="" disabled><i class="fa fa-user"></i></button>
+                    <div class="user-display-name">{{ user.username }}</div>
+                    <div class="user-email">{{ user.email }}</div>
+                    <div class="user-unknown"><i class="fa fa-circle"></i></div>
+                    <div class="user-pending"><i class="fa fa-hourglass-2"></i></div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div style="margin-left: auto; margin-right: auto;">
+            <div class="userlist-title">
+                Friend Requests
+                {% if requests|length > 1 %}
+                    <div class="userlist-items">
+                        {{ requests|length }}
+                    </div>
+                {% endif %}
+            </div>
+            {% for user in requests %}
+                <div class="usercard">
+                    <button class="user-bttn" type="submit" name="user" value="" disabled><i class="fa fa-user"></i></button>
+                    <div class="user-display-name">{{ user.username }}</div>
+                    <div class="user-email">{{ user.email }}</div>
+                    <div class="user-unknown"><i class="fa fa-circle"></i></div>
+                    <button class="reject-bttn" type="submit" name="reject" value="{{ user.id }}"><i class="fa fa-handshake-o"></i></button>
+                    <button class="accept-bttn" type="submit" name="accept" value="{{ user.id }}"><i class="fa fa-handshake-o"></i></button>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div style="margin-left: auto; margin-right: auto;">
+            <div class="userlist-title">
+                Recommendations
+                {% if recommendations|length > 1 %}
+                    <div class="userlist-items">
+                        {{ recommendations|length }}
+                    </div>
+                {% endif %}
+            </div>
+            {% for user, score in recommendations %}
+            <div class="usercard">
+                <button class="user-bttn" type="submit" name="user" value="" disabled><i class="fa fa-user"></i></button>
+                <div class="user-display-name">{{ user.username }}</div>
+                <div class="user-email">{{ user.email }}</div>
+                <div class="user-unknown"><i class="fa fa-circle"></i></div>
+                <div class="user-score">{{ score }}</i></div>
+                <button class="befriend-bttn" type="submit" name="befriend" value="{{ user.id }}"><i class="fa fa-handshake-o"></i></button>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div style="height: 40px;"></div>
+
+</form>
 {% endblock %}
