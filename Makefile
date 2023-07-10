@@ -5,7 +5,8 @@ static:
 	pylint project
 
 clean:
-	rm -r ./instance/ ./project/__pycache__/
+	rm -rf ./instance/
+	find -name "__pycache__" -exec rm -rf {} \;
 
 test:
 	pytest tests/. -v

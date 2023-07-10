@@ -32,7 +32,7 @@ class User(db.Model, UserMixin):
     """
     authenticated (bool): Indica se o usuário está autenticado.
     """
-    
+
     uid_1 = db.relationship(
         'Relationship',
         foreign_keys='Relationship.uid_1',
@@ -100,7 +100,7 @@ class Movie(db.Model):
     image_url = db.Column(db.String(200))
     """
     image_url (str): URL da imagem do filme.
-    """    
+    """
 
 class Preference(db.Model):
     """ Classe que representa as preferências dos usuários em relação aos filmes."""
