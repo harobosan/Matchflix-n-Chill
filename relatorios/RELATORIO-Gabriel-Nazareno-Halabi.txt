@@ -1,4 +1,4 @@
-ALEXANDRE DE FREITAS SOUZA
+Gabriel Nazareno Halabi 150010290
 Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
 
 17/06 |  1h | estudar aulas e laboratórios relacionados | coleta de links e referencias para desenvolvimento em python flask
@@ -10,3 +10,12 @@ Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
 25/06 |  3h | codificar módulo | codificação do módulo auth.py de rotas para servir html para autenticação e registro de usuários, com lógica de sessões
 25/06 | 40m | rodar verificador estático e retirar warnings | refatoração do código do projeto corrigindo warnings apontadas pela ferramenta pylint (exceto warnings de documentação)
 25/06 | 20m | revisar projetos | atualização dos requerimentos e criação de .gitignore e Makefile a fim de deixar o projeto mais fácil de replicar, testar e inicializar
+29/06 |  2h | codificar módulo | codificação do módulo user.py de funções auxiliares para manipulação de users
+29/06 |  2h | codificar módulo | codificação do módulo movie.py de funções auxiliares para manipulação de filmes
+30/06 |  1h | codificar módulo | codificação do módulo preference.py de funções auxiliares para manipulação de relações entre filmes e usuários
+30/06 |  1h | codificar módulo | codificação do módulo relationship.py de funções auxiliares para manipulação de relações entre dois usuários
+1/07 | 40m | rodar verificador estático e retirar warnings | refatoração do código do projeto corrigindo warnings apontadas pela ferramenta pylint e adicionando docstrings iniciais
+4/07 |  1h | codificar módulo | codificação do módulo admin.py e adição de campos dinamicos em templates que requerem autenticação privilegiada
+4/07 |  1h | codificar módulo | refatoração do módulo user.py para englobar funções de admin.py
+7/07 |  5h | estudar aulas e laboratórios relacionados | estudo de codificação html com css para frontend do site
+9/07 |  4h | codificar módulo | criação de template movies.html e profile.html para listar usuarios, filmes e permitir operações sobre estes
