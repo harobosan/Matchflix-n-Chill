@@ -5,7 +5,8 @@ Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
 24/06|40 min |estudo das ferramentas|estudo da sintaxe e criação de banco de dados de sqlite3
 25/06|1h|escrever codigo|escrito a função da adição de dados e da criação do banco de dados
 25/06|40 min|escrever codigo|escrevendo a função que checa se o id ja pertence ao banco de dados
-8/06|1h |mudança dos html |fazendo o design do site
-8/06|1h |mudança dos html |fazendo o design do site
-8/06|1h |mudança dos html |fazendo o design do site
-8/06|1h |mudança dos html |fazendo o design do site
+8/06|1h |mudança dos htmls |fazendo o design do site
+8/06|1h |mudança dos htmls |mudando as classes do base.html
+9/06|1h |mudança dos htmls |criando as classes no base.css
+9/06|1h |mudança dos htmls |ajustando os demais htmls
+10/06|1h |criando dos diagramas |criação dos 5 diagramas 
