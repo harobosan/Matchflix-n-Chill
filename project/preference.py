@@ -1,23 +1,46 @@
-"""preference"""
+"""Módulo responsável pelo gerenciamento das preferencias dos usuários"""
 
 from .db import Preference, db_commit, db_add, db_del
 from .movie import update_movie_weight, update_movie_score
 
 
 def get_all_preferences():
-    """get_all_preferences"""
+    """
+    Retorna uma lista com todas as preferências existentes no banco de dados.
+
+    Return:
+        preferences: Lista de preferências.
+    """
 
     preferences = Preference.query.all()
     return preferences
 
 def get_preference(uid, mid):
-    """get_preference"""
+    """
+    Retorna a preferência correspondente ao usuário e filme fornecidos.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+        mid: ID do filme.
+
+    Return:
+        preference: Objeto da preferência encontrada ou None.
+    """
 
     preference = Preference.query.filter_by(uid=uid, mid=mid).first()
     return preference
 
 def get_user_preferences(uid):
-    """get_user_preferences"""
+    """
+    Retorna uma lista de filmes preferidos pelo usuário fornecido.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+    Return:
+        user_preferences: Lista de IDs dos filmes preferidos pelo usuário.
+    """
 
     preferences = Preference.query.filter_by(uid=uid)
 
@@ -28,7 +51,15 @@ def get_user_preferences(uid):
     return user_preferences
 
 def get_movie_preferences(mid):
-    """get_movie_preferences"""
+    """
+    Retorna uma lista de usuários que preferiram o filme fornecido.
+
+    Parâmetros:
+        mid: ID do filme.
+
+    Return:
+        movie_preferences: Lista de IDs dos usuários que preferiram o filme.
+    """
 
     preferences = Preference.query.filter_by(mid=mid)
 
@@ -39,12 +70,32 @@ def get_movie_preferences(mid):
     return movie_preferences
 
 def preference_exists(uid, mid):
-    """preference_exists"""
+    """
+    Verifica se existe uma preferência do usuário pelo filme fornecidos.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+        mid: ID do filme.
+
+    Return:
+        bool: True se a preferência existe, False caso contrário.
+    """
 
     return bool(get_preference(uid, mid))
 
 def create_preference(uid, mid):
-    """create_preference"""
+    """
+    Cria uma nova preferência de um usuário por um filme.
+
+    Parâmetros:
+        uid: ID do usuário.
+        
+        mid: ID do filme.
+
+    Return:
+        preference: Objeto da preferência criada ou None.
+    """
 
     if preference_exists(uid, mid):
         return None
@@ -56,7 +107,14 @@ def create_preference(uid, mid):
     return preference
 
 def delete_preference(uid, mid):
-    """delete_preference"""
+    """
+    Deleta a preferência do usuário pelo filme.
+
+    Parameters:
+        uid: ID do usuário.
+        
+        mid: ID do filme.
+    """
 
     preference = get_preference(uid, mid)
 
@@ -66,7 +124,14 @@ def delete_preference(uid, mid):
         update_movie(mid, -1)
 
 def delete_user_preferences(uid):
-    """delete_user_preferences"""
+    """
+    Deleta a preferência do usuário pelo filme.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+        mid: ID do filme.
+    """
 
     preferences = get_user_preferences(uid)
 
@@ -75,7 +140,12 @@ def delete_user_preferences(uid):
             delete_preference(uid, mid)
 
 def delete_movie_preferences(mid):
-    """delete_movie_preferences"""
+    """
+    Deleta todas as preferências do usuário.
+
+    Parâmetros:
+        uid: ID do usuário.
+    """
 
     preferences = get_movie_preferences(mid)
 
@@ -84,7 +154,15 @@ def delete_movie_preferences(mid):
             delete_preference(uid, mid)
 
 def calc_movie_weight(mid):
-    """calc_movie_weight"""
+    """
+    Calcula o peso de um filme com base nas preferências.
+
+    Parâmetros:
+        mid: ID do filme.
+
+    Return:
+        weight: Peso do filme.
+    """
 
     preferences = len(get_all_preferences())
     movie_preferences = len(get_movie_preferences(mid))
@@ -95,7 +173,13 @@ def calc_movie_weight(mid):
     return 0
 
 def update_movie(mid, score):
-    """update_movie"""
+    """
+    Atualiza as informações de peso e pontuação do filme.
+
+    Parâmetros:
+        mid: ID do filme.
+        score: Pontuação a ser adicionada ao filme.
+    """
 
     preferences = get_all_preferences()
 

@@ -1,4 +1,4 @@
-"""movie"""
+"""Modulo responsável pelo gerenciamento dos filmes"""
 
 from random import randint
 from .db import Movie, db_commit, db_add, db_del
@@ -9,7 +9,12 @@ Assertivas de Entrada: Nenhuma pré-condição específica.
 Assertiva de Saída: Retorna uma lista de todos os filmes existentes no banco de dados.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def get_all_movies():
-    """get_all_movies"""
+    """
+    Retorna uma lista com todos os filmes existentes no banco de dados.
+
+    Return:
+        movies: Lista de filmes.
+    """
 
     movies = Movie.query.all()
     return movies
@@ -20,7 +25,15 @@ Assertivas de Entrada: O parâmetro 'name' é uma string
 Assertivas de Saída: Retorna o objeto 'movie' homônimo ao parâmetro, caso este exista, e None, caso contrário.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def get_movie(name):
-    """get_movie"""
+    """
+    Retorna o filme correspondente ao nome fornecido.
+
+    Parâmetros:
+        name: Nome do filme.
+
+    Returns:
+        movie: Objeto do filme encontrado ou None.
+    """
 
     movie = Movie.query.filter_by(name=name).first()
     return movie
@@ -33,7 +46,15 @@ Assertivas de Saída: Retorna um array de objetos 'Movie' correspondentes aos ID
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def get_movie_list(movie_list):
-    """get_movie_list"""
+    """
+    Retorna uma lista de filmes com base em uma lista de IDs.
+
+    Parâmetros:
+        movie_list: Lista de IDs dos filmes.
+
+    Returns:
+        movies: Lista de filmes encontrados.
+    """
 
     movies = []
     for mid in movie_list:
@@ -54,7 +75,15 @@ Assertivas de Saída: Se existe um filme com nome == name no banco
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def movie_exists(name):
-    """movie_exists"""
+    """
+    Verifica se um filme com o nome fornecido existe no banco de dados.
+
+    Parâmetros:
+        name: Nome do filme a ser verificado.
+
+    Return:
+        bool: True se o filme existe, False caso contrário.
+    """
 
     return bool(get_movie(name))
 
@@ -69,7 +98,16 @@ Assertivas de Saída: Se existe um filme de nome == name
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def create_movie(name, image_url):
-    """create_movie"""
+    """
+    Cria um novo filme no banco de dados.
+
+    Parâmetros:
+        name: Nome do novo filme.
+        image_url: URL da imagem do novo filme.
+
+    Return:
+        movie: Objeto do filme criado ou None.
+    """
 
     if movie_exists(name):
         return None
@@ -87,7 +125,12 @@ Caso contrário, o estado anterior será igual ao atual.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def delete_movie(name):
-    """delete_movie"""
+    """
+    Deleta um filme do banco de dados.
+
+    Parâmetros:
+        name: Nome do filme a ser deletado.
+    """
 
     movie = get_movie(name)
 
@@ -96,13 +139,20 @@ def delete_movie(name):
         db_commit()
 
 def generate_random_movie_name():
-    """generate_random_movie_name"""
+    """
+    Gera um nome de filme aleatório.
+
+    Return:
+        random_name: Nome de filme aleatório.
+    """
 
     i = randint(1, 300)
     return f"Filme {i}"
 
 def seed_movies():
-    """seed_movies"""
+    """
+    Popula o banco de dados com filmes.
+    """
 
     for i in range(10):
         movie_name = f"Filme {i}"
@@ -120,7 +170,15 @@ def seed_movies():
     db_commit()
 
 def get_movie_weight(mid):
-    """get_movie_weight"""
+    """
+    Retorna o peso do filme com base no ID fornecido.
+
+    Parâmetros:
+        mid: ID do filme.
+
+    Return:
+        weight: Peso do filme.
+    """
 
     movie = Movie.query.filter_by(id=mid).first()
 
@@ -130,7 +188,13 @@ def get_movie_weight(mid):
     return 0
 
 def update_movie_weight(mid, weight):
-    """update_movie_weight"""
+    """
+    Atualiza o peso do filme com base no ID fornecido.
+
+    Parâmetros:
+        mid: ID do filme.
+        weight: Novo peso do filme.
+    """
 
     movie = Movie.query.filter_by(id=mid).first()
 
@@ -139,7 +203,13 @@ def update_movie_weight(mid, weight):
         db_commit()
 
 def update_movie_score(mid, score):
-    """update_movie_score"""
+    """
+    Atualiza a pontuação do filme com base no ID fornecido.
+
+    Parâmetros:
+        mid: ID do filme.
+        score: Pontuação a ser adicionada ao filme.
+    """
 
     movie = Movie.query.filter_by(id=mid).first()
 

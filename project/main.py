@@ -1,4 +1,4 @@
-"""main"""
+"""Módulo principal"""
 
 from flask import Blueprint
 from flask import render_template, send_from_directory, url_for, redirect, request, flash
@@ -15,19 +15,34 @@ main = Blueprint('main', __name__)
 
 @main.route('/favicon.ico')
 def favicon():
-    """favicon"""
+    """
+    Rota para acessar o arquivo favicon.ico.
+
+    Return:
+        send_from_directory: Arquivo favicon.ico.
+    """
 
     return send_from_directory('static','favicon.ico')
 
 @main.route('/')
 def index():
-    """index"""
+    """
+    Rota para a página inicial.
+
+    Return:
+        render_template: Página index.html.
+    """
 
     return render_template('index.html')
 
 @main.route('/profile', methods=['GET', 'POST'])
 def profile():
-    """profile"""
+    """
+    Rota para a página de perfil do usuário.
+
+    Return:
+        render_template: Página profile.html.
+    """
 
     if not current_user.is_authenticated:
         flash('Please, authenticate to access this page.')
@@ -80,7 +95,12 @@ def profile():
 
 @main.route('/movies', methods=['GET', 'POST'])
 def movies():
-    """movies"""
+    """
+    Rota para a página de filmes.
+
+    Return:
+        render_template: Página movies.html.
+    """
 
     privileged = False
     preferences = None

@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>user API documentation</title>
+<meta name="description" content="Módulo responsável pelo gerenciamento das informações de usuário" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>user</code></h1>
+</header>
+<section id="section-intro">
+<p>Módulo responsável pelo gerenciamento das informações de usuário</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Módulo responsável pelo gerenciamento das informações de usuário&#34;&#34;&#34;
+
+from werkzeug.security import generate_password_hash, check_password_hash
+from db import User, Admin, db_commit, db_add, db_del
+from movie import get_movie_weight
+from preference import get_user_preferences, get_movie_preferences
+
+
+def get_all_users():
+    &#34;&#34;&#34;Retorna uma lista com todos os usuários.&#34;&#34;&#34;
+
+    users = User.query.all()
+    return users
+
+def get_user(email):
+    &#34;&#34;&#34;
+    Retorna o usuário correspondente ao email fornecido.
+
+    Parâmetros:
+        email: E-mail do usuário a ser buscado.
+
+    Returns:
+        user: Objeto do usuário encontrado ou None.
+    &#34;&#34;&#34;
+    user = User.query.filter_by(email=email).first()
+    &#34;&#34;&#34;
+    Parâmetros:
+        email: E-mail do usuário a ser buscado.
+
+    Return:
+        user: Objeto do usuário encontrado ou None.
+    &#34;&#34;&#34;
+    return user
+
+def get_user_list(user_list):
+    &#34;&#34;&#34;
+    Retorna uma lista de usuários com base em uma lista de IDs.
+    &#34;&#34;&#34;
+
+    users = []
+    &#34;&#34;&#34;
+
+    Parâmetros:
+        user_list: Lista de IDs dos usuários.
+
+    Return:
+        users: Lista de usuários encontrados.
+    &#34;&#34;&#34;
+    for uid in user_list:
+        user = User.query.filter_by(id=uid).first()
+
+        if user:
+            users.append(user)
+
+    return users
+
+def user_exists(email):
+    &#34;&#34;&#34;
+    Verifica se um usuário com o e-mail fornecido existe.
+
+    Parâmetros:
+        email: E-mail do usuário a ser verificado.
+
+    Return:
+        bool: True se o usuário existe, False caso contrário.
+    &#34;&#34;&#34;
+
+    return bool(get_user(email))
+
+def create_user(email, username, password):
+    &#34;&#34;&#34;
+    Cria um novo usuário no banco de dados.
+
+    Parameters:
+        email: E-mail do novo usuário.
+        username: Nome de usuário do novo usuário.
+        password: Senha do novo usuário.
+
+    Returns:
+        user: Objeto do usuário criado ou None.
+    &#34;&#34;&#34;
+
+    if user_exists(email):
+        return None
+
+    hashed = generate_password_hash(password, method=&#39;sha256&#39;)
+    user = User(email=email, username=username, password=hashed, authenticated=False)
+    db_add(user)
+    db_commit()
+    return user
+
+def delete_user(email):
+    &#34;&#34;&#34;
+    Deleta um usuário do banco de dados.
+
+    Parâmetros:
+        email: E-mail do usuário a ser deletado.
+    &#34;&#34;&#34;
+
+    user = get_user(email)
+
+    if user:
+        db_del(user)
+        db_commit()
+
+def authenticate_user(email, password):
+    &#34;&#34;&#34;
+    Realiza a autenticação um usuário com base no e-mail e senha fornecidos.
+
+    Parâmetros:
+        email: E-mail do usuário a ser autenticado.
+        password: Senha do usuário a ser autenticado.
+
+    Return:
+        user: Objeto do usuário autenticado ou None.
+    &#34;&#34;&#34;
+
+    user = get_user(email)
+
+    if user and check_password_hash(user.password, password):
+        user.authenticated = True
+        db_commit()
+        return user
+
+    return None
+
+def disconnect_user(user):
+    &#34;&#34;&#34;
+    Desconecta um usuário do sistema.
+
+    Parâmetros:
+        user: Objeto do usuário a ser desconectado.
+    &#34;&#34;&#34;
+
+    if user and user_exists(user.email):
+        user.authenticated = False
+        db_commit()
+
+def get_admin(uid):
+    &#34;&#34;&#34;
+    Retorna o objeto de administração associado ao ID do usuário fornecido.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+    Return:
+        admin: Objeto de administração ou None.
+    &#34;&#34;&#34;
+
+    admin = Admin.query.filter_by(uid=uid).first()
+    return admin
+
+def is_admin(uid):
+    &#34;&#34;&#34;
+    Verifica se o usuário com o ID fornecido é um administrador.
+
+    Parâmetros:
+        uid: ID do usuário a ser verificado.
+
+    Return:
+        bool: True se o usuário é um administrador, False caso contrário.
+    &#34;&#34;&#34;
+    return bool(get_admin(uid))
+
+def set_admin(uid):
+    &#34;&#34;&#34;
+    Define o usuário com o ID fornecido como administrador.
+
+    Parâmetros:
+        uid: ID do usuário a ser definido como administrador.
+
+    Return:
+        admin: Objeto de administração criado ou None.
+    &#34;&#34;&#34;
+
+    if is_admin(uid):
+        return None
+
+    admin = Admin(uid=uid)
+    db_add(admin)
+    db_commit()
+    return admin
+
+def remove_admin(uid):
+    &#34;&#34;&#34;
+    Remove a atribuição de administrador do usuário com o ID fornecido.
+
+    Parâmetros:
+        uid: ID do usuário a ter a atribuição de administrador removida.
+    &#34;&#34;&#34;
+
+    admin = get_admin(uid)
+
+    if admin:
+        db_del(admin)
+        db_commit()
+
+def sort_matches(user):
+    &#34;&#34;&#34;
+    Função auxiliar para classificar os resultados de acordo com as correspondências do usuário.
+
+    Parâmetros:
+        user: Objeto de usuário.
+
+    Return:
+        user[1]: Valor usado para classificar as correspondências.
+    &#34;&#34;&#34;
+
+    return user[1]
+
+def calc_matches(uid):
+    &#34;&#34;&#34;
+    Calcula as correspondências entre um usuário e outros usuários com base em suas preferências.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+    Return:
+        recommendations: Lista de correspondências ordenadas por pontuação.
+    &#34;&#34;&#34;
+
+    user_preferences = get_user_preferences(uid)
+
+    movies_list = []
+    for mid in user_preferences:
+        movies_list.append([get_movie_weight(mid), get_movie_preferences(mid)])
+
+    user_matches = []
+    user_scores = []
+    for movie_pair in movies_list:
+        for user in movie_pair[1]:
+            if user != uid:
+                if user_matches.count(user):
+                    user_scores[user_matches.index(user)] += movie_pair[0]
+                else:
+                    user_matches.append(user)
+                    user_scores.append(movie_pair[0])
+
+    recommendations = []
+    for count, user in enumerate(user_matches):
+        recommendations.append([user, user_scores[count]])
+
+    recommendations.sort(reverse=True, key=sort_matches)
+    return recommendations</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="user.authenticate_user"><code class="name flex">
+<span>def <span class="ident">authenticate_user</span></span>(<span>email, password)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Realiza a autenticação um usuário com base no e-mail e senha fornecidos.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>email: E-mail do usuário a ser autenticado.
+password: Senha do usuário a ser autenticado.</p>
+<h2 id="return">Return</h2>
+<p>user: Objeto do usuário autenticado ou None.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def authenticate_user(email, password):
+    &#34;&#34;&#34;
+    Realiza a autenticação um usuário com base no e-mail e senha fornecidos.
+
+    Parâmetros:
+        email: E-mail do usuário a ser autenticado.
+        password: Senha do usuário a ser autenticado.
+
+    Return:
+        user: Objeto do usuário autenticado ou None.
+    &#34;&#34;&#34;
+
+    user = get_user(email)
+
+    if user and check_password_hash(user.password, password):
+        user.authenticated = True
+        db_commit()
+        return user
+
+    return None</code></pre>
+</details>
+</dd>
+<dt id="user.calc_matches"><code class="name flex">
+<span>def <span class="ident">calc_matches</span></span>(<span>uid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calcula as correspondências entre um usuário e outros usuários com base em suas preferências.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>uid: ID do usuário.</p>
+<h2 id="return">Return</h2>
+<p>recommendations: Lista de correspondências ordenadas por pontuação.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def calc_matches(uid):
+    &#34;&#34;&#34;
+    Calcula as correspondências entre um usuário e outros usuários com base em suas preferências.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+    Return:
+        recommendations: Lista de correspondências ordenadas por pontuação.
+    &#34;&#34;&#34;
+
+    user_preferences = get_user_preferences(uid)
+
+    movies_list = []
+    for mid in user_preferences:
+        movies_list.append([get_movie_weight(mid), get_movie_preferences(mid)])
+
+    user_matches = []
+    user_scores = []
+    for movie_pair in movies_list:
+        for user in movie_pair[1]:
+            if user != uid:
+                if user_matches.count(user):
+                    user_scores[user_matches.index(user)] += movie_pair[0]
+                else:
+                    user_matches.append(user)
+                    user_scores.append(movie_pair[0])
+
+    recommendations = []
+    for count, user in enumerate(user_matches):
+        recommendations.append([user, user_scores[count]])
+
+    recommendations.sort(reverse=True, key=sort_matches)
+    return recommendations</code></pre>
+</details>
+</dd>
+<dt id="user.create_user"><code class="name flex">
+<span>def <span class="ident">create_user</span></span>(<span>email, username, password)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Cria um novo usuário no banco de dados.</p>
+<h2 id="parameters">Parameters</h2>
+<p>email: E-mail do novo usuário.
+username: Nome de usuário do novo usuário.
+password: Senha do novo usuário.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="user" href="#user">user</a></code></dt>
+<dd>Objeto do usuário criado ou None.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_user(email, username, password):
+    &#34;&#34;&#34;
+    Cria um novo usuário no banco de dados.
+
+    Parameters:
+        email: E-mail do novo usuário.
+        username: Nome de usuário do novo usuário.
+        password: Senha do novo usuário.
+
+    Returns:
+        user: Objeto do usuário criado ou None.
+    &#34;&#34;&#34;
+
+    if user_exists(email):
+        return None
+
+    hashed = generate_password_hash(password, method=&#39;sha256&#39;)
+    user = User(email=email, username=username, password=hashed, authenticated=False)
+    db_add(user)
+    db_commit()
+    return user</code></pre>
+</details>
+</dd>
+<dt id="user.delete_user"><code class="name flex">
+<span>def <span class="ident">delete_user</span></span>(<span>email)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Deleta um usuário do banco de dados.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>email: E-mail do usuário a ser deletado.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete_user(email):
+    &#34;&#34;&#34;
+    Deleta um usuário do banco de dados.
+
+    Parâmetros:
+        email: E-mail do usuário a ser deletado.
+    &#34;&#34;&#34;
+
+    user = get_user(email)
+
+    if user:
+        db_del(user)
+        db_commit()</code></pre>
+</details>
+</dd>
+<dt id="user.disconnect_user"><code class="name flex">
+<span>def <span class="ident">disconnect_user</span></span>(<span>user)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Desconecta um usuário do sistema.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>user: Objeto do usuário a ser desconectado.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def disconnect_user(user):
+    &#34;&#34;&#34;
+    Desconecta um usuário do sistema.
+
+    Parâmetros:
+        user: Objeto do usuário a ser desconectado.
+    &#34;&#34;&#34;
+
+    if user and user_exists(user.email):
+        user.authenticated = False
+        db_commit()</code></pre>
+</details>
+</dd>
+<dt id="user.get_admin"><code class="name flex">
+<span>def <span class="ident">get_admin</span></span>(<span>uid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retorna o objeto de administração associado ao ID do usuário fornecido.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>uid: ID do usuário.</p>
+<h2 id="return">Return</h2>
+<p>admin: Objeto de administração ou None.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_admin(uid):
+    &#34;&#34;&#34;
+    Retorna o objeto de administração associado ao ID do usuário fornecido.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+    Return:
+        admin: Objeto de administração ou None.
+    &#34;&#34;&#34;
+
+    admin = Admin.query.filter_by(uid=uid).first()
+    return admin</code></pre>
+</details>
+</dd>
+<dt id="user.get_all_users"><code class="name flex">
+<span>def <span class="ident">get_all_users</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retorna uma lista com todos os usuários.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_all_users():
+    &#34;&#34;&#34;Retorna uma lista com todos os usuários.&#34;&#34;&#34;
+
+    users = User.query.all()
+    return users</code></pre>
+</details>
+</dd>
+<dt id="user.get_user"><code class="name flex">
+<span>def <span class="ident">get_user</span></span>(<span>email)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retorna o usuário correspondente ao email fornecido.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>email: E-mail do usuário a ser buscado.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="user" href="#user">user</a></code></dt>
+<dd>Objeto do usuário encontrado ou None.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_user(email):
+    &#34;&#34;&#34;
+    Retorna o usuário correspondente ao email fornecido.
+
+    Parâmetros:
+        email: E-mail do usuário a ser buscado.
+
+    Returns:
+        user: Objeto do usuário encontrado ou None.
+    &#34;&#34;&#34;
+    user = User.query.filter_by(email=email).first()
+    &#34;&#34;&#34;
+    Parâmetros:
+        email: E-mail do usuário a ser buscado.
+
+    Return:
+        user: Objeto do usuário encontrado ou None.
+    &#34;&#34;&#34;
+    return user</code></pre>
+</details>
+</dd>
+<dt id="user.get_user_list"><code class="name flex">
+<span>def <span class="ident">get_user_list</span></span>(<span>user_list)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retorna uma lista de usuários com base em uma lista de IDs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_user_list(user_list):
+    &#34;&#34;&#34;
+    Retorna uma lista de usuários com base em uma lista de IDs.
+    &#34;&#34;&#34;
+
+    users = []
+    &#34;&#34;&#34;
+
+    Parâmetros:
+        user_list: Lista de IDs dos usuários.
+
+    Return:
+        users: Lista de usuários encontrados.
+    &#34;&#34;&#34;
+    for uid in user_list:
+        user = User.query.filter_by(id=uid).first()
+
+        if user:
+            users.append(user)
+
+    return users</code></pre>
+</details>
+</dd>
+<dt id="user.is_admin"><code class="name flex">
+<span>def <span class="ident">is_admin</span></span>(<span>uid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Verifica se o usuário com o ID fornecido é um administrador.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>uid: ID do usuário a ser verificado.</p>
+<h2 id="return">Return</h2>
+<p>bool: True se o usuário é um administrador, False caso contrário.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_admin(uid):
+    &#34;&#34;&#34;
+    Verifica se o usuário com o ID fornecido é um administrador.
+
+    Parâmetros:
+        uid: ID do usuário a ser verificado.
+
+    Return:
+        bool: True se o usuário é um administrador, False caso contrário.
+    &#34;&#34;&#34;
+    return bool(get_admin(uid))</code></pre>
+</details>
+</dd>
+<dt id="user.remove_admin"><code class="name flex">
+<span>def <span class="ident">remove_admin</span></span>(<span>uid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove a atribuição de administrador do usuário com o ID fornecido.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>uid: ID do usuário a ter a atribuição de administrador removida.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def remove_admin(uid):
+    &#34;&#34;&#34;
+    Remove a atribuição de administrador do usuário com o ID fornecido.
+
+    Parâmetros:
+        uid: ID do usuário a ter a atribuição de administrador removida.
+    &#34;&#34;&#34;
+
+    admin = get_admin(uid)
+
+    if admin:
+        db_del(admin)
+        db_commit()</code></pre>
+</details>
+</dd>
+<dt id="user.set_admin"><code class="name flex">
+<span>def <span class="ident">set_admin</span></span>(<span>uid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Define o usuário com o ID fornecido como administrador.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>uid: ID do usuário a ser definido como administrador.</p>
+<h2 id="return">Return</h2>
+<p>admin: Objeto de administração criado ou None.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_admin(uid):
+    &#34;&#34;&#34;
+    Define o usuário com o ID fornecido como administrador.
+
+    Parâmetros:
+        uid: ID do usuário a ser definido como administrador.
+
+    Return:
+        admin: Objeto de administração criado ou None.
+    &#34;&#34;&#34;
+
+    if is_admin(uid):
+        return None
+
+    admin = Admin(uid=uid)
+    db_add(admin)
+    db_commit()
+    return admin</code></pre>
+</details>
+</dd>
+<dt id="user.sort_matches"><code class="name flex">
+<span>def <span class="ident">sort_matches</span></span>(<span>user)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Função auxiliar para classificar os resultados de acordo com as correspondências do usuário.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>user: Objeto de usuário.</p>
+<h2 id="return">Return</h2>
+<p>user[1]: Valor usado para classificar as correspondências.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sort_matches(user):
+    &#34;&#34;&#34;
+    Função auxiliar para classificar os resultados de acordo com as correspondências do usuário.
+
+    Parâmetros:
+        user: Objeto de usuário.
+
+    Return:
+        user[1]: Valor usado para classificar as correspondências.
+    &#34;&#34;&#34;
+
+    return user[1]</code></pre>
+</details>
+</dd>
+<dt id="user.user_exists"><code class="name flex">
+<span>def <span class="ident">user_exists</span></span>(<span>email)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Verifica se um usuário com o e-mail fornecido existe.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>email: E-mail do usuário a ser verificado.</p>
+<h2 id="return">Return</h2>
+<p>bool: True se o usuário existe, False caso contrário.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def user_exists(email):
+    &#34;&#34;&#34;
+    Verifica se um usuário com o e-mail fornecido existe.
+
+    Parâmetros:
+        email: E-mail do usuário a ser verificado.
+
+    Return:
+        bool: True se o usuário existe, False caso contrário.
+    &#34;&#34;&#34;
+
+    return bool(get_user(email))</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="user.authenticate_user" href="#user.authenticate_user">authenticate_user</a></code></li>
+<li><code><a title="user.calc_matches" href="#user.calc_matches">calc_matches</a></code></li>
+<li><code><a title="user.create_user" href="#user.create_user">create_user</a></code></li>
+<li><code><a title="user.delete_user" href="#user.delete_user">delete_user</a></code></li>
+<li><code><a title="user.disconnect_user" href="#user.disconnect_user">disconnect_user</a></code></li>
+<li><code><a title="user.get_admin" href="#user.get_admin">get_admin</a></code></li>
+<li><code><a title="user.get_all_users" href="#user.get_all_users">get_all_users</a></code></li>
+<li><code><a title="user.get_user" href="#user.get_user">get_user</a></code></li>
+<li><code><a title="user.get_user_list" href="#user.get_user_list">get_user_list</a></code></li>
+<li><code><a title="user.is_admin" href="#user.is_admin">is_admin</a></code></li>
+<li><code><a title="user.remove_admin" href="#user.remove_admin">remove_admin</a></code></li>
+<li><code><a title="user.set_admin" href="#user.set_admin">set_admin</a></code></li>
+<li><code><a title="user.sort_matches" href="#user.sort_matches">sort_matches</a></code></li>
+<li><code><a title="user.user_exists" href="#user.user_exists">user_exists</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

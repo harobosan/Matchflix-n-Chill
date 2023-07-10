@@ -1,16 +1,31 @@
-"""relationship"""
+"""Módulo responsável pelo gerenciamento das relações entre usuários"""
 
 from .db import Relationship, db_commit, db_add, db_del
 
 
 def get_all_relationships():
-    """get_all_relationships"""
+    """
+    Retorna uma lista com todos os relacionamentos.
+
+    Return:
+        relationships: Lista de relacionamentos.
+    """
 
     relationships = Relationship.query.all()
     return relationships
 
 def get_relationship(uid_1, uid_2):
-    """get_relationship"""
+    """
+    Retorna o relacionamento entre os dois usuários fornecidos.
+
+    Parâmetros:
+        uid_1: ID do primeiro usuário.
+
+        uid_2: ID do segundo usuário.
+
+    Return:
+        relationship: Objeto do relacionamento encontrado ou None.
+    """
 
     relationship = Relationship.query.filter_by(uid_1=uid_1, uid_2=uid_2).first()
 
@@ -20,7 +35,15 @@ def get_relationship(uid_1, uid_2):
     return relationship
 
 def get_user_relationships(uid):
-    """get_user_relationships"""
+    """
+    Retorna uma lista de IDs dos usuários relacionados ao usuário fornecido.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+    Return:
+        relationships: Lista de IDs dos usuários relacionados.
+    """
 
     rel_1 = Relationship.query.filter_by(uid_1=uid)
     rel_2 = Relationship.query.filter_by(uid_2=uid)
@@ -34,12 +57,32 @@ def get_user_relationships(uid):
     return relationships
 
 def relationship_exists(uid_1, uid_2):
-    """relationship_exists"""
+    """
+    Verifica se existe um relacionamento entre os dois usuários fornecidos.
+
+    Parâmetros:
+        uid_1: ID do primeiro usuário.
+
+        uid_2: ID do segundo usuário.
+
+    Return:
+        bool: True se o relacionamento existe, False caso contrário.
+    """
 
     return bool(get_relationship(uid_1, uid_2))
 
 def create_relationship(uid_1, uid_2):
-    """create_relationship"""
+    """
+    Cria um novo relacionamento entre os dois usuários fornecidos.
+
+    Parâmetros:
+        uid_1: ID do primeiro usuário.
+
+        uid_2: ID do segundo usuário.
+
+    Return:
+        relationship: Objeto do relacionamento criado ou None.
+    """
 
     if relationship_exists(uid_1, uid_2):
         return None
@@ -50,7 +93,14 @@ def create_relationship(uid_1, uid_2):
     return relationship
 
 def delete_relationship(uid_1, uid_2):
-    """delete_relationship"""
+    """
+    Deleta o relacionamento entre os dois usuários fornecidos.
+
+    Parâmetros:
+        uid_1: ID do primeiro usuário.
+
+        uid_2: ID do segundo usuário.
+    """
 
     relationship = get_relationship(uid_1, uid_2)
 
@@ -59,7 +109,12 @@ def delete_relationship(uid_1, uid_2):
         db_commit()
 
 def delete_user_relationships(uid):
-    """delete_user_relationships"""
+    """
+    Deleta todos os relacionamentos do usuário fornecido.
+
+    Parâmetros:
+        uid: ID do usuário.
+    """
 
     relationships = get_user_relationships(uid)
 

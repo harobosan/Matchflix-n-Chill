@@ -8,7 +8,12 @@ from .main import main as main_blueprint
 
 
 def create_app():
-    """create_app"""
+    """
+    Cria a aplicação Flask.
+
+    Return:
+        app: Objeto da aplicação Flask.
+    """
 
     app = Flask(__name__)
 
