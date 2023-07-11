@@ -6,3 +6,10 @@ Data | Horas Trabalhadas |              Tipo Tarefa                   | Descriç
 24/06| 2h12              | Projetar                                   | Projetar como será a funcionalidade do botão "like".
 25/06| 3h07              | Codificar Módulo                           | Codifiquei a parte não-interativa o botão de like presente nos filmes do catálogo.
 26/06| 0h35              | Estudar aulas e laboratórios relacionados  | Pesquisei sobre a interação do botão de like
+28/06| 0h15              | Fazer Diagramas                            | Projetar DFDs
+03/07| 2h20              | Estudar aulas e laboratórios relacionados  | Revisão das metodologias de desenvolvimento
+05/07| 0h30              | Fazer Diagramas                            | Protótipo do Diagrama de Atividades
+09/07| 1h27              | Codificar Módulo                           | Comentei os códigos com as Assertivas
+10/07| 0h20              | Estudar aulas e laboratórios relacionados  | Estudo de aulas de assertivas
+11/07| 3h45              | Codificar Módulo                           | Comentário de código com assertivas
+
