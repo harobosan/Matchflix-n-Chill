@@ -134,6 +134,12 @@ def delete_movie(name):
         db_del(movie)
         db_commit()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: generate_random_movie_name()
+Assertivas de Entrada: Nenhuma pré-condição especifíca
+Assertivas de Saída: Retorna uma string
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 def generate_random_movie_name():
     """
     Gera um nome de filme aleatório.
@@ -144,6 +150,17 @@ def generate_random_movie_name():
 
     i = randint(1, 300)
     return f"Filme {i}"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: seed_movies()
+Assertivas de Entrada: Nenhuma pré-condição especifíca
+Assertivas de Saída: Se a Instância já existe no Banco de Dados
+    Gera uma string aleatória 'movie_name'
+Senão
+    Gera uma string pré-definida 'movie_name'
+Será gerada um objeto 'Movie' com atributo 'name' = 'movie_name'
+Haverá no Banco de Dados 10 novas instâncias de 'Movie'.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def seed_movies():
     """
@@ -165,6 +182,17 @@ def seed_movies():
 
     db_commit()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: get_movie_weight(mid)
+Assertivas de Entrada: O parâmetro 'mid' é um inteiro representando o id de um filme 
+existente no banco de dados
+Assertivas de Saída:
+Se filme está no banco de dados
+    Retorna Peso do filme
+Senão
+    Retorna 0
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 def get_movie_weight(mid):
     """
     Retorna o peso do filme com base no ID fornecido.
@@ -183,6 +211,13 @@ def get_movie_weight(mid):
 
     return 0
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: update_movie_weight(mid,weight)
+Assertivas de Entrada:
+mid, weight são inteiros > 0.
+Assertivas de Saída:
+movie.weight = weight
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def update_movie_weight(mid, weight):
     """
     Atualiza o peso do filme com base no ID fornecido.
@@ -198,6 +233,21 @@ def update_movie_weight(mid, weight):
         movie.weight = weight
         db_commit()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: update_movie_score(mid, score)
+Assertivas de Entrada:
+mid, score são inteiros. mid > 0.
+Assertivas de Saída:
+int Score_Pre;
+Se CondRet == Ok
+    Se score == 0
+        Score_Pre == movie.score
+    Se score > 0
+        Score_Pre < movie.score
+    Senão
+        Score_Pre > movie.score
+O atributo 'score' de 'movie' será atualizado.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def update_movie_score(mid, score):
     """
     Atualiza a pontuação do filme com base no ID fornecido.
