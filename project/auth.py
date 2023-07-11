@@ -7,7 +7,16 @@ from .user import create_user, authenticate_user, disconnect_user
 
 auth = Blueprint('auth', __name__)
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: login()
+Assertivas de Entrada:
+Nenhuma especifíca
+Assertivas de Saída:
+Se o Usuário está Autenticado
+    Redireciona para a página principal
+Senão
+    É renderizada a página de login
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     """
@@ -36,6 +45,17 @@ def login():
 
     return render_template('login.html')
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: signup()
+Assertivas de Entrada:
+Nenhuma pré-condição especifíca
+Assertivas de Saída:
+Se o usuário já está autenticado
+    Retorna redirecionamento para a página principal
+Senão
+    É renderizada uma página de cadastro(signup)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
     """
@@ -63,6 +83,18 @@ def signup():
 
     return render_template('signup.html')
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: logout()
+Assertivas de Entrada:
+Nenhuma Pré-Condição especifíca
+Assertivas de Saída:
+Se o usuário não está logado
+    Retorna um redirecionamento para a página de login
+Senão
+    Retorna um redirecionamento para a página principal
+    user.authenticated = False
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 @auth.route('/logout')
 def logout():
     """
