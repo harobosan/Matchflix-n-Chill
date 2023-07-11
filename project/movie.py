@@ -139,7 +139,6 @@ Função: generate_random_movie_name()
 Assertivas de Entrada: Nenhuma pré-condição especifíca
 Assertivas de Saída: Retorna uma string
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 def generate_random_movie_name():
     """
     Gera um nome de filme aleatório.
@@ -161,7 +160,6 @@ Senão
 Será gerada um objeto 'Movie' com atributo 'name' = 'movie_name'
 Haverá no Banco de Dados 10 novas instâncias de 'Movie'.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 def seed_movies():
     """
     Popula o banco de dados com filmes.
@@ -192,7 +190,6 @@ Se filme está no banco de dados
 Senão
     Retorna 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 def get_movie_weight(mid):
     """
     Retorna o peso do filme com base no ID fornecido.
