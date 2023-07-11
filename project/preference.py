@@ -90,7 +90,7 @@ def create_preference(uid, mid):
 
     Parâmetros:
         uid: ID do usuário.
-        
+
         mid: ID do filme.
 
     Return:
@@ -112,7 +112,7 @@ def delete_preference(uid, mid):
 
     Parameters:
         uid: ID do usuário.
-        
+
         mid: ID do filme.
     """
 
@@ -125,12 +125,10 @@ def delete_preference(uid, mid):
 
 def delete_user_preferences(uid):
     """
-    Deleta a preferência do usuário pelo filme.
+    Deleta todas as preferências do usuário.
 
     Parâmetros:
         uid: ID do usuário.
-
-        mid: ID do filme.
     """
 
     preferences = get_user_preferences(uid)
@@ -141,10 +139,10 @@ def delete_user_preferences(uid):
 
 def delete_movie_preferences(mid):
     """
-    Deleta todas as preferências do usuário.
+    Deleta todas as preferências por um filme.
 
     Parâmetros:
-        uid: ID do usuário.
+        mid: ID do filme.
     """
 
     preferences = get_movie_preferences(mid)
@@ -178,6 +176,7 @@ def update_movie(mid, score):
 
     Parâmetros:
         mid: ID do filme.
+
         score: Pontuação a ser adicionada ao filme.
     """
 

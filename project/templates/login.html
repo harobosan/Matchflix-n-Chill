@@ -5,13 +5,14 @@
     <h3 class="title">Login</h3>
     <div class="box">
         {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <div class="notification is-danger">
-            {{ messages[0] }}
-        </div>
-        {% endif %}
+            {% if messages %}
+                <div class="notification is-danger">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
         {% endwith %}
         <form method="POST" action="/login">
+
             <div class="field">
                 <div class="control">
                     <input type="email" name="email" placeholder="Your Email" autofocus="" class="input_is_large">
@@ -30,7 +31,9 @@
                     Remember me
                 </label>
             </div class="bttn">
+
             <button class="bttn">Login</button>
+
         </form>
     </div>
 </div>

@@ -8,9 +8,7 @@ db = SQLAlchemy()
 
 
 class User(db.Model, UserMixin):
-    """
-    Classe para representar um usuário.        
-    """
+    """Classe para representar um usuário."""
 
     id = db.Column(db.Integer, primary_key=True)
     """
@@ -70,14 +68,13 @@ class User(db.Model, UserMixin):
     """
 
 class Admin(db.Model):
-    """
-        Classe responsável pelos usuários administradores
-    """
+    """Classe responsável pelos usuários administradores."""
 
     uid = db.Column(db.Integer, ForeignKey('user.id'), primary_key=True)
     """
-    user (User): Usuário associado ao administrador.
+    uid (int): ID do usuário admin.
     """
+
     user = db.relationship(
         'User',
         backref=db.backref(
@@ -85,6 +82,9 @@ class Admin(db.Model):
             cascade='all,delete'
         )
     )
+    """
+    user (User): Usuário associado ao administrador.
+    """
 
 class Movie(db.Model):
     """Dados que representam informações sobre os filmes"""
@@ -101,9 +101,17 @@ class Movie(db.Model):
     """
     image_url (str): URL da imagem do filme.
     """
+    weight = db.Column(db.Integer)
+    """
+    weight (int): Peso de correspondência do filme.
+    """
+    score = db.Column(db.Integer)
+    """
+    score (int): Número de preferencias associadas ao filme.
+    """
 
 class Preference(db.Model):
-    """ Classe que representa as preferências dos usuários em relação aos filmes."""
+    """Classe que representa as preferências dos usuários em relação aos filmes."""
 
     uid = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     """
@@ -152,9 +160,8 @@ class Relationship(db.Model):
     """
 
 class Messages(db.Model):
-    """
-    Classe que representa as mensagens.
-    """
+    """Classe que representa as mensagens."""
+
     id = db.Column(db.Integer, primary_key=True)
     """
     id (int): ID da mensagem (chave primária).
@@ -169,9 +176,8 @@ class Messages(db.Model):
     """
 
 class UserMessages(db.Model):
-    """
-    Classe que representa as mensagens trocadas entre usuários.
-    """
+    """Classe que representa as mensagens trocadas entre usuários."""
+
     sender = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     """
     sender (int): ID do remetente da mensagem (chave primária composta).
@@ -189,6 +195,7 @@ def db_commit():
     """
     Realiza o commit das alterações no banco de dados.
     """
+
     db.session.commit()
 
 def db_add(item):
@@ -198,6 +205,7 @@ def db_add(item):
     Parâmetros:
         item: Item a ser adicionado no banco de dados.
     """
+
     db.session.add(item)
 
 def db_del(item):
@@ -212,22 +220,14 @@ def db_del(item):
 
 def clean_db():
     """
-    Exclui todos os registros da tabela User
+    Exclui todos os registros das tabelas no banco de dados.
     """
+
     User.query.delete()
-    """
-    Exclui todos os registros da tabela Messages
-    """
-    Messages.query.delete()
-    """
-    Exclui todos os registros da tabela Preference
-    """
-    Preference.query.delete()
-    """
-    Exclui todos os registros da tabela Movie
-    """
     Movie.query.delete()
-    """
-    Realiza o commit das alterações no banco de dados
-    """
+    Messages.query.delete()
+    Admin.query.delete()
+    UserMessages.query.delete()
+    Preference.query.delete()
+    Relationship.query.delete()
     db_commit()

@@ -44,7 +44,6 @@ Assertivas de Entrada: O parâmetro 'movie_list' é um array de inteiros
 contendo IDs dos filmes no banco de dados.
 Assertivas de Saída: Retorna um array de objetos 'Movie' correspondentes aos IDs fornecidos.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 def get_movie_list(movie_list):
     """
     Retorna uma lista de filmes com base em uma lista de IDs.
@@ -73,7 +72,6 @@ Assertivas de Saída: Se existe um filme com nome == name no banco
                      Senão
                         Retorna False
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 def movie_exists(name):
     """
     Verifica se um filme com o nome fornecido existe no banco de dados.
@@ -96,7 +94,6 @@ Assertivas de Saída: Se existe um filme de nome == name
                         Será adicionada ao banco de dados um objeto 'Movie', 
                         tendo 'name' e 'image_url' como atributos.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 def create_movie(name, image_url):
     """
     Cria um novo filme no banco de dados.
@@ -123,7 +120,6 @@ Assertivas de Entrada: O parâmetro 'name' é uma string
 Assertivas de Saída: Se o filme existe no banco de dados, ele será excluído.
 Caso contrário, o estado anterior será igual ao atual.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 def delete_movie(name):
     """
     Deleta um filme do banco de dados.

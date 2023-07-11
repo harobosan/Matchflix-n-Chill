@@ -30,10 +30,6 @@ def get_user(email):
 def get_user_list(user_list):
     """
     Retorna uma lista de usuários com base em uma lista de IDs.
-    """
-
-    users = []
-    """
 
     Parâmetros:
         user_list: Lista de IDs dos usuários.
@@ -41,6 +37,8 @@ def get_user_list(user_list):
     Return:
         users: Lista de usuários encontrados.
     """
+
+    users = []
     for uid in user_list:
         user = User.query.filter_by(id=uid).first()
 
@@ -93,7 +91,6 @@ def delete_user(email):
     """
 
     user = get_user(email)
-
     if user:
         db_del(user)
         db_commit()
@@ -218,10 +215,10 @@ def remove_admin(uid):
 
 def sort_matches(user):
     """
-    Função auxiliar para classificar os resultados de acordo com as correspondências do usuário.
+    Função chave para ordenar os resultados de acordo com as correspondências do usuário.
 
     Parâmetros:
-        user: Objeto de usuário.
+        user: Par ID do usuário e Pontuação de correspondência.
 
     Return:
         user[1]: Valor usado para classificar as correspondências.

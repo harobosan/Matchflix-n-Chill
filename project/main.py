@@ -9,20 +9,14 @@ from .relationship import create_relationship, delete_relationship, update_statu
 from .movie import get_all_movies, get_movie, create_movie, delete_movie
 from .preference import get_user_preferences, create_preference, delete_preference, update_movie
 
+from .user import create_user, set_admin
+from .preference import get_all_preferences
+from .relationship import get_all_relationships
+from .db import clean_db
+from random import randint
 
 main = Blueprint('main', __name__)
 
-
-@main.route('/favicon.ico')
-def favicon():
-    """
-    Rota para acessar o arquivo favicon.ico.
-
-    Return:
-        send_from_directory: Arquivo favicon.ico.
-    """
-
-    return send_from_directory('static','favicon.ico')
 
 @main.route('/')
 def index():
@@ -139,3 +133,71 @@ def movies():
         privileged=privileged,
         preferences=preferences
     )
+
+@main.route('/favicon.ico')
+def favicon():
+    """
+    Rota para acessar o arquivo favicon.ico.
+
+    Return:
+        send_from_directory: Arquivo favicon.ico.
+    """
+
+    return send_from_directory('static','favicon.ico')
+
+@main.route('/test')
+def test():
+    """
+    Rota para a página de testes.
+
+    Return:
+        redirect: Página index.html.
+    """
+
+    if not current_user.is_authenticated:
+        print(get_all_users())
+        print(get_all_movies())
+        print(get_all_preferences())
+        print(get_all_relationships())
+        print()
+
+        clean_db()
+
+        create_user('admin@mail.com','admin','123456')
+        set_admin(1)
+
+        for i in range(2,11):
+            create_user('user'+str(i)+'@mail.com','user'+str(i),'123456')
+
+        create_movie('Alien','movies/alien.jpg')
+        create_movie('Avatar','movies/avatar.png')
+        create_movie('Avengers','movies/avengers_endgame.jpg')
+        create_movie('A Clockwork Orange','movies/clockwork_orange.jpg')
+        create_movie('Donnie Darko','movies/donnie_darko.jpg')
+        create_movie('Fight Club','movies/fight_club.jpg')
+        create_movie('Jurassic Park','movies/jurassic_park.jpg')
+        create_movie('Kill Bill','movies/kill_bill.jpg')
+        create_movie('Star Wars','movies/star_wars.jpg')
+        create_movie('Titanic','movies/titanic.jpg')
+
+        for i in range(11,21):
+            create_movie('Movie '+str(i),'imageExample.jpeg')
+
+        for i in range(1,11):
+            for j in range(randint(0,20)):
+                print(create_preference(i,randint(1,20)))
+
+        for i in range(1,11):
+            for j in range(randint(0,4)):
+                uid = randint(1,10)
+                if i != uid:
+                    print(create_relationship(i,uid))
+
+        print()
+        print(get_all_users())
+        print(get_all_movies())
+        print(get_all_preferences())
+        print(get_all_relationships())
+        print()
+
+    return redirect(url_for('main.index'))
