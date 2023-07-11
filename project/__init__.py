@@ -6,6 +6,21 @@ from .db import db, User
 from .auth import auth as auth_blueprint
 from .main import main as main_blueprint
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: create_app()
+Assertivas de Entrada:
+Nenhuma pré-condição especifíca
+Assertivas de Saída:
+A função cria um objeto da aplicação Flask.
+Configura a chave secreta (SECRET_KEY) da aplicação.
+Configura a URI do banco de dados (SQLALCHEMY_DATABASE_URI) para usar o SQLite com o arquivo db.sqlite.
+Inicializa o banco de dados (db) associando-o à aplicação Flask e cria todas as tabelas necessárias com db.create_all().
+Inicializa o LoginManager para gerenciar a autenticação de usuários.
+Define a rota de login (login_view) para a view auth.login do blueprint auth.
+Implementa a função load_user para o LoginManager, que carrega um objeto User com base no user_id.
+Registra os blueprints auth e main na aplicação Flask.
+Retorna o objeto da aplicação Flask criado.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def create_app():
     """
