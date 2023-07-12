@@ -2,39 +2,84 @@
 
 {% block content %}
 <div class="column is-4 is-offset-4">
-    <h3 class="title">Login</h3>
-    <div class="box">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="notification is-danger">
-                    {{ messages[0] }}
+    <div style="
+        width:50vw;
+        height: 75vh;
+        margin: auto;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 15px;
+    ">
+        <h3 class="title" style="
+            font-size: 45px;
+            color:azure;
+        ">Login</h3>
+        <div class="box">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="notification is-danger">
+                        {{ messages[0] }}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <form method="POST" action="/login" style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            "
+            >
+
+                <div class="field">
+                    <div class="control">
+                        <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="Your Email" 
+                            autofocus="" 
+                            class="input_is_large"
+                            style="
+                                border-radius: 5px;
+                                height: 35px;
+                                width: 400px;
+                            ">
+                    </div>
                 </div>
-            {% endif %}
-        {% endwith %}
-        <form method="POST" action="/login">
 
-            <div class="field">
-                <div class="control">
-                    <input type="email" name="email" placeholder="Your Email" autofocus="" class="input_is_large">
+                <div class="field">
+                    <div class="control">
+                        <input 
+                            type="password" 
+                            name="password" 
+                            placeholder="Your Password" 
+                            class="input_is_large"
+                            style="
+                                border-radius: 5px;
+                                height: 35px;
+                                width: 400px;
+                                margin-top: 20px;
+                                margin-bottom: 20px;
+                            "
+                        >
+                    </div>
                 </div>
-            </div>
 
-            <div class="field">
-                <div class="control">
-                    <input type="password" name="password" placeholder="Your Password" class="input_is_large">
-                </div>
-            </div>
+                <div class="field" style="margin-bottom: 20px;">
+                    <label class="checkbox">
+                        <input type="checkbox" name="remember" style="background-color: blue;">
+                        Remember me
+                    </label>
+                </div class="bttn">
 
-            <div class="field">
-                <label class="checkbox">
-                    <input type="checkbox" name="remember">
-                    Remember me
-                </label>
-            </div class="bttn">
+                <button class="bttn" style="
+                    width: 140px;
+                    height: 30px;
+                "
+                >Login</button>
 
-            <button class="bttn">Login</button>
-
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}

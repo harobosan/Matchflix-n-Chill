@@ -176,6 +176,14 @@
         "documentation": {}
     },
     {
+        "label": "randint",
+        "importPath": "random",
+        "description": "random",
+        "isExtraImport": true,
+        "detail": "random",
+        "documentation": {}
+    },
+    {
         "label": "generate_password_hash",
         "importPath": "werkzeug.security",
         "description": "werkzeug.security",
@@ -653,7 +661,7 @@
         "kind": 2,
         "importPath": "project.auth",
         "description": "project.auth",
-        "peekOfCode": "def login():\n    \"\"\"login\"\"\"\n    if current_user.is_authenticated:\n        flash('You are already authenticated, logout first to access this page.')\n        return redirect(url_for('main.profile'))\n    if request.method == 'POST':\n        email = request.form.get('email')\n        password = request.form.get('password')\n        remember = bool(request.form.get('remember'))\n        user = authenticate_user(email, password)",
+        "peekOfCode": "def login():\n    \"\"\"\n    Rota para a página de login.\n    Return:\n        render_template: Página login.html.\n    \"\"\"\n    if current_user.is_authenticated:\n        flash('You are already authenticated, logout first to access this page.')\n        return redirect(url_for('main.profile'))\n    if request.method == 'POST':",
         "detail": "project.auth",
         "documentation": {}
     },
@@ -662,7 +670,7 @@
         "kind": 2,
         "importPath": "project.auth",
         "description": "project.auth",
-        "peekOfCode": "def signup():\n    \"\"\"signup\"\"\"\n    if current_user.is_authenticated:\n        flash('You are already authenticated, logout first to access this page.')\n        return redirect(url_for('main.profile'))\n    if request.method == 'POST':\n        email = request.form.get('email')\n        username = request.form.get('username')\n        password = request.form.get('password')\n        user = create_user(email, username, password)",
+        "peekOfCode": "def signup():\n    \"\"\"\n    Rota para a página de cadastro.\n    Return:\n        render_template: Página signup.html.\n    \"\"\"\n    if current_user.is_authenticated:\n        flash('You are already authenticated, logout first to access this page.')\n        return redirect(url_for('main.profile'))\n    if request.method == 'POST':",
         "detail": "project.auth",
         "documentation": {}
     },
@@ -671,7 +679,7 @@
         "kind": 2,
         "importPath": "project.auth",
         "description": "project.auth",
-        "peekOfCode": "def logout():\n    \"\"\"logout\"\"\"\n    if not current_user.is_authenticated:\n        flash('Please, authenticate to access this page.')\n        return redirect(url_for('auth.login'))\n    disconnect_user(current_user)\n    logout_user()\n    return redirect(url_for('main.index'))",
+        "peekOfCode": "def logout():\n    \"\"\"\n    Rota para realizar o logout.\n    Return:\n        redirect: Redireciona para a página inicial.\n    \"\"\"\n    if not current_user.is_authenticated:\n        flash('Please, authenticate to access this page.')\n        return redirect(url_for('auth.login'))\n    disconnect_user(current_user)",
         "detail": "project.auth",
         "documentation": {}
     },
@@ -680,7 +688,7 @@
         "kind": 5,
         "importPath": "project.auth",
         "description": "project.auth",
-        "peekOfCode": "auth = Blueprint('auth', __name__)\n@auth.route('/login', methods=['GET', 'POST'])\ndef login():\n    \"\"\"login\"\"\"\n    if current_user.is_authenticated:\n        flash('You are already authenticated, logout first to access this page.')\n        return redirect(url_for('main.profile'))\n    if request.method == 'POST':\n        email = request.form.get('email')\n        password = request.form.get('password')",
+        "peekOfCode": "auth = Blueprint('auth', __name__)\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: login()\nAssertivas de Entrada:\nNenhuma especifíca\nAssertivas de Saída:\nSe o Usuário está Autenticado\n    Redireciona para a página principal\nSenão\n    É renderizada a página de login",
         "detail": "project.auth",
         "documentation": {}
     },
@@ -689,7 +697,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class User(db.Model, UserMixin):\n    \"\"\"User\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    email = db.Column(db.String(100), unique=True)\n    username = db.Column(db.String(1000))\n    password = db.Column(db.String(100))\n    authenticated = db.Column(db.Boolean, default=False)\n    uid_1 = db.relationship(\n        'Relationship',\n        foreign_keys='Relationship.uid_1',",
+        "peekOfCode": "class User(db.Model, UserMixin):\n    \"\"\"Classe para representar um usuário.\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    \"\"\"\n    id (int): ID do usuário.\n    \"\"\"\n    email = db.Column(db.String(100), unique=True)\n    \"\"\"\n    email (str): E-mail do usuário.\n    \"\"\"",
         "detail": "project.db",
         "documentation": {}
     },
@@ -698,7 +706,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class Admin(db.Model):\n    \"\"\"Admin\"\"\"\n    uid = db.Column(db.Integer, ForeignKey('user.id'), primary_key=True)\n    user = db.relationship(\n        'User',\n        backref=db.backref(\n            'Admin',\n            cascade='all,delete'\n        )\n    )",
+        "peekOfCode": "class Admin(db.Model):\n    \"\"\"Classe responsável pelos usuários administradores.\"\"\"\n    uid = db.Column(db.Integer, ForeignKey('user.id'), primary_key=True)\n    \"\"\"\n    uid (int): ID do usuário admin.\n    \"\"\"\n    user = db.relationship(\n        'User',\n        backref=db.backref(\n            'Admin',",
         "detail": "project.db",
         "documentation": {}
     },
@@ -707,7 +715,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class Movie(db.Model):\n    \"\"\"Movie\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(100))\n    image_url = db.Column(db.String(200))\n    weight = db.Column(db.Integer)\n    score = db.Column(db.Integer)\nclass Preference(db.Model):\n    \"\"\"Preference\"\"\"\n    id = db.Column(db.Integer, primary_key=True)",
+        "peekOfCode": "class Movie(db.Model):\n    \"\"\"Dados que representam informações sobre os filmes\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    \"\"\"\n    id (int): ID do filme (chave primária).\n    \"\"\"\n    name = db.Column(db.String(100))\n    \"\"\"\n    name (str): Nome do filme.\n    \"\"\"",
         "detail": "project.db",
         "documentation": {}
     },
@@ -716,7 +724,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class Preference(db.Model):\n    \"\"\"Preference\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    uid = db.Column(db.Integer, db.ForeignKey('user.id'))\n    mid = db.Column(db.Integer, db.ForeignKey('movie.id'))\n    user = db.relationship(\n        'User',\n        backref=db.backref(\n            'Preference',\n            cascade='all,delete'",
+        "peekOfCode": "class Preference(db.Model):\n    \"\"\"Classe que representa as preferências dos usuários em relação aos filmes.\"\"\"\n    uid = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    \"\"\"\n    uid (int): ID do usuário (chave primária composta).\n    \"\"\"\n    mid = db.Column(db.Integer, db.ForeignKey('movie.id'), primary_key=True)\n    \"\"\"\n    mid (int): ID do filme (chave primária composta).\n    \"\"\"",
         "detail": "project.db",
         "documentation": {}
     },
@@ -725,7 +733,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class Relationship(db.Model):\n    \"\"\"Relationship\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    uid_1 = db.Column(db.Integer, db.ForeignKey('user.id'))\n    uid_2 = db.Column(db.Integer, db.ForeignKey('user.id'))\n    status = db.Column(db.Boolean)\nclass Messages(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    date = db.Column(db.Date)\n    text = db.Column(db.String(250))",
+        "peekOfCode": "class Relationship(db.Model):\n    \"\"\"Classe que representa os relacionamentos entre os usuários.\"\"\"\n    uid_1 = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    \"\"\"\n    uid_1 (int): ID do primeiro usuário no relacionamento (chave primária composta).\n    \"\"\"\n    uid_2 = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    \"\"\"\n    uid_2 (int): ID do segundo usuário no relacionamento (chave primária composta).\n    \"\"\"",
         "detail": "project.db",
         "documentation": {}
     },
@@ -734,7 +742,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class Messages(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    date = db.Column(db.Date)\n    text = db.Column(db.String(250))\nclass UserMessages(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    sender = db.Column(db.Integer, db.ForeignKey('user.id'))\n    receiver = db.Column(db.Integer, db.ForeignKey('user.id'))\n    mid = db.Column(db.Integer, db.ForeignKey('messages.id'))\ndef db_commit():",
+        "peekOfCode": "class Messages(db.Model):\n    \"\"\"Classe que representa as mensagens.\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    \"\"\"\n    id (int): ID da mensagem (chave primária).\n    \"\"\"\n    date = db.Column(db.Date)\n    \"\"\"\n    date (Date): Data da mensagem.\n    \"\"\"",
         "detail": "project.db",
         "documentation": {}
     },
@@ -743,7 +751,7 @@
         "kind": 6,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "class UserMessages(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    sender = db.Column(db.Integer, db.ForeignKey('user.id'))\n    receiver = db.Column(db.Integer, db.ForeignKey('user.id'))\n    mid = db.Column(db.Integer, db.ForeignKey('messages.id'))\ndef db_commit():\n    \"\"\"db_commit\"\"\"\n    db.session.commit()\ndef db_add(item):\n    \"\"\"db_add\"\"\"",
+        "peekOfCode": "class UserMessages(db.Model):\n    \"\"\"Classe que representa as mensagens trocadas entre usuários.\"\"\"\n    sender = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    \"\"\"\n    sender (int): ID do remetente da mensagem (chave primária composta).\n    \"\"\"\n    receiver = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)\n    \"\"\"\n    receiver (int): ID do destinatário da mensagem (chave primária composta).\n    \"\"\"",
         "detail": "project.db",
         "documentation": {}
     },
@@ -752,7 +760,7 @@
         "kind": 2,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "def db_commit():\n    \"\"\"db_commit\"\"\"\n    db.session.commit()\ndef db_add(item):\n    \"\"\"db_add\"\"\"\n    db.session.add(item)\ndef db_del(item):\n    \"\"\"db_del\"\"\"\n    db.session.delete(item)\ndef clean_db():",
+        "peekOfCode": "def db_commit():\n    \"\"\"\n    Realiza o commit das alterações no banco de dados.\n    \"\"\"\n    db.session.commit()\ndef db_add(item):\n    \"\"\"\n    Adiciona um item no banco de dados.\n    Parâmetros:\n        item: Item a ser adicionado no banco de dados.",
         "detail": "project.db",
         "documentation": {}
     },
@@ -761,7 +769,7 @@
         "kind": 2,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "def db_add(item):\n    \"\"\"db_add\"\"\"\n    db.session.add(item)\ndef db_del(item):\n    \"\"\"db_del\"\"\"\n    db.session.delete(item)\ndef clean_db():\n    \"\"\"clean_db\"\"\"\n    # Exclui todos os registros da tabela User\n    User.query.delete()",
+        "peekOfCode": "def db_add(item):\n    \"\"\"\n    Adiciona um item no banco de dados.\n    Parâmetros:\n        item: Item a ser adicionado no banco de dados.\n    \"\"\"\n    db.session.add(item)\ndef db_del(item):\n    \"\"\"\n    Deleta um item do banco de dados.",
         "detail": "project.db",
         "documentation": {}
     },
@@ -770,7 +778,7 @@
         "kind": 2,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "def db_del(item):\n    \"\"\"db_del\"\"\"\n    db.session.delete(item)\ndef clean_db():\n    \"\"\"clean_db\"\"\"\n    # Exclui todos os registros da tabela User\n    User.query.delete()\n    # Exclui todos os registros da tabela Messages\n    Messages.query.delete()\n    # Exclui todos os registros da tabela Preference",
+        "peekOfCode": "def db_del(item):\n    \"\"\"\n    Deleta um item do banco de dados.\n    Parâmetros:\n        item: Item a ser deletado do banco de dados.\n    \"\"\"\n    db.session.delete(item)\ndef clean_db():\n    \"\"\"\n    Exclui todos os registros das tabelas no banco de dados.",
         "detail": "project.db",
         "documentation": {}
     },
@@ -779,7 +787,7 @@
         "kind": 2,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "def clean_db():\n    \"\"\"clean_db\"\"\"\n    # Exclui todos os registros da tabela User\n    User.query.delete()\n    # Exclui todos os registros da tabela Messages\n    Messages.query.delete()\n    # Exclui todos os registros da tabela Preference\n    Preference.query.delete()\n    # Exclui todos os registros da tabela Movie\n    Movie.query.delete()",
+        "peekOfCode": "def clean_db():\n    \"\"\"\n    Exclui todos os registros das tabelas no banco de dados.\n    \"\"\"\n    User.query.delete()\n    Movie.query.delete()\n    Messages.query.delete()\n    Admin.query.delete()\n    UserMessages.query.delete()\n    Preference.query.delete()",
         "detail": "project.db",
         "documentation": {}
     },
@@ -788,17 +796,8 @@
         "kind": 5,
         "importPath": "project.db",
         "description": "project.db",
-        "peekOfCode": "db = SQLAlchemy()\nclass User(db.Model, UserMixin):\n    \"\"\"User\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    email = db.Column(db.String(100), unique=True)\n    username = db.Column(db.String(1000))\n    password = db.Column(db.String(100))\n    authenticated = db.Column(db.Boolean, default=False)\n    uid_1 = db.relationship(\n        'Relationship',",
+        "peekOfCode": "db = SQLAlchemy()\nclass User(db.Model, UserMixin):\n    \"\"\"Classe para representar um usuário.\"\"\"\n    id = db.Column(db.Integer, primary_key=True)\n    \"\"\"\n    id (int): ID do usuário.\n    \"\"\"\n    email = db.Column(db.String(100), unique=True)\n    \"\"\"\n    email (str): E-mail do usuário.",
         "detail": "project.db",
-        "documentation": {}
-    },
-    {
-        "label": "favicon",
-        "kind": 2,
-        "importPath": "project.main",
-        "description": "project.main",
-        "peekOfCode": "def favicon():\n    \"\"\"favicon\"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/')\ndef index():\n    \"\"\"index\"\"\"\n    #print(calc_matches(1))\n    return render_template('index.html')\n@main.route('/profile')\ndef profile():",
-        "detail": "project.main",
         "documentation": {}
     },
     {
@@ -806,7 +805,7 @@
         "kind": 2,
         "importPath": "project.main",
         "description": "project.main",
-        "peekOfCode": "def index():\n    \"\"\"index\"\"\"\n    #print(calc_matches(1))\n    return render_template('index.html')\n@main.route('/profile')\ndef profile():\n    \"\"\"profile\"\"\"\n    if not current_user.is_authenticated:\n        flash('Please, authenticate to access this page.')\n        return redirect(url_for('auth.login'))",
+        "peekOfCode": "def index():\n    \"\"\"\n    Rota para a página inicial.\n    Return:\n        render_template: Página index.html.\n    \"\"\"\n    return render_template('index.html')\n@main.route('/profile', methods=['GET', 'POST'])\ndef profile():\n    \"\"\"",
         "detail": "project.main",
         "documentation": {}
     },
@@ -815,7 +814,7 @@
         "kind": 2,
         "importPath": "project.main",
         "description": "project.main",
-        "peekOfCode": "def profile():\n    \"\"\"profile\"\"\"\n    if not current_user.is_authenticated:\n        flash('Please, authenticate to access this page.')\n        return redirect(url_for('auth.login'))\n    return render_template('profile.html', user=current_user, user_list=get_all_users())\n@main.route('/movies', methods=['GET', 'POST'])\ndef movies():\n    \"\"\"movies\"\"\"\n    privileged = False",
+        "peekOfCode": "def profile():\n    \"\"\"\n    Rota para a página de perfil do usuário.\n    Return:\n        render_template: Página profile.html.\n    \"\"\"\n    if not current_user.is_authenticated:\n        flash('Please, authenticate to access this page.')\n        return redirect(url_for('auth.login'))\n    if request.method == 'POST':",
         "detail": "project.main",
         "documentation": {}
     },
@@ -824,7 +823,25 @@
         "kind": 2,
         "importPath": "project.main",
         "description": "project.main",
-        "peekOfCode": "def movies():\n    \"\"\"movies\"\"\"\n    privileged = False\n    preferences = None\n    if current_user.is_authenticated:\n        privileged = is_admin(current_user.id)\n        preferences = get_user_preferences(current_user.id)\n    if request.method == 'POST':\n        if current_user.is_authenticated:\n            if request.form.get(\"like\"):",
+        "peekOfCode": "def movies():\n    \"\"\"\n    Rota para a página de filmes.\n    Return:\n        render_template: Página movies.html.\n    \"\"\"\n    privileged = False\n    preferences = None\n    if current_user.is_authenticated:\n        privileged = is_admin(current_user.id)",
+        "detail": "project.main",
+        "documentation": {}
+    },
+    {
+        "label": "favicon",
+        "kind": 2,
+        "importPath": "project.main",
+        "description": "project.main",
+        "peekOfCode": "def favicon():\n    \"\"\"\n    Rota para acessar o arquivo favicon.ico.\n    Return:\n        send_from_directory: Arquivo favicon.ico.\n    \"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/test')\ndef test():\n    \"\"\"",
+        "detail": "project.main",
+        "documentation": {}
+    },
+    {
+        "label": "test",
+        "kind": 2,
+        "importPath": "project.main",
+        "description": "project.main",
+        "peekOfCode": "def test():\n    \"\"\"\n    Rota para a página de testes.\n    Return:\n        redirect: Página index.html.\n    \"\"\"\n    if not current_user.is_authenticated:\n        print(get_all_users())\n        print(get_all_movies())\n        print(get_all_preferences())",
         "detail": "project.main",
         "documentation": {}
     },
@@ -833,7 +850,7 @@
         "kind": 5,
         "importPath": "project.main",
         "description": "project.main",
-        "peekOfCode": "main = Blueprint('main', __name__)\n@main.route('/favicon.ico')\ndef favicon():\n    \"\"\"favicon\"\"\"\n    return send_from_directory('static','favicon.ico')\n@main.route('/')\ndef index():\n    \"\"\"index\"\"\"\n    #print(calc_matches(1))\n    return render_template('index.html')",
+        "peekOfCode": "main = Blueprint('main', __name__)\n@main.route('/')\ndef index():\n    \"\"\"\n    Rota para a página inicial.\n    Return:\n        render_template: Página index.html.\n    \"\"\"\n    return render_template('index.html')\n@main.route('/profile', methods=['GET', 'POST'])",
         "detail": "project.main",
         "documentation": {}
     },
@@ -842,7 +859,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def get_all_movies():\n    \"\"\"get_all_movies\"\"\"\n    movies = Movie.query.all()\n    return movies\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: get_movie(name)\nAssertivas de Entrada: O parâmetro 'name' é uma string\nAssertivas de Saída: Retorna o objeto 'movie' homônimo ao parâmetro, caso este exista, e None, caso contrário.\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\ndef get_movie(name):",
+        "peekOfCode": "def get_all_movies():\n    \"\"\"\n    Retorna uma lista com todos os filmes existentes no banco de dados.\n    Return:\n        movies: Lista de filmes.\n    \"\"\"\n    movies = Movie.query.all()\n    return movies\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: get_movie(name)",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -851,7 +868,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def get_movie(name):\n    \"\"\"get_movie\"\"\"\n    movie = Movie.query.filter_by(name=name).first()\n    return movie\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: get_movie_list(movie_list)\nAssertivas de Entrada: O parâmetro 'movie_list' é um array de inteiros \ncontendo IDs dos filmes no banco de dados.\nAssertivas de Saída: Retorna um array de objetos 'Movie' correspondentes aos IDs fornecidos.\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
+        "peekOfCode": "def get_movie(name):\n    \"\"\"\n    Retorna o filme correspondente ao nome fornecido.\n    Parâmetros:\n        name: Nome do filme.\n    Returns:\n        movie: Objeto do filme encontrado ou None.\n    \"\"\"\n    movie = Movie.query.filter_by(name=name).first()\n    return movie",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -860,7 +877,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def get_movie_list(movie_list):\n    \"\"\"get_movie_list\"\"\"\n    movies = []\n    for mid in movie_list:\n        movie = Movie.query.filter_by(id=mid).first()\n        if movie:\n            movies.append(movie)\n    return movies\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: movie_exists(name)",
+        "peekOfCode": "def get_movie_list(movie_list):\n    \"\"\"\n    Retorna uma lista de filmes com base em uma lista de IDs.\n    Parâmetros:\n        movie_list: Lista de IDs dos filmes.\n    Returns:\n        movies: Lista de filmes encontrados.\n    \"\"\"\n    movies = []\n    for mid in movie_list:",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -869,7 +886,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def movie_exists(name):\n    \"\"\"movie_exists\"\"\"\n    return bool(get_movie(name))\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: create_movie(name, image_url)\nAssertivas de Entrada: Os parâmetro 'name' e 'image_url' devem ser strings\nAssertivas de Saída: Se existe um filme de nome == name\n                        Retorna None\n                     Senão\n                        Será adicionada ao banco de dados um objeto 'Movie', ",
+        "peekOfCode": "def movie_exists(name):\n    \"\"\"\n    Verifica se um filme com o nome fornecido existe no banco de dados.\n    Parâmetros:\n        name: Nome do filme a ser verificado.\n    Return:\n        bool: True se o filme existe, False caso contrário.\n    \"\"\"\n    return bool(get_movie(name))\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -878,7 +895,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def create_movie(name, image_url):\n    \"\"\"create_movie\"\"\"\n    if movie_exists(name):\n        return None\n    movie = Movie(name=name, image_url=image_url, weight=0, score=0)\n    db_add(movie)\n    db_commit()\n    return movie\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: delete_movie(name)",
+        "peekOfCode": "def create_movie(name, image_url):\n    \"\"\"\n    Cria um novo filme no banco de dados.\n    Parâmetros:\n        name: Nome do novo filme.\n        image_url: URL da imagem do novo filme.\n    Return:\n        movie: Objeto do filme criado ou None.\n    \"\"\"\n    if movie_exists(name):",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -887,7 +904,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def delete_movie(name):\n    \"\"\"delete_movie\"\"\"\n    movie = get_movie(name)\n    if movie:\n        db_del(movie)\n        db_commit()\ndef generate_random_movie_name():\n    \"\"\"generate_random_movie_name\"\"\"\n    i = randint(1, 300)\n    return f\"Filme {i}\"",
+        "peekOfCode": "def delete_movie(name):\n    \"\"\"\n    Deleta um filme do banco de dados.\n    Parâmetros:\n        name: Nome do filme a ser deletado.\n    \"\"\"\n    movie = get_movie(name)\n    if movie:\n        db_del(movie)\n        db_commit()",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -896,7 +913,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def generate_random_movie_name():\n    \"\"\"generate_random_movie_name\"\"\"\n    i = randint(1, 300)\n    return f\"Filme {i}\"\ndef seed_movies():\n    \"\"\"seed_movies\"\"\"\n    for i in range(10):\n        movie_name = f\"Filme {i}\"\n        if movie_exists(movie_name):\n            random_name = generate_random_movie_name()",
+        "peekOfCode": "def generate_random_movie_name():\n    \"\"\"\n    Gera um nome de filme aleatório.\n    Return:\n        random_name: Nome de filme aleatório.\n    \"\"\"\n    i = randint(1, 300)\n    return f\"Filme {i}\"\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: seed_movies()",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -905,7 +922,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def seed_movies():\n    \"\"\"seed_movies\"\"\"\n    for i in range(10):\n        movie_name = f\"Filme {i}\"\n        if movie_exists(movie_name):\n            random_name = generate_random_movie_name()\n            while movie_exists(random_name):\n                random_name = generate_random_movie_name()\n            movie = Movie(name=random_name, image_url=\"https://imagem\")\n        else:",
+        "peekOfCode": "def seed_movies():\n    \"\"\"\n    Popula o banco de dados com filmes.\n    \"\"\"\n    for i in range(10):\n        movie_name = f\"Filme {i}\"\n        if movie_exists(movie_name):\n            random_name = generate_random_movie_name()\n            while movie_exists(random_name):\n                random_name = generate_random_movie_name()",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -914,7 +931,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def get_movie_weight(mid):\n    \"\"\"get_movie_weight\"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:\n        return movie.weight\n    return 0\ndef update_movie_weight(mid, weight):\n    \"\"\"update_movie_weight\"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:",
+        "peekOfCode": "def get_movie_weight(mid):\n    \"\"\"\n    Retorna o peso do filme com base no ID fornecido.\n    Parâmetros:\n        mid: ID do filme.\n    Return:\n        weight: Peso do filme.\n    \"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -923,7 +940,7 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def update_movie_weight(mid, weight):\n    \"\"\"update_movie_weight\"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:\n        movie.weight = weight\n        db_commit()\ndef update_movie_score(mid, score):\n    \"\"\"update_movie_score\"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:",
+        "peekOfCode": "def update_movie_weight(mid, weight):\n    \"\"\"\n    Atualiza o peso do filme com base no ID fornecido.\n    Parâmetros:\n        mid: ID do filme.\n        weight: Novo peso do filme.\n    \"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:\n        movie.weight = weight",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -932,7 +949,16 @@
         "kind": 2,
         "importPath": "project.movie",
         "description": "project.movie",
-        "peekOfCode": "def update_movie_score(mid, score):\n    \"\"\"update_movie_score\"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:\n        movie.score += score\n        db_commit()",
+        "peekOfCode": "def update_movie_score(mid, score):\n    \"\"\"\n    Atualiza a pontuação do filme com base no ID fornecido.\n    Parâmetros:\n        mid: ID do filme.\n        score: Pontuação a ser adicionada ao filme.\n    \"\"\"\n    movie = Movie.query.filter_by(id=mid).first()\n    if movie:\n        movie.score += score",
+        "detail": "project.movie",
+        "documentation": {}
+    },
+    {
+        "label": "movie.weight",
+        "kind": 5,
+        "importPath": "project.movie",
+        "description": "project.movie",
+        "peekOfCode": "movie.weight = weight\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\ndef update_movie_weight(mid, weight):\n    \"\"\"\n    Atualiza o peso do filme com base no ID fornecido.\n    Parâmetros:\n        mid: ID do filme.\n        weight: Novo peso do filme.\n    \"\"\"\n    movie = Movie.query.filter_by(id=mid).first()",
         "detail": "project.movie",
         "documentation": {}
     },
@@ -941,7 +967,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def get_all_preferences():\n    \"\"\"get_all_preferences\"\"\"\n    preferences = Preference.query.all()\n    return preferences\ndef get_preference(uid, mid):\n    \"\"\"get_preference\"\"\"\n    preference = Preference.query.filter_by(uid=uid, mid=mid).first()\n    return preference\ndef get_user_preferences(uid):\n    \"\"\"get_user_preferences\"\"\"",
+        "peekOfCode": "def get_all_preferences():\n    \"\"\"\n    Retorna uma lista com todas as preferências existentes no banco de dados.\n    Return:\n        preferences: Lista de preferências.\n    \"\"\"\n    preferences = Preference.query.all()\n    return preferences\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\nFunção: get_preference(uid,mid)",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -950,7 +976,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def get_preference(uid, mid):\n    \"\"\"get_preference\"\"\"\n    preference = Preference.query.filter_by(uid=uid, mid=mid).first()\n    return preference\ndef get_user_preferences(uid):\n    \"\"\"get_user_preferences\"\"\"\n    preferences = Preference.query.filter_by(uid=uid)\n    user_preferences = []\n    for pref in preferences:\n        user_preferences.append(pref.mid)",
+        "peekOfCode": "def get_preference(uid, mid):\n    \"\"\"\n    Retorna a preferência correspondente ao usuário e filme fornecidos.\n    Parâmetros:\n        uid: ID do usuário.\n        mid: ID do filme.\n    Return:\n        preference: Objeto da preferência encontrada ou None.\n    \"\"\"\n    preference = Preference.query.filter_by(uid=uid, mid=mid).first()",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -959,7 +985,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def get_user_preferences(uid):\n    \"\"\"get_user_preferences\"\"\"\n    preferences = Preference.query.filter_by(uid=uid)\n    user_preferences = []\n    for pref in preferences:\n        user_preferences.append(pref.mid)\n    return user_preferences\ndef get_movie_preferences(mid):\n    \"\"\"get_movie_preferences\"\"\"\n    preferences = Preference.query.filter_by(mid=mid)",
+        "peekOfCode": "def get_user_preferences(uid):\n    \"\"\"\n    Retorna uma lista de filmes preferidos pelo usuário fornecido.\n    Parâmetros:\n        uid: ID do usuário.\n    Return:\n        user_preferences: Lista de IDs dos filmes preferidos pelo usuário.\n    \"\"\"\n    preferences = Preference.query.filter_by(uid=uid)\n    user_preferences = []",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -968,7 +994,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def get_movie_preferences(mid):\n    \"\"\"get_movie_preferences\"\"\"\n    preferences = Preference.query.filter_by(mid=mid)\n    movie_preferences = []\n    for pref in preferences:\n        movie_preferences.append(pref.uid)\n    return movie_preferences\ndef preference_exists(uid, mid):\n    \"\"\"preference_exists\"\"\"\n    return bool(get_preference(uid, mid))",
+        "peekOfCode": "def get_movie_preferences(mid):\n    \"\"\"\n    Retorna uma lista de usuários que preferiram o filme fornecido.\n    Parâmetros:\n        mid: ID do filme.\n    Return:\n        movie_preferences: Lista de IDs dos usuários que preferiram o filme.\n    \"\"\"\n    preferences = Preference.query.filter_by(mid=mid)\n    movie_preferences = []",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -977,7 +1003,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def preference_exists(uid, mid):\n    \"\"\"preference_exists\"\"\"\n    return bool(get_preference(uid, mid))\ndef create_preference(uid, mid):\n    \"\"\"create_preference\"\"\"\n    if preference_exists(uid, mid):\n        return None\n    preference = Preference(uid=uid, mid=mid)\n    db_add(preference)\n    db_commit()",
+        "peekOfCode": "def preference_exists(uid, mid):\n    \"\"\"\n    Verifica se existe uma preferência do usuário pelo filme fornecidos.\n    Parâmetros:\n        uid: ID do usuário.\n        mid: ID do filme.\n    Return:\n        bool: True se a preferência existe, False caso contrário.\n    \"\"\"\n    return bool(get_preference(uid, mid))",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -986,7 +1012,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def create_preference(uid, mid):\n    \"\"\"create_preference\"\"\"\n    if preference_exists(uid, mid):\n        return None\n    preference = Preference(uid=uid, mid=mid)\n    db_add(preference)\n    db_commit()\n    update_movie(mid, 1)\n    return preference\ndef delete_preference(uid, mid):",
+        "peekOfCode": "def create_preference(uid, mid):\n    \"\"\"\n    Cria uma nova preferência de um usuário por um filme.\n    Parâmetros:\n        uid: ID do usuário.\n        mid: ID do filme.\n    Return:\n        preference: Objeto da preferência criada ou None.\n    \"\"\"\n    if preference_exists(uid, mid):",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -995,7 +1021,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def delete_preference(uid, mid):\n    \"\"\"delete_preference\"\"\"\n    preference = get_preference(uid, mid)\n    if preference:\n        db_del(preference)\n        db_commit()\n        update_movie(mid, -1)\ndef delete_user_preferences(uid):\n    \"\"\"delete_user_preferences\"\"\"\n    preferences = get_user_preferences(uid)",
+        "peekOfCode": "def delete_preference(uid, mid):\n    \"\"\"\n    Deleta a preferência do usuário pelo filme.\n    Parameters:\n        uid: ID do usuário.\n        mid: ID do filme.\n    \"\"\"\n    preference = get_preference(uid, mid)\n    if preference:\n        db_del(preference)",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -1004,7 +1030,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def delete_user_preferences(uid):\n    \"\"\"delete_user_preferences\"\"\"\n    preferences = get_user_preferences(uid)\n    if preferences:\n        for mid in preferences:\n            delete_preference(uid, mid)\ndef delete_movie_preferences(mid):\n    \"\"\"delete_movie_preferences\"\"\"\n    preferences = get_movie_preferences(mid)\n    if preferences:",
+        "peekOfCode": "def delete_user_preferences(uid):\n    \"\"\"\n    Deleta a preferência do usuário pelo filme.\n    Parâmetros:\n        uid: ID do usuário.\n        mid: ID do filme.\n    \"\"\"\n    preferences = get_user_preferences(uid)\n    if preferences:\n        for mid in preferences:",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -1013,7 +1039,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def delete_movie_preferences(mid):\n    \"\"\"delete_movie_preferences\"\"\"\n    preferences = get_movie_preferences(mid)\n    if preferences:\n        for uid in preferences:\n            delete_preference(uid, mid)\ndef calc_movie_weight(mid):\n    \"\"\"calc_movie_weight\"\"\"\n    preferences = len(get_all_preferences())\n    movie_preferences = len(get_movie_preferences(mid))",
+        "peekOfCode": "def delete_movie_preferences(mid):\n    \"\"\"\n    Deleta todas as preferências do usuário.\n    Parâmetros:\n        uid: ID do usuário.\n    \"\"\"\n    preferences = get_movie_preferences(mid)\n    if preferences:\n        for uid in preferences:\n            delete_preference(uid, mid)",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -1022,7 +1048,7 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def calc_movie_weight(mid):\n    \"\"\"calc_movie_weight\"\"\"\n    preferences = len(get_all_preferences())\n    movie_preferences = len(get_movie_preferences(mid))\n    if preferences and movie_preferences:\n        return round(1/(movie_preferences/preferences),1)\n    return 0\ndef update_movie(mid, score):\n    \"\"\"update_movie\"\"\"\n    preferences = get_all_preferences()",
+        "peekOfCode": "def calc_movie_weight(mid):\n    \"\"\"\n    Calcula o peso de um filme com base nas preferências.\n    Parâmetros:\n        mid: ID do filme.\n    Return:\n        weight: Peso do filme.\n    \"\"\"\n    preferences = len(get_all_preferences())\n    movie_preferences = len(get_movie_preferences(mid))",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -1031,7 +1057,16 @@
         "kind": 2,
         "importPath": "project.preference",
         "description": "project.preference",
-        "peekOfCode": "def update_movie(mid, score):\n    \"\"\"update_movie\"\"\"\n    preferences = get_all_preferences()\n    for preference in preferences:\n        update_movie_weight(preference.mid, calc_movie_weight(preference.mid))\n    update_movie_weight(mid, calc_movie_weight(mid))\n    update_movie_score(mid, score)",
+        "peekOfCode": "def update_movie(mid, score):\n    \"\"\"\n    Atualiza as informações de peso e pontuação do filme.\n    Parâmetros:\n        mid: ID do filme.\n        score: Pontuação a ser adicionada ao filme.\n    \"\"\"\n    preferences = get_all_preferences()\n    for preference in preferences:\n        update_movie_weight(preference.mid, calc_movie_weight(preference.mid))",
+        "detail": "project.preference",
+        "documentation": {}
+    },
+    {
+        "label": "movie.id",
+        "kind": 5,
+        "importPath": "project.preference",
+        "description": "project.preference",
+        "peekOfCode": "movie.id = id únicos\nAssertivas de Saída:\nSe preference_exists(uid,mid) == True\n    Retorna None\nSenão\n    É criado um objeto 'Preference' com atribuitos uid e mid\n    O banco de dados é atualizado com o objeto\n    É atríbuido peso 1 ao filme\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\ndef create_preference(uid, mid):",
         "detail": "project.preference",
         "documentation": {}
     },
@@ -1040,7 +1075,7 @@
         "kind": 2,
         "importPath": "project.relationship",
         "description": "project.relationship",
-        "peekOfCode": "def get_all_relationships():\n    \"\"\"get_all_relationships\"\"\"\n    relationships = Relationship.query.all()\n    return relationships\ndef get_relationship(uid_1, uid_2):\n    \"\"\"get_relationship\"\"\"\n    relationship = Relationship.query.filter_by(uid_1=uid_1, uid_2=uid_2).first()\n    if not relationship:\n        relationship = Relationship.query.filter_by(uid_1=uid_2, uid_2=uid_1).first()\n    return relationship",
+        "peekOfCode": "def get_all_relationships():\n    \"\"\"\n    Retorna uma lista com todos os relacionamentos.\n    Return:\n        relationships: Lista de relacionamentos.\n    \"\"\"\n    relationships = Relationship.query.all()\n    return relationships\ndef get_relationship(uid_1, uid_2):\n    \"\"\"",
         "detail": "project.relationship",
         "documentation": {}
     },
@@ -1049,7 +1084,7 @@
         "kind": 2,
         "importPath": "project.relationship",
         "description": "project.relationship",
-        "peekOfCode": "def get_relationship(uid_1, uid_2):\n    \"\"\"get_relationship\"\"\"\n    relationship = Relationship.query.filter_by(uid_1=uid_1, uid_2=uid_2).first()\n    if not relationship:\n        relationship = Relationship.query.filter_by(uid_1=uid_2, uid_2=uid_1).first()\n    return relationship\ndef get_user_relationships(uid):\n    \"\"\"get_user_relationships\"\"\"\n    rel_1 = Relationship.query.filter_by(uid_1=uid)\n    rel_2 = Relationship.query.filter_by(uid_2=uid)",
+        "peekOfCode": "def get_relationship(uid_1, uid_2):\n    \"\"\"\n    Retorna o relacionamento entre os dois usuários fornecidos.\n    Parâmetros:\n        uid_1: ID do primeiro usuário.\n        uid_2: ID do segundo usuário.\n    Return:\n        relationship: Objeto do relacionamento encontrado ou None.\n    \"\"\"\n    relationship = Relationship.query.filter_by(uid_1=uid_1, uid_2=uid_2).first()",
         "detail": "project.relationship",
         "documentation": {}
     },
@@ -1058,7 +1093,7 @@
         "kind": 2,
         "importPath": "project.relationship",
         "description": "project.relationship",
-        "peekOfCode": "def get_user_relationships(uid):\n    \"\"\"get_user_relationships\"\"\"\n    rel_1 = Relationship.query.filter_by(uid_1=uid)\n    rel_2 = Relationship.query.filter_by(uid_2=uid)\n    relationships = []\n    for rel in rel_1:\n        relationships.append(rel.uid_2)\n    for rel in rel_2:\n        relationships.append(rel.uid_1)\n    return relationships",
+        "peekOfCode": "def get_user_relationships(uid):\n    \"\"\"\n    Retorna uma lista de IDs dos usuários relacionados ao usuário fornecido.\n    Parâmetros:\n        uid: ID do usuário.\n    Return:\n        relationships: Lista de IDs dos usuários relacionados.\n    \"\"\"\n    rel_1 = Relationship.query.filter_by(uid_1=uid)\n    rel_2 = Relationship.query.filter_by(uid_2=uid)",
         "detail": "project.relationship",
         "documentation": {}
     },
@@ -1067,7 +1102,7 @@
         "kind": 2,
         "importPath": "project.relationship",
         "description": "project.relationship",
-        "peekOfCode": "def relationship_exists(uid_1, uid_2):\n    \"\"\"relationship_exists\"\"\"\n    return bool(get_relationship(uid_1, uid_2))\ndef create_relationship(uid_1, uid_2):\n    \"\"\"create_relationship\"\"\"\n    if relationship_exists(uid_1, uid_2):\n        return None\n    relationship = Relationship(uid_1=uid_1, uid_2=uid_2)\n    db_add(relationship)\n    db_commit()",
+        "peekOfCode": "def relationship_exists(uid_1, uid_2):\n    \"\"\"\n    Verifica se existe um relacionamento entre os dois usuários fornecidos.\n    Parâmetros:\n        uid_1: ID do primeiro usuário.\n        uid_2: ID do segundo usuário.\n    Return:\n        bool: True se o relacionamento existe, False caso contrário.\n    \"\"\"\n    return bool(get_relationship(uid_1, uid_2))",
         "detail": "project.relationship",
         "documentation": {}
     },
@@ -1076,7 +1111,7 @@
         "kind": 2,
         "importPath": "project.relationship",
         "description": "project.relationship",
-        "peekOfCode": "def create_relationship(uid_1, uid_2):\n    \"\"\"create_relationship\"\"\"\n    if relationship_exists(uid_1, uid_2):\n        return None\n    relationship = Relationship(uid_1=uid_1, uid_2=uid_2)\n    db_add(relationship)\n    db_commit()\n    return relationship\ndef delete_relationship(uid_1, uid_2):\n    \"\"\"delete_relationship\"\"\"",
+        "peekOfCode": "def create_relationship(uid_1, uid_2):\n    \"\"\"\n    Cria um novo relacionamento entre os dois usuários fornecidos.\n    Parâmetros:\n        uid_1: ID do primeiro usuário.\n        uid_2: ID do segundo usuário.\n    Return:\n        relationship: Objeto do relacionamento criado ou None.\n    \"\"\"\n    if relationship_exists(uid_1, uid_2):",
         "detail": "project.relationship",
         "documentation": {}
     },
@@ -1085,7 +1120,7 @@
         "kind": 2,
         "importPath": "project.relationship",
         "description": "project.relationship",
-        "peekOfCode": "def delete_relationship(uid_1, uid_2):\n    \"\"\"delete_relationship\"\"\"\n    relationship = get_relationship(uid_1, uid_2)\n    if relationship:\n        db_del(relationship)\n        db_commit()\ndef delete_user_relationships(uid):\n    \"\"\"delete_user_relationships\"\"\"\n    relationships = get_user_relationships(uid)\n    if relationships:",
+        "peekOfCode": "def delete_relationship(uid_1, uid_2):\n    \"\"\"\n    Deleta o relacionamento entre os dois usuários fornecidos.\n    Parâmetros:\n        uid_1: ID do primeiro usuário.\n        uid_2: ID do segundo usuário.\n    \"\"\"\n    relationship = get_relationship(uid_1, uid_2)\n    if relationship:\n        db_del(relationship)",
         "detail": "project.relationship",
         "documentation": {}
     },
@@ -1094,7 +1129,16 @@
         "kind": 2,
         "importPath": "project.relationship",
         "description": "project.relationship",
-        "peekOfCode": "def delete_user_relationships(uid):\n    \"\"\"delete_user_relationships\"\"\"\n    relationships = get_user_relationships(uid)\n    if relationships:\n        for uid_2 in relationships:\n            db_del(get_relationship(uid, uid_2))\n        db_commit()",
+        "peekOfCode": "def delete_user_relationships(uid):\n    \"\"\"\n    Deleta todos os relacionamentos do usuário fornecido.\n    Parâmetros:\n        uid: ID do usuário.\n    \"\"\"\n    relationships = get_user_relationships(uid)\n    if relationships:\n        for uid_2 in relationships:\n            db_del(get_relationship(uid, uid_2))",
+        "detail": "project.relationship",
+        "documentation": {}
+    },
+    {
+        "label": "update_status",
+        "kind": 2,
+        "importPath": "project.relationship",
+        "description": "project.relationship",
+        "peekOfCode": "def update_status(uid_1, uid_2):\n    \"\"\"update_status\"\"\"\n    relationship = get_relationship(uid_1, uid_2)\n    if relationship:\n        relationship.status = True\n        db_commit()",
         "detail": "project.relationship",
         "documentation": {}
     },
@@ -1103,7 +1147,7 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def get_all_users():\n    \"\"\"get_all_users\"\"\"\n    users = User.query.all()\n    return users\ndef get_user(email):\n    \"\"\"get_user\"\"\"\n    user = User.query.filter_by(email=email).first()\n    return user\ndef get_user_list(user_list):\n    \"\"\"get_user_list\"\"\"",
+        "peekOfCode": "def get_all_users():\n    \"\"\"Retorna uma lista com todos os usuários.\"\"\"\n    users = User.query.all()\n    return users\ndef get_user(email):\n    \"\"\"\n    Retorna o usuário correspondente ao email fornecido.\n    Parâmetros:\n        email: E-mail do usuário a ser buscado.\n    Returns:",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1112,7 +1156,7 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def get_user(email):\n    \"\"\"get_user\"\"\"\n    user = User.query.filter_by(email=email).first()\n    return user\ndef get_user_list(user_list):\n    \"\"\"get_user_list\"\"\"\n    users = []\n    for uid in user_list:\n        user = User.query.filter_by(id=uid).first()\n        if user:",
+        "peekOfCode": "def get_user(email):\n    \"\"\"\n    Retorna o usuário correspondente ao email fornecido.\n    Parâmetros:\n        email: E-mail do usuário a ser buscado.\n    Returns:\n        user: Objeto do usuário encontrado ou None.\n    \"\"\"\n    user = User.query.filter_by(email=email).first()\n    return user",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1121,7 +1165,7 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def get_user_list(user_list):\n    \"\"\"get_user_list\"\"\"\n    users = []\n    for uid in user_list:\n        user = User.query.filter_by(id=uid).first()\n        if user:\n            users.append(user)\n    return users\ndef user_exists(email):\n    \"\"\"user_exists\"\"\"",
+        "peekOfCode": "def get_user_list(user_list):\n    \"\"\"\n    Retorna uma lista de usuários com base em uma lista de IDs.\n    Parâmetros:\n        user_list: Lista de IDs dos usuários.\n    Return:\n        users: Lista de usuários encontrados.\n    \"\"\"\n    users = []\n    for uid in user_list:",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1130,7 +1174,7 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def user_exists(email):\n    \"\"\"user_exists\"\"\"\n    return bool(get_user(email))\ndef create_user(email, username, password):\n    \"\"\"create_user\"\"\"\n    if user_exists(email):\n        return None\n    hashed = generate_password_hash(password, method='sha256')\n    user = User(email=email, username=username, password=hashed, authenticated=False)\n    db_add(user)",
+        "peekOfCode": "def user_exists(email):\n    \"\"\"\n    Verifica se um usuário com o e-mail fornecido existe.\n    Parâmetros:\n        email: E-mail do usuário a ser verificado.\n    Return:\n        bool: True se o usuário existe, False caso contrário.\n    \"\"\"\n    return bool(get_user(email))\ndef create_user(email, username, password):",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1139,7 +1183,7 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def create_user(email, username, password):\n    \"\"\"create_user\"\"\"\n    if user_exists(email):\n        return None\n    hashed = generate_password_hash(password, method='sha256')\n    user = User(email=email, username=username, password=hashed, authenticated=False)\n    db_add(user)\n    db_commit()\n    return user\ndef delete_user(email):",
+        "peekOfCode": "def create_user(email, username, password):\n    \"\"\"\n    Cria um novo usuário no banco de dados.\n    Parameters:\n        email: E-mail do novo usuário.\n        username: Nome de usuário do novo usuário.\n        password: Senha do novo usuário.\n    Returns:\n        user: Objeto do usuário criado ou None.\n    \"\"\"",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1148,7 +1192,7 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def delete_user(email):\n    \"\"\"delete_user\"\"\"\n    user = get_user(email)\n    if user:\n        db_del(user)\n        db_commit()\ndef authenticate_user(email, password):\n    \"\"\"authenticate_user\"\"\"\n    user = get_user(email)\n    if user and check_password_hash(user.password, password):",
+        "peekOfCode": "def delete_user(email):\n    \"\"\"\n    Deleta um usuário do banco de dados.\n    Parâmetros:\n        email: E-mail do usuário a ser deletado.\n    \"\"\"\n    user = get_user(email)\n    if user:\n        db_del(user)\n        db_commit()",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1157,7 +1201,7 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def authenticate_user(email, password):\n    \"\"\"authenticate_user\"\"\"\n    user = get_user(email)\n    if user and check_password_hash(user.password, password):\n        user.authenticated = True\n        db_commit()\n        return user\n    return None\ndef disconnect_user(user):\n    \"\"\"disconnect_user\"\"\"",
+        "peekOfCode": "def authenticate_user(email, password):\n    \"\"\"\n    Realiza a autenticação um usuário com base no e-mail e senha fornecidos.\n    Parâmetros:\n        email: E-mail do usuário a ser autenticado.\n        password: Senha do usuário a ser autenticado.\n    Return:\n        user: Objeto do usuário autenticado ou None.\n    \"\"\"\n    user = get_user(email)",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1166,7 +1210,34 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def disconnect_user(user):\n    \"\"\"disconnect_user\"\"\"\n    if user and user_exists(user.email):\n        user.authenticated = False\n        db_commit()\ndef get_admin(uid):\n    \"\"\"get_admin\"\"\"\n    admin = Admin.query.filter_by(uid=uid).first()\n    return admin\ndef is_admin(uid):",
+        "peekOfCode": "def disconnect_user(user):\n    \"\"\"\n    Desconecta um usuário do sistema.\n    Parâmetros:\n        user: Objeto do usuário a ser desconectado.\n    \"\"\"\n    if user and user_exists(user.email):\n        user.authenticated = False\n        db_commit()\ndef update_email(user, email):",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "update_email",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def update_email(user, email):\n    \"\"\"update_email\"\"\"\n    if get_user(email):\n        return None\n    user.email = email\n    db_commit()\n    return user\ndef update_username(user, username):\n    \"\"\"update_username\"\"\"\n    user.username = username",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "update_username",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def update_username(user, username):\n    \"\"\"update_username\"\"\"\n    user.username = username\n    db_commit()\n    return user\ndef update_password(user, password):\n    \"\"\"update_password\"\"\"\n    hashed = generate_password_hash(password, method='sha256')\n    user.password = hashed\n    db_commit()",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "update_password",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def update_password(user, password):\n    \"\"\"update_password\"\"\"\n    hashed = generate_password_hash(password, method='sha256')\n    user.password = hashed\n    db_commit()\n    return user\ndef get_admin(uid):\n    \"\"\"\n    Retorna o objeto de administração associado ao ID do usuário fornecido.\n    Parâmetros:",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1175,7 +1246,7 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def get_admin(uid):\n    \"\"\"get_admin\"\"\"\n    admin = Admin.query.filter_by(uid=uid).first()\n    return admin\ndef is_admin(uid):\n    \"\"\"is_admin\"\"\"\n    return bool(get_admin(uid))\ndef set_admin(uid):\n    \"\"\"set_admin\"\"\"\n    if is_admin(uid):",
+        "peekOfCode": "def get_admin(uid):\n    \"\"\"\n    Retorna o objeto de administração associado ao ID do usuário fornecido.\n    Parâmetros:\n        uid: ID do usuário.\n    Return:\n        admin: Objeto de administração ou None.\n    \"\"\"\n    admin = Admin.query.filter_by(uid=uid).first()\n    return admin",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1184,7 +1255,7 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def is_admin(uid):\n    \"\"\"is_admin\"\"\"\n    return bool(get_admin(uid))\ndef set_admin(uid):\n    \"\"\"set_admin\"\"\"\n    if is_admin(uid):\n        return None\n    admin = Admin(uid=uid)\n    db_add(admin)\n    db_commit()",
+        "peekOfCode": "def is_admin(uid):\n    \"\"\"\n    Verifica se o usuário com o ID fornecido é um administrador.\n    Parâmetros:\n        uid: ID do usuário a ser verificado.\n    Return:\n        bool: True se o usuário é um administrador, False caso contrário.\n    \"\"\"\n    return bool(get_admin(uid))\ndef set_admin(uid):",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1193,7 +1264,7 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def set_admin(uid):\n    \"\"\"set_admin\"\"\"\n    if is_admin(uid):\n        return None\n    admin = Admin(uid=uid)\n    db_add(admin)\n    db_commit()\n    return admin\ndef remove_admin(uid):\n    \"\"\"remove_admin\"\"\"",
+        "peekOfCode": "def set_admin(uid):\n    \"\"\"\n    Define o usuário com o ID fornecido como administrador.\n    Parâmetros:\n        uid: ID do usuário a ser definido como administrador.\n    Return:\n        admin: Objeto de administração criado ou None.\n    \"\"\"\n    if is_admin(uid):\n        return None",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1202,7 +1273,7 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def remove_admin(uid):\n    \"\"\"remove_admin\"\"\"\n    admin = get_admin(uid)\n    if admin:\n        db_del(admin)\n        db_commit()\ndef sort_matches(user):\n    \"\"\"sort_matches\"\"\"\n    return user[1]\ndef calc_matches(uid):",
+        "peekOfCode": "def remove_admin(uid):\n    \"\"\"\n    Remove a atribuição de administrador do usuário com o ID fornecido.\n    Parâmetros:\n        uid: ID do usuário a ter a atribuição de administrador removida.\n    \"\"\"\n    admin = get_admin(uid)\n    if admin:\n        db_del(admin)\n        db_commit()",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1211,7 +1282,7 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def sort_matches(user):\n    \"\"\"sort_matches\"\"\"\n    return user[1]\ndef calc_matches(uid):\n    \"\"\"calc_matches\"\"\"\n    user_preferences = get_user_preferences(uid)\n    movies_list = []\n    for mid in user_preferences:\n        movies_list.append([get_movie_weight(mid), get_movie_preferences(mid)])\n    user_matches = []",
+        "peekOfCode": "def sort_matches(user):\n    \"\"\"\n    Função chave para ordenar os resultados de acordo com as correspondências do usuário.\n    Parâmetros:\n        user: Par ID do usuário e Pontuação de correspondência.\n    Return:\n        user[1]: Valor usado para classificar as correspondências.\n    \"\"\"\n    return user[1]\ndef calc_matches(uid):",
         "detail": "project.user",
         "documentation": {}
     },
@@ -1220,7 +1291,16 @@
         "kind": 2,
         "importPath": "project.user",
         "description": "project.user",
-        "peekOfCode": "def calc_matches(uid):\n    \"\"\"calc_matches\"\"\"\n    user_preferences = get_user_preferences(uid)\n    movies_list = []\n    for mid in user_preferences:\n        movies_list.append([get_movie_weight(mid), get_movie_preferences(mid)])\n    user_matches = []\n    user_scores = []\n    for movie_pair in movies_list:\n        for user in movie_pair[1]:",
+        "peekOfCode": "def calc_matches(uid):\n    \"\"\"\n    Calcula as correspondências entre um usuário e outros usuários com base em suas preferências.\n    Parâmetros:\n        uid: ID do usuário.\n    Return:\n        recommendations: Lista de correspondências ordenadas por pontuação.\n    \"\"\"\n    user_preferences = get_user_preferences(uid)\n    user_relationships = get_user_relationships(uid)",
+        "detail": "project.user",
+        "documentation": {}
+    },
+    {
+        "label": "get_relationship_lists",
+        "kind": 2,
+        "importPath": "project.user",
+        "description": "project.user",
+        "peekOfCode": "def get_relationship_lists(uid):\n    \"\"\"get_relationship_lists\"\"\"\n    relationships = get_user_relationships(uid)\n    friends = []\n    pending = []\n    requests = []\n    for user in relationships:\n        relationship = get_relationship(uid, user)\n        if relationship.status:\n            friends.append(User.query.filter_by(id=user).first())",
         "detail": "project.user",
         "documentation": {}
     },
