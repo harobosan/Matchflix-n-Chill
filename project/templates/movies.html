@@ -9,9 +9,22 @@
         </div>
     {% endif %}
 
-    <div class="movies">
+    <div class="movies"
+        style="
+            width: 100vw;
+            height: 78vh;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:space-between;
+            flex-direction: row;
+            flex-wrap: wrap;
+            overflow-y: scroll;
+        "
+    >
         {% for movie in movies %}
-            <div class="moviecard">
+            <div class="moviecard" style="
+                margin: 15px 30px 15px 30px;
+            ">
                 <img class="moviecard-image" src="{{ url_for('static', filename=movie.image_url) }}" alt="{{ movie.name }}">
                 <div class="moviecard-title">{{ movie.name }}</div>
                 {% if privileged %}
