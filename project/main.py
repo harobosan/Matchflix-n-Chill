@@ -1,5 +1,6 @@
 """Módulo principal"""
 
+from random import randint
 from flask import Blueprint
 from flask import render_template, send_from_directory, url_for, redirect, request, flash
 from flask_login import current_user
@@ -13,7 +14,6 @@ from .user import create_user, set_admin
 from .preference import get_all_preferences
 from .relationship import get_all_relationships
 from .db import clean_db
-from random import randint
 
 main = Blueprint('main', __name__)
 
@@ -184,11 +184,11 @@ def test():
             create_movie('Movie '+str(i),'imageExample.jpeg')
 
         for i in range(1,11):
-            for j in range(randint(0,20)):
+            for _ in range(randint(0,20)):
                 print(create_preference(i,randint(1,20)))
 
         for i in range(1,11):
-            for j in range(randint(0,4)):
+            for _ in range(randint(0,4)):
                 uid = randint(1,10)
                 if i != uid:
                     print(create_relationship(i,uid))
