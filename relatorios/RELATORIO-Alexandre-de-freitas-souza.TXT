@@ -11,3 +11,10 @@ Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
 26/06| 10 min | revisar código do módulo | revisão do módulo de classes do banco de dados 
 26/06| 1,5 horas | codificar módulo | módulo de funções da classe Movies (movies.py) implementado
 26/06| 30 min | revisar código do módulo | revisão das funções do módulo movies.py
+30/06| 1 Hora | redigir casos de teste | planejamento do módulo de testes do projeto
+30/06| 1,5 horas | estudar aulas e laboratórios relacionados | estudo de implementação de testes no flask pelo youtube
+04/07| 30 min | revisão de código | revisão do código do grupo para busca de erros de lógica
+06/07| 30 min | revisão de código | revisão do código do grupo para busca de erros de lógica
+08/07| 8 Horas | codificar módulo | implementação do módulo de testes do projeto
+09/07| 2 horas | instrumentar verificando cobertura | implementação de verificador de cobertura e adaptações ao módulo de testes
+09/07| 2 Horas | revisar código do módulo | ajuste de estilo no css das paginas do site
