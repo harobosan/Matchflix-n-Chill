@@ -32,7 +32,13 @@
 from db import Preference, db_commit, db_add, db_del
 from movie import update_movie_weight, update_movie_score
 
-
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+Função: get_all_preferences()
+Assertivas de Entrada:
+    Nenhuma especifíca
+Assertivas de Saída:
+    Retorna uma lista de strings contendo as preferências.
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
 def get_all_preferences():
     &#34;&#34;&#34;
     Retorna uma lista com todas as preferências existentes no banco de dados.
@@ -44,6 +50,20 @@ def get_all_preferences():
     preferences = Preference.query.all()
     return preferences
 
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+Função: get_preference(uid,mid)
+Assertivas de Entrada:
+Há no banco de dados um, e somente um objeto &#39;User&#39; tal que:
+    user.id == uid
+Há no banco de dados um, e somente um objeto &#39;Movie&#39; tal que:
+    movie.id  == mid
+Assertivas de Saída:
+    movie.id = mid
+    Se o Usuário tem &#39;movie.id&#39; como preferência
+        Retorna movie.id
+    Senão
+        Retorna None
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
 def get_preference(uid, mid):
     &#34;&#34;&#34;
     Retorna a preferência correspondente ao usuário e filme fornecidos.
@@ -59,6 +79,18 @@ def get_preference(uid, mid):
 
     preference = Preference.query.filter_by(uid=uid, mid=mid).first()
     return preference
+
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+Função: get_user_preferences()
+Assertivas de Entrada:
+Há no banco de dados um, e somente um, usuário com id = uid
+Assertivas de Saída:
+Se preferences = []
+    Retorna uma lista vazia
+Senão
+    Retorna uma lista de inteiros contendo os IDs dos filmes 
+    preferidos pelo usuário.
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
 
 def get_user_preferences(uid):
     &#34;&#34;&#34;
@@ -79,6 +111,18 @@ def get_user_preferences(uid):
 
     return user_preferences
 
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+Função: get_movie_preferences(mid)
+Assertivas de Entrada:
+Há no banco de dados um, e somente um atributo movie.id = mid
+Assertivas de Saída:
+Se preferences = []
+    Retorna uma lista vazia
+Senão
+    Retorna uma lista de inteiros contendo os IDs dos usuários
+    que tem o filme como preferido.
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+
 def get_movie_preferences(mid):
     &#34;&#34;&#34;
     Retorna uma lista de usuários que preferiram o filme fornecido.
@@ -89,6 +133,7 @@ def get_movie_preferences(mid):
     Return:
         movie_preferences: Lista de IDs dos usuários que preferiram o filme.
     &#34;&#34;&#34;
+
     preferences = Preference.query.filter_by(mid=mid)
 
     movie_preferences = []
@@ -97,28 +142,46 @@ def get_movie_preferences(mid):
 
     return movie_preferences
 
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+Função: preference_exists(uid,mid)
+Ver &#39;get_preference(uid,mid)&#39; para assertivas.
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+
 def preference_exists(uid, mid):
     &#34;&#34;&#34;
     Verifica se existe uma preferência do usuário pelo filme fornecidos.
 
     Parâmetros:
         uid: ID do usuário.
+
         mid: ID do filme.
 
     Return:
         bool: True se a preferência existe, False caso contrário.
     &#34;&#34;&#34;
 
-
     return bool(get_preference(uid, mid))
 
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+Função: create_preference(uid,mid)
+Assertivas de Entrada:
+Há, no banco de dados, objetos &#39;User&#39; e &#39;Movie&#39; com atributos user.id = id, 
+movie.id = id únicos
+Assertivas de Saída:
+Se preference_exists(uid,mid) == True
+    Retorna None
+Senão
+    É criado um objeto &#39;Preference&#39; com atribuitos uid e mid
+    O banco de dados é atualizado com o objeto
+    É atríbuido peso 1 ao filme
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
 def create_preference(uid, mid):
     &#34;&#34;&#34;
     Cria uma nova preferência de um usuário por um filme.
 
     Parâmetros:
-        uid: ID do usuário
-        .
+        uid: ID do usuário.
+        
         mid: ID do filme.
 
     Return:
@@ -134,8 +197,27 @@ def create_preference(uid, mid):
     update_movie(mid, 1)
     return preference
 
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+Função: delete_preference(uid,mid)
+Assertivas de Entrada: 
+Ver assertivas de entrada de get_preferece(uid,mid)
+Assertivas de Saída:
+Se CondRet == OK
+    Há preferência é deletada da lista de preferências do usuário
+    O banco de dados é atualizado
+    movie.weight--
+Senão
+    PrevEstado = CurrEstado
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
 def delete_preference(uid, mid):
-    &#34;&#34;&#34;delete_preference&#34;&#34;&#34;
+    &#34;&#34;&#34;
+    Deleta a preferência do usuário pelo filme.
+
+    Parameters:
+        uid: ID do usuário.
+        
+        mid: ID do filme.
+    &#34;&#34;&#34;
 
     preference = get_preference(uid, mid)
 
@@ -143,6 +225,14 @@ def delete_preference(uid, mid):
         db_del(preference)
         db_commit()
         update_movie(mid, -1)
+
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+Função: delete_user_preferences(uid)
+Assertivas de Entrada: 
+Ver assertivas de entrada de get_user_preferences(uid)
+Assertivas de Saída:
+    get_user_preferences(uid) = []
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
 
 def delete_user_preferences(uid):
     &#34;&#34;&#34;
@@ -160,6 +250,14 @@ def delete_user_preferences(uid):
         for mid in preferences:
             delete_preference(uid, mid)
 
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+Função: delete_movie_preferences(mid)
+Assertivas de Entrada: 
+Ver assertivas de get_movie_preferences.
+Assertivas de Saída:
+    get_movie_preferences(mid) = []
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+
 def delete_movie_preferences(mid):
     &#34;&#34;&#34;
     Deleta todas as preferências do usuário.
@@ -173,6 +271,17 @@ def delete_movie_preferences(mid):
     if preferences:
         for uid in preferences:
             delete_preference(uid, mid)
+
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+Função: calc_movie_weighy(mid)
+Assertivas de Entrada: Ver assertivas de get_all_preferences e
+get_movie_preferences
+Assertivas de Saída
+Se preferences e movie_presences &gt; 0
+    Retorna um float resultante do quociente &#39;preferences/movie_preferences&#39;
+Senão
+    Retorna 0
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
 
 def calc_movie_weight(mid):
     &#34;&#34;&#34;
@@ -192,6 +301,14 @@ def calc_movie_weight(mid):
         return round(1/(movie_preferences/preferences),1)
 
     return 0
+
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
+Função: update_movie(mid,score)
+Assertivas de Entrada:
+Ver assertivas de update_movie_weight, update_movie_score,calc_movie_weight
+Assertivas de Saída:
+Os atributos movie.weight e movie.score serão atualizados no banco de dados. 
+&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;
 
 def update_movie(mid, score):
     &#34;&#34;&#34;
@@ -257,9 +374,8 @@ def update_movie(mid, score):
 <dd>
 <div class="desc"><p>Cria uma nova preferência de um usuário por um filme.</p>
 <h2 id="parametros">Parâmetros</h2>
-<p>uid: ID do usuário
-.
-mid: ID do filme.</p>
+<p>uid: ID do usuário.</p>
+<p>mid: ID do filme.</p>
 <h2 id="return">Return</h2>
 <p>preference: Objeto da preferência criada ou None.</p></div>
 <details class="source">
@@ -271,8 +387,8 @@ mid: ID do filme.</p>
     Cria uma nova preferência de um usuário por um filme.
 
     Parâmetros:
-        uid: ID do usuário
-        .
+        uid: ID do usuário.
+        
         mid: ID do filme.
 
     Return:
@@ -319,13 +435,23 @@ mid: ID do filme.</p>
 <span>def <span class="ident">delete_preference</span></span>(<span>uid, mid)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>delete_preference</p></div>
+<div class="desc"><p>Deleta a preferência do usuário pelo filme.</p>
+<h2 id="parameters">Parameters</h2>
+<p>uid: ID do usuário.</p>
+<p>mid: ID do filme.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def delete_preference(uid, mid):
-    &#34;&#34;&#34;delete_preference&#34;&#34;&#34;
+    &#34;&#34;&#34;
+    Deleta a preferência do usuário pelo filme.
+
+    Parameters:
+        uid: ID do usuário.
+        
+        mid: ID do filme.
+    &#34;&#34;&#34;
 
     preference = get_preference(uid, mid)
 
@@ -410,6 +536,7 @@ mid: ID do filme.</p>
     Return:
         movie_preferences: Lista de IDs dos usuários que preferiram o filme.
     &#34;&#34;&#34;
+
     preferences = Preference.query.filter_by(mid=mid)
 
     movie_preferences = []
@@ -489,8 +616,8 @@ mid: ID do filme.</p>
 <dd>
 <div class="desc"><p>Verifica se existe uma preferência do usuário pelo filme fornecidos.</p>
 <h2 id="parametros">Parâmetros</h2>
-<p>uid: ID do usuário.
-mid: ID do filme.</p>
+<p>uid: ID do usuário.</p>
+<p>mid: ID do filme.</p>
 <h2 id="return">Return</h2>
 <p>bool: True se a preferência existe, False caso contrário.</p></div>
 <details class="source">
@@ -503,12 +630,12 @@ mid: ID do filme.</p>
 
     Parâmetros:
         uid: ID do usuário.
+
         mid: ID do filme.
 
     Return:
         bool: True se a preferência existe, False caso contrário.
     &#34;&#34;&#34;
-
 
     return bool(get_preference(uid, mid))</code></pre>
 </details>

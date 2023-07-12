@@ -33,6 +33,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from db import User, Admin, db_commit, db_add, db_del
 from movie import get_movie_weight
 from preference import get_user_preferences, get_movie_preferences
+from relationship import get_relationship, get_user_relationships
 
 
 def get_all_users():
@@ -51,23 +52,13 @@ def get_user(email):
     Returns:
         user: Objeto do usuário encontrado ou None.
     &#34;&#34;&#34;
-    user = User.query.filter_by(email=email).first()
-    &#34;&#34;&#34;
-    Parâmetros:
-        email: E-mail do usuário a ser buscado.
 
-    Return:
-        user: Objeto do usuário encontrado ou None.
-    &#34;&#34;&#34;
+    user = User.query.filter_by(email=email).first()
     return user
 
 def get_user_list(user_list):
     &#34;&#34;&#34;
     Retorna uma lista de usuários com base em uma lista de IDs.
-    &#34;&#34;&#34;
-
-    users = []
-    &#34;&#34;&#34;
 
     Parâmetros:
         user_list: Lista de IDs dos usuários.
@@ -75,6 +66,8 @@ def get_user_list(user_list):
     Return:
         users: Lista de usuários encontrados.
     &#34;&#34;&#34;
+
+    users = []
     for uid in user_list:
         user = User.query.filter_by(id=uid).first()
 
@@ -127,7 +120,6 @@ def delete_user(email):
     &#34;&#34;&#34;
 
     user = get_user(email)
-
     if user:
         db_del(user)
         db_commit()
@@ -165,6 +157,31 @@ def disconnect_user(user):
         user.authenticated = False
         db_commit()
 
+def update_email(user, email):
+    &#34;&#34;&#34;update_email&#34;&#34;&#34;
+
+    if get_user(email):
+        return None
+
+    user.email = email
+    db_commit()
+    return user
+
+def update_username(user, username):
+    &#34;&#34;&#34;update_username&#34;&#34;&#34;
+
+    user.username = username
+    db_commit()
+    return user
+
+def update_password(user, password):
+    &#34;&#34;&#34;update_password&#34;&#34;&#34;
+
+    hashed = generate_password_hash(password, method=&#39;sha256&#39;)
+    user.password = hashed
+    db_commit()
+    return user
+
 def get_admin(uid):
     &#34;&#34;&#34;
     Retorna o objeto de administração associado ao ID do usuário fornecido.
@@ -189,6 +206,7 @@ def is_admin(uid):
     Return:
         bool: True se o usuário é um administrador, False caso contrário.
     &#34;&#34;&#34;
+
     return bool(get_admin(uid))
 
 def set_admin(uid):
@@ -226,10 +244,10 @@ def remove_admin(uid):
 
 def sort_matches(user):
     &#34;&#34;&#34;
-    Função auxiliar para classificar os resultados de acordo com as correspondências do usuário.
+    Função chave para ordenar os resultados de acordo com as correspondências do usuário.
 
     Parâmetros:
-        user: Objeto de usuário.
+        user: Par ID do usuário e Pontuação de correspondência.
 
     Return:
         user[1]: Valor usado para classificar as correspondências.
@@ -249,6 +267,7 @@ def calc_matches(uid):
     &#34;&#34;&#34;
 
     user_preferences = get_user_preferences(uid)
+    user_relationships = get_user_relationships(uid)
 
     movies_list = []
     for mid in user_preferences:
@@ -258,7 +277,7 @@ def calc_matches(uid):
     user_scores = []
     for movie_pair in movies_list:
         for user in movie_pair[1]:
-            if user != uid:
+            if user != uid and not user_relationships.count(user):
                 if user_matches.count(user):
                     user_scores[user_matches.index(user)] += movie_pair[0]
                 else:
@@ -270,7 +289,41 @@ def calc_matches(uid):
         recommendations.append([user, user_scores[count]])
 
     recommendations.sort(reverse=True, key=sort_matches)
-    return recommendations</code></pre>
+    return recommendations
+
+def get_relationship_lists(uid):
+    &#34;&#34;&#34;
+    Retorna listas de relacionamentos de um usuário.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+    Return:
+        lists: Lista contendo as listas de amigos, pendentes, solicitações e recomendações do usuário.
+    &#34;&#34;&#34;
+
+    relationships = get_user_relationships(uid)
+
+    friends = []
+    pending = []
+    requests = []
+    for user in relationships:
+        relationship = get_relationship(uid, user)
+
+        if relationship.status:
+            friends.append(User.query.filter_by(id=user).first())
+        else:
+            if relationship.uid_1 == uid:
+                pending.append(User.query.filter_by(id=user).first())
+            else:
+                requests.append(User.query.filter_by(id=user).first())
+
+    matches = calc_matches(uid)
+    recommendations = []
+    for match in matches:
+        recommendations.append([User.query.filter_by(id=match[0]).first(), match[1]])
+
+    return [friends, pending, requests, recommendations]</code></pre>
 </details>
 </section>
 <section>
@@ -341,6 +394,7 @@ password: Senha do usuário a ser autenticado.</p>
     &#34;&#34;&#34;
 
     user_preferences = get_user_preferences(uid)
+    user_relationships = get_user_relationships(uid)
 
     movies_list = []
     for mid in user_preferences:
@@ -350,7 +404,7 @@ password: Senha do usuário a ser autenticado.</p>
     user_scores = []
     for movie_pair in movies_list:
         for user in movie_pair[1]:
-            if user != uid:
+            if user != uid and not user_relationships.count(user):
                 if user_matches.count(user):
                     user_scores[user_matches.index(user)] += movie_pair[0]
                 else:
@@ -426,7 +480,6 @@ password: Senha do novo usuário.</p>
     &#34;&#34;&#34;
 
     user = get_user(email)
-
     if user:
         db_del(user)
         db_commit()</code></pre>
@@ -500,6 +553,54 @@ password: Senha do novo usuário.</p>
     return users</code></pre>
 </details>
 </dd>
+<dt id="user.get_relationship_lists"><code class="name flex">
+<span>def <span class="ident">get_relationship_lists</span></span>(<span>uid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retorna listas de relacionamentos de um usuário.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>uid: ID do usuário.</p>
+<h2 id="return">Return</h2>
+<p>lists: Lista contendo as listas de amigos, pendentes, solicitações e recomendações do usuário.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_relationship_lists(uid):
+    &#34;&#34;&#34;
+    Retorna listas de relacionamentos de um usuário.
+
+    Parâmetros:
+        uid: ID do usuário.
+
+    Return:
+        lists: Lista contendo as listas de amigos, pendentes, solicitações e recomendações do usuário.
+    &#34;&#34;&#34;
+
+    relationships = get_user_relationships(uid)
+
+    friends = []
+    pending = []
+    requests = []
+    for user in relationships:
+        relationship = get_relationship(uid, user)
+
+        if relationship.status:
+            friends.append(User.query.filter_by(id=user).first())
+        else:
+            if relationship.uid_1 == uid:
+                pending.append(User.query.filter_by(id=user).first())
+            else:
+                requests.append(User.query.filter_by(id=user).first())
+
+    matches = calc_matches(uid)
+    recommendations = []
+    for match in matches:
+        recommendations.append([User.query.filter_by(id=match[0]).first(), match[1]])
+
+    return [friends, pending, requests, recommendations]</code></pre>
+</details>
+</dd>
 <dt id="user.get_user"><code class="name flex">
 <span>def <span class="ident">get_user</span></span>(<span>email)</span>
 </code></dt>
@@ -526,14 +627,8 @@ password: Senha do novo usuário.</p>
     Returns:
         user: Objeto do usuário encontrado ou None.
     &#34;&#34;&#34;
-    user = User.query.filter_by(email=email).first()
-    &#34;&#34;&#34;
-    Parâmetros:
-        email: E-mail do usuário a ser buscado.
 
-    Return:
-        user: Objeto do usuário encontrado ou None.
-    &#34;&#34;&#34;
+    user = User.query.filter_by(email=email).first()
     return user</code></pre>
 </details>
 </dd>
@@ -541,7 +636,11 @@ password: Senha do novo usuário.</p>
 <span>def <span class="ident">get_user_list</span></span>(<span>user_list)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Retorna uma lista de usuários com base em uma lista de IDs.</p></div>
+<div class="desc"><p>Retorna uma lista de usuários com base em uma lista de IDs.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>user_list: Lista de IDs dos usuários.</p>
+<h2 id="return">Return</h2>
+<p>users: Lista de usuários encontrados.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -549,10 +648,6 @@ password: Senha do novo usuário.</p>
 <pre><code class="python">def get_user_list(user_list):
     &#34;&#34;&#34;
     Retorna uma lista de usuários com base em uma lista de IDs.
-    &#34;&#34;&#34;
-
-    users = []
-    &#34;&#34;&#34;
 
     Parâmetros:
         user_list: Lista de IDs dos usuários.
@@ -560,6 +655,8 @@ password: Senha do novo usuário.</p>
     Return:
         users: Lista de usuários encontrados.
     &#34;&#34;&#34;
+
+    users = []
     for uid in user_list:
         user = User.query.filter_by(id=uid).first()
 
@@ -592,6 +689,7 @@ password: Senha do novo usuário.</p>
     Return:
         bool: True se o usuário é um administrador, False caso contrário.
     &#34;&#34;&#34;
+
     return bool(get_admin(uid))</code></pre>
 </details>
 </dd>
@@ -658,9 +756,9 @@ password: Senha do novo usuário.</p>
 <span>def <span class="ident">sort_matches</span></span>(<span>user)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Função auxiliar para classificar os resultados de acordo com as correspondências do usuário.</p>
+<div class="desc"><p>Função chave para ordenar os resultados de acordo com as correspondências do usuário.</p>
 <h2 id="parametros">Parâmetros</h2>
-<p>user: Objeto de usuário.</p>
+<p>user: Par ID do usuário e Pontuação de correspondência.</p>
 <h2 id="return">Return</h2>
 <p>user[1]: Valor usado para classificar as correspondências.</p></div>
 <details class="source">
@@ -669,16 +767,71 @@ password: Senha do novo usuário.</p>
 </summary>
 <pre><code class="python">def sort_matches(user):
     &#34;&#34;&#34;
-    Função auxiliar para classificar os resultados de acordo com as correspondências do usuário.
+    Função chave para ordenar os resultados de acordo com as correspondências do usuário.
 
     Parâmetros:
-        user: Objeto de usuário.
+        user: Par ID do usuário e Pontuação de correspondência.
 
     Return:
         user[1]: Valor usado para classificar as correspondências.
     &#34;&#34;&#34;
 
     return user[1]</code></pre>
+</details>
+</dd>
+<dt id="user.update_email"><code class="name flex">
+<span>def <span class="ident">update_email</span></span>(<span>user, email)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>update_email</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_email(user, email):
+    &#34;&#34;&#34;update_email&#34;&#34;&#34;
+
+    if get_user(email):
+        return None
+
+    user.email = email
+    db_commit()
+    return user</code></pre>
+</details>
+</dd>
+<dt id="user.update_password"><code class="name flex">
+<span>def <span class="ident">update_password</span></span>(<span>user, password)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>update_password</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_password(user, password):
+    &#34;&#34;&#34;update_password&#34;&#34;&#34;
+
+    hashed = generate_password_hash(password, method=&#39;sha256&#39;)
+    user.password = hashed
+    db_commit()
+    return user</code></pre>
+</details>
+</dd>
+<dt id="user.update_username"><code class="name flex">
+<span>def <span class="ident">update_username</span></span>(<span>user, username)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>update_username</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_username(user, username):
+    &#34;&#34;&#34;update_username&#34;&#34;&#34;
+
+    user.username = username
+    db_commit()
+    return user</code></pre>
 </details>
 </dd>
 <dt id="user.user_exists"><code class="name flex">
@@ -720,7 +873,7 @@ password: Senha do novo usuário.</p>
 </div>
 <ul id="index">
 <li><h3><a href="#header-functions">Functions</a></h3>
-<ul class="two-column">
+<ul class="">
 <li><code><a title="user.authenticate_user" href="#user.authenticate_user">authenticate_user</a></code></li>
 <li><code><a title="user.calc_matches" href="#user.calc_matches">calc_matches</a></code></li>
 <li><code><a title="user.create_user" href="#user.create_user">create_user</a></code></li>
@@ -728,12 +881,16 @@ password: Senha do novo usuário.</p>
 <li><code><a title="user.disconnect_user" href="#user.disconnect_user">disconnect_user</a></code></li>
 <li><code><a title="user.get_admin" href="#user.get_admin">get_admin</a></code></li>
 <li><code><a title="user.get_all_users" href="#user.get_all_users">get_all_users</a></code></li>
+<li><code><a title="user.get_relationship_lists" href="#user.get_relationship_lists">get_relationship_lists</a></code></li>
 <li><code><a title="user.get_user" href="#user.get_user">get_user</a></code></li>
 <li><code><a title="user.get_user_list" href="#user.get_user_list">get_user_list</a></code></li>
 <li><code><a title="user.is_admin" href="#user.is_admin">is_admin</a></code></li>
 <li><code><a title="user.remove_admin" href="#user.remove_admin">remove_admin</a></code></li>
 <li><code><a title="user.set_admin" href="#user.set_admin">set_admin</a></code></li>
 <li><code><a title="user.sort_matches" href="#user.sort_matches">sort_matches</a></code></li>
+<li><code><a title="user.update_email" href="#user.update_email">update_email</a></code></li>
+<li><code><a title="user.update_password" href="#user.update_password">update_password</a></code></li>
+<li><code><a title="user.update_username" href="#user.update_username">update_username</a></code></li>
 <li><code><a title="user.user_exists" href="#user.user_exists">user_exists</a></code></li>
 </ul>
 </li>

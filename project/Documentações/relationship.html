@@ -116,7 +116,7 @@ def create_relationship(uid_1, uid_2):
     if relationship_exists(uid_1, uid_2):
         return None
 
-    relationship = Relationship(uid_1=uid_1, uid_2=uid_2)
+    relationship = Relationship(uid_1=uid_1, uid_2=uid_2, status=False)
     db_add(relationship)
     db_commit()
     return relationship
@@ -150,6 +150,22 @@ def delete_user_relationships(uid):
     if relationships:
         for uid_2 in relationships:
             db_del(get_relationship(uid, uid_2))
+        db_commit()
+
+def update_status(uid_1, uid_2):
+    &#34;&#34;&#34;
+    Atualiza o status do relacionamento entre dois usuários.
+
+    Parâmetros:
+        uid_1: ID do primeiro usuário.
+
+        uid_2: ID do segundo usuário.
+    &#34;&#34;&#34;
+
+    relationship = get_relationship(uid_1, uid_2)
+
+    if relationship:
+        relationship.status = True
         db_commit()</code></pre>
 </details>
 </section>
@@ -190,7 +206,7 @@ def delete_user_relationships(uid):
     if relationship_exists(uid_1, uid_2):
         return None
 
-    relationship = Relationship(uid_1=uid_1, uid_2=uid_2)
+    relationship = Relationship(uid_1=uid_1, uid_2=uid_2, status=False)
     db_add(relationship)
     db_commit()
     return relationship</code></pre>
@@ -376,6 +392,35 @@ def delete_user_relationships(uid):
     return bool(get_relationship(uid_1, uid_2))</code></pre>
 </details>
 </dd>
+<dt id="relationship.update_status"><code class="name flex">
+<span>def <span class="ident">update_status</span></span>(<span>uid_1, uid_2)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Atualiza o status do relacionamento entre dois usuários.</p>
+<h2 id="parametros">Parâmetros</h2>
+<p>uid_1: ID do primeiro usuário.</p>
+<p>uid_2: ID do segundo usuário.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_status(uid_1, uid_2):
+    &#34;&#34;&#34;
+    Atualiza o status do relacionamento entre dois usuários.
+
+    Parâmetros:
+        uid_1: ID do primeiro usuário.
+
+        uid_2: ID do segundo usuário.
+    &#34;&#34;&#34;
+
+    relationship = get_relationship(uid_1, uid_2)
+
+    if relationship:
+        relationship.status = True
+        db_commit()</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -396,6 +441,7 @@ def delete_user_relationships(uid):
 <li><code><a title="relationship.get_relationship" href="#relationship.get_relationship">get_relationship</a></code></li>
 <li><code><a title="relationship.get_user_relationships" href="#relationship.get_user_relationships">get_user_relationships</a></code></li>
 <li><code><a title="relationship.relationship_exists" href="#relationship.relationship_exists">relationship_exists</a></code></li>
+<li><code><a title="relationship.update_status" href="#relationship.update_status">update_status</a></code></li>
 </ul>
 </li>
 </ul>
