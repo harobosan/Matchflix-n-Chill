@@ -5,3 +5,9 @@ Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
 24/06/2023  | 1 hora e 30 minutos | Implementar o HTML da página de adicionar ADM |
             | implementar o código criar_admin.py que conecta o front-end no back-end |
 25/06/2023  | 1 hora |  adicionar o template de css da página criar_admin |
+28/06/2023  | 1 hora | Modificação do html das páginas base, index e login|
+03/07/2023  | 2 horas| Criação do banco de Dados de Grupos |
+04/07/2023  | Mudança de Planos, A implementação dos Grupos foi cancelada |
+06/07/2023  | 1 Hora e 30 minutos |Pesquisa de Front-end para implementar a tela de filmes|
+07/07/2023  | 2 Horas| Criação das Assertivas nas telas de preference e movie |
+08/07/2023  | 3 Horas| Entendimento de todo o conjunto de códigos para a apresentação |
