@@ -2,7 +2,13 @@
 
 from .db import Relationship, db_commit, db_add, db_del
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: get_all_relationships()
+Assertivas de Entrada:
+Nenhuma pré-condição específica
+Assertivas de Saída:
+Retorna uma lista contendo os relacionamentos
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def get_all_relationships():
     """
     Retorna uma lista com todos os relacionamentos.
@@ -14,6 +20,17 @@ def get_all_relationships():
     relationships = Relationship.query.all()
     return relationships
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: get_relationship(uid_1, uid_2)
+Assertivas de Entrada:
+uid_1,uid_2 são inteiros > 0.
+Há no banco de dados usuários com ids iguais aos dos argumentos.
+Assertivas de Saída:
+Se os usuários possuem relação
+    Retorna um objeto 'Relationship'
+Senão
+    Retorna None
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def get_relationship(uid_1, uid_2):
     """
     Retorna o relacionamento entre os dois usuários fornecidos.
@@ -34,6 +51,13 @@ def get_relationship(uid_1, uid_2):
 
     return relationship
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: get_user_relationships(uid)
+Assertivas de Entrada:
+uid é um inteiro > 0.
+Assertivas de Saída:
+Retorna uma lista de inteiros contendo IDs relacionados ao ID uid.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def get_user_relationships(uid):
     """
     Retorna uma lista de IDs dos usuários relacionados ao usuário fornecido.
@@ -56,6 +80,17 @@ def get_user_relationships(uid):
 
     return relationships
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: relationship_exists(uid_1, uid_2)
+Assertivas de Entrada:
+Ver as assertivas de entrada de 'get_relationship".
+Assertivas de Saída:
+Retorna um booleano
+Se get_relationship(uid_1,uid_2) != []
+    Retorna True
+Senão
+    Retorna False
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def relationship_exists(uid_1, uid_2):
     """
     Verifica se existe um relacionamento entre os dois usuários fornecidos.
@@ -71,6 +106,18 @@ def relationship_exists(uid_1, uid_2):
 
     return bool(get_relationship(uid_1, uid_2))
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: create_relationship(uid_1,uid_2)
+Assertivas de Entrada:
+uid_1,uid_2 são inteiros > 0.
+Há, no banco de dados, usuários com os respectivos ID's.
+Assertivas de Saída:
+Se a relação não existir previamente
+    O banco de dados será atualizado com a relação criada.
+    Retorna o objeto 'Relationship'
+Senão
+    Retorna None
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def create_relationship(uid_1, uid_2):
     """
     Cria um novo relacionamento entre os dois usuários fornecidos.
@@ -92,6 +139,16 @@ def create_relationship(uid_1, uid_2):
     db_commit()
     return relationship
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: delete_relationship(uid_1,uid_2)
+Assertivas de Entrada:
+Ver assertivas de get_relationship(uid_1,uid_2)
+Assertivas de Saída:
+Se há relação entre os usuários
+    A relação é deletada do banco de dados, que é atualizado
+Senão
+    O estado permanece inalterado.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def delete_relationship(uid_1, uid_2):
     """
     Deleta o relacionamento entre os dois usuários fornecidos.
@@ -108,6 +165,18 @@ def delete_relationship(uid_1, uid_2):
         db_del(relationship)
         db_commit()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: delete_user_relationships(uid)
+Assertivas de Entrada: 
+Ver assertivas de entrada para get_user_relationships
+e get_relationship.
+Assertiva de Saída:
+Se relationships != []
+    relationships = []
+    O Banco de dados é atualizado
+Senão
+    O estado permanece inalterado
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def delete_user_relationships(uid):
     """
     Deleta todos os relacionamentos do usuário fornecido.
@@ -123,6 +192,17 @@ def delete_user_relationships(uid):
             db_del(get_relationship(uid, uid_2))
         db_commit()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: update_status(uid_1,uid_2)
+Assertivas de Entrada:
+Ver assertivas de get_relationship
+Assertivas de Saída:
+Se relationship != []
+    relationship.status = True
+    O banco de dados é atulzado
+Senão
+    O estado permanece inalterado
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def update_status(uid_1, uid_2):
     """update_status"""
 
