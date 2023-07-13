@@ -6,13 +6,29 @@ from .movie import get_movie_weight
 from .preference import get_user_preferences, get_movie_preferences
 from .relationship import get_relationship, get_user_relationships
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: get_all_users()
+Assertivas de Entrada:
+Nenhuma Pré-condição especifíca
+Assertivas de Saída:
+Retorna uma lista de objetos 'User' presentes no banco de dados.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def get_all_users():
     """Retorna uma lista com todos os usuários."""
 
     users = User.query.all()
     return users
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: get_user(email)
+Assertivas de Entrada:
+O parâmetro 'email' é uma string
+Assertivas de Saída:
+Se há um objeto 'User' com atributo 'email' == email
+    Retorna User
+Senão
+    Retorna None
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def get_user(email):
     """
     Retorna o usuário correspondente ao email fornecido.
@@ -27,6 +43,13 @@ def get_user(email):
     user = User.query.filter_by(email=email).first()
     return user
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: get_user_list(user_list)
+Assertivas de Entrada:
+user_list != []
+Assertivas de Saída:
+Retorna uma lista 'users' contendo os usuários encontrados.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def get_user_list(user_list):
     """
     Retorna uma lista de usuários com base em uma lista de IDs.
@@ -47,6 +70,16 @@ def get_user_list(user_list):
 
     return users
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: user_exists(email)
+Assertivas de Entrada:
+O parâmetro 'email' é uma string
+Assertivas de Saída
+Se há User.email == email no banco de Dados
+    Retorna True
+Senão
+    Retorna False
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def user_exists(email):
     """
     Verifica se um usuário com o e-mail fornecido existe.
@@ -60,6 +93,18 @@ def user_exists(email):
 
     return bool(get_user(email))
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: create_user
+Assertivas de Entrada:
+email, username, password são strings tais que len(string)>0
+Assertivas de Saída:
+Se há User.email == email no banco de dados
+    Retorna None
+Senão
+    Gera uma senha string
+    Gera um objeto 'User' com os respectivos atributos deslogado
+    Este objeto constará no banco de dados após a execução.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def create_user(email, username, password):
     """
     Cria um novo usuário no banco de dados.
@@ -82,6 +127,17 @@ def create_user(email, username, password):
     db_commit()
     return user
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: delete_user(email)
+Assertivas de Entrada:
+Ver assertivas de get_user(email)
+Assertivas de Saída:
+Se há user.email == email no banco de dados
+    Deleta-se usuário do banco de dados
+    Banco é atualizado
+Senão
+    O estado permanece inalterado
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def delete_user(email):
     """
     Deleta um usuário do banco de dados.
@@ -95,6 +151,18 @@ def delete_user(email):
         db_del(user)
         db_commit()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: authenticate_user
+Assertivas de Entrada:
+Parâmetros 'email' e 'password' são strings.
+Assertivas de Sáida:
+Se user.password != password ou get_user(email) == None
+    Retorna None
+Senão
+    Estado de user.authentciated é alterado
+    Banco de dados é atualizado
+    Retorna uma string user.email
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def authenticate_user(email, password):
     """
     Realiza a autenticação um usuário com base no e-mail e senha fornecidos.
@@ -116,6 +184,15 @@ def authenticate_user(email, password):
 
     return None
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: disconnect_user(user)
+Assertivas de entrada:
+'user' é um objeto 'User'
+Assertivas de Saída:
+Se o usuário existe
+    O estado user.authenticated é alterado
+    O banco de dados é atualizado
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def disconnect_user(user):
     """
     Desconecta um usuário do sistema.
@@ -128,6 +205,19 @@ def disconnect_user(user):
         user.authenticated = False
         db_commit()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: update_email(user,email)
+Assertivas de Entrada:
+'user' é um objeto 'User' e email é uma string 
+tal que len(email) > 0
+Assertivas de Saída:
+Se há user.email == email no banco de dados
+    Retorna None
+Senão
+    user.email == email
+    O banco de dados é atualizado
+    É retornado um objeto 'User' atualizado.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def update_email(user, email):
     """update_email"""
 
@@ -138,6 +228,15 @@ def update_email(user, email):
     db_commit()
     return user
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: update_username(user,username)
+Assertivas de Entrada:
+'user' é um objeto 'User' e username é uma string
+tal que len(username) > 0
+Assertivas de Saída:
+O atributo 'username' é atualizado no banco de dados.
+O objeto 'user' atualizado é retornado.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def update_username(user, username):
     """update_username"""
 
@@ -145,6 +244,14 @@ def update_username(user, username):
     db_commit()
     return user
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: update_password(user,password)
+Assertivas de Entrada:
+'user' é um objeto 'User' e password é uma string
+Assertivas de Saída:
+O atributo user.password é atualizado no banco de dados
+É retornado o objeto 'user' atualizado
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def update_password(user, password):
     """update_password"""
 
@@ -153,6 +260,16 @@ def update_password(user, password):
     db_commit()
     return user
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: get_admin(uid)
+Assertivas de Entrada:
+uid é um inteiro > 0
+Assertivas de Saída:
+Se há admin.id == uid
+    Retorna objeto 'Admin'
+Senão
+    Retorna None
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def get_admin(uid):
     """
     Retorna o objeto de administração associado ao ID do usuário fornecido.
@@ -167,6 +284,16 @@ def get_admin(uid):
     admin = Admin.query.filter_by(uid=uid).first()
     return admin
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: is_admin(uid)
+Assertivas de Entrada:
+uid é um inteiro > 0
+Assertivas de Saída:
+Se get_admin(uid)
+    Retorna True
+Senão
+    Retorna False
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def is_admin(uid):
     """
     Verifica se o usuário com o ID fornecido é um administrador.
@@ -180,6 +307,18 @@ def is_admin(uid):
 
     return bool(get_admin(uid))
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: set_admin(uid)
+Assertivas de Entrada:
+uid é um inteiro > 0
+Assertivas de Saída:
+Se !is_admin
+    Cria um objeto admin
+    Adiciona-se ao banco de dados
+    Retorna o objeto
+Senão
+    Retorna None
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def set_admin(uid):
     """
     Define o usuário com o ID fornecido como administrador.
@@ -199,6 +338,16 @@ def set_admin(uid):
     db_commit()
     return admin
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: remove_admin(uid)
+Assertivas de Entrada:
+Ver assertivas de get_admin
+Assertivas de Saída
+Se get_admin
+    Tal instância será deletada do banco de dados
+Senão
+    O estado permanece inalterado
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def remove_admin(uid):
     """
     Remove a atribuição de administrador do usuário com o ID fornecido.
@@ -213,6 +362,13 @@ def remove_admin(uid):
         db_del(admin)
         db_commit()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: sort_matches(user)
+Assertivas de Entrada:
+user é um objeto 'User'
+Assertivas de Saída:
+    Retorna um valor inteiro
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def sort_matches(user):
     """
     Função chave para ordenar os resultados de acordo com as correspondências do usuário.
@@ -226,6 +382,13 @@ def sort_matches(user):
 
     return user[1]
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: calc_matches
+Assertivas de Entrada:
+uid é um inteiro > 0
+Assertivas de Saída:
+Retorna uma lista de recomendações de usuários
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def calc_matches(uid):
     """
     Calcula as correspondências entre um usuário e outros usuários com base em suas preferências.
@@ -262,6 +425,14 @@ def calc_matches(uid):
     recommendations.sort(reverse=True, key=sort_matches)
     return recommendations
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Função: get_relationship_lists(uid)
+Assertivas de Entrada:
+uid é um inteiro > 0
+Assertivas de Saída:
+Retorna uma matriz contendo listas de amigos,pedidos, pendências
+e recomendações.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def get_relationship_lists(uid):
     """get_relationship_lists"""
 
